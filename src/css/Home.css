@@ -1,0 +1,6 @@
+.home {
+    background-color: #171a1c;
+    height: 100vh;
+    background-image: url('../img/home.svg');
+    background-repeat: no-repeat;
+}
