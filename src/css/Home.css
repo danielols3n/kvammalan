@@ -23,3 +23,11 @@
     background-color: #25282c;
     margin: auto;
 }
+
+.todo-list li {
+    margin: 1% 0;
+}
+
+.todo-list {
+    margin-left: 5%;
+}
