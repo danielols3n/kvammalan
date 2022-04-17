@@ -3,10 +3,10 @@ import './Navbar.css'
 import { Nav, Navbar } from 'react-bootstrap'
 import logo from '../../img/logo.png'
 
-function NavbarComponent() {
+function NavbarComponent(props) {
   return (
     <>
-        <Navbar bg='dark'>
+        <Navbar bg={props.data.background}>
             <Navbar.Brand style={{ display: 'flex', justifyContent: 'flex-start', width: '25%', marginLeft: '2.5%', alignItems: 'center' }} href='/'>
                 <img
                     src={logo}
