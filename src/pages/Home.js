@@ -40,8 +40,22 @@ function Home() {
           <Container className="d-flex flex-column" fluid>
             <h1 className="fw-bolder display-5 mt-5 align-self-center">INFORMASJON</h1>
             <Container fluid className="d-flex">
-              <Row lg={3} md={3} sm={1}>
-                <Card className="col-lg-3 m-2" bg='dark'>
+              <Row lg={3} md={3} sm={1} className="d-flex justify-content-center">
+                <Card className="col-lg-2 m-2" bg='dark'>
+                  <Card.Header className="d-flex justify-content-center">
+                    <IoMdTime size='2.5rem' />
+                  </Card.Header>
+                  <Card.Body>
+                    <div>
+                      <b>JuniorLAN:</b>&nbsp;13.06.2022 kl. 14:00 til 13.06.2022 kl. 19:00
+                    </div>
+                    <br></br>
+                    <div>
+                      <b>SeniorLAN:</b>&nbsp;13.06.2022 kl. 20:00 til 14.06.2022 kl. 08:00
+                    </div>
+                  </Card.Body>
+                </Card>
+                <Card className="col-lg-2 m-2">
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdTime size='2.5rem' />
                   </Card.Header>
@@ -49,7 +63,7 @@ function Home() {
                     <b>JuniorLAN:</b>&nbsp;13.06.2022 kl. 14:00 til 13.06.2022 kl. 19:00
                   </Card.Body>
                 </Card>
-                <Card className="col-lg-3 m-2">
+                <Card className="col-lg-2 m-2">
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdTime size='2.5rem' />
                   </Card.Header>
@@ -57,7 +71,7 @@ function Home() {
                     <b>JuniorLAN:</b>&nbsp;13.06.2022 kl. 14:00 til 13.06.2022 kl. 19:00
                   </Card.Body>
                 </Card>
-                <Card className="col-lg-3 m-2">
+                <Card className="col-lg-2 m-2">
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdTime size='2.5rem' />
                   </Card.Header>
