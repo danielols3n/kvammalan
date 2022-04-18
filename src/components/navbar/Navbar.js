@@ -21,7 +21,7 @@ function NavbarComponent(props) {
             </Navbar.Brand>
             <Nav>
                 <Nav.Link className='text-light' href='/'>Heim</Nav.Link>
-                <Nav.Link className='text-light'>Link 2</Nav.Link>
+                <Nav.Link className='text-light' href='/om-oss'>Om oss</Nav.Link>
                 <Nav.Link className='text-light'>Link 3</Nav.Link>
             </Nav>
         </Navbar>

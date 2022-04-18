@@ -1,0 +1,9 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: aliceblue;
+    min-height: 100px;
+}
