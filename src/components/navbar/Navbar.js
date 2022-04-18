@@ -1,12 +1,12 @@
 import React from 'react'
 import './Navbar.css'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import logo from '../../img/logo.png'
 
 function NavbarComponent(props) {
   return (
     <>
-        <Navbar bg={props.data.background}>
+        <Navbar bg={props.data.background} variant='dark'>
             <Navbar.Brand style={{ display: 'flex', justifyContent: 'flex-start', width: '25%', marginLeft: '2.5%', alignItems: 'center' }} href='/'>
                 <img
                     src={logo}
@@ -20,9 +20,12 @@ function NavbarComponent(props) {
                 {/* <h1 className='fw-bold text-light' style={{ marginLeft: '2.5%' }}>KvammaLAN</h1> */}
             </Navbar.Brand>
             <Nav>
-                <Nav.Link className='text-light' href='/'>Heim</Nav.Link>
-                <Nav.Link className='text-light' href='/om-oss'>Om oss</Nav.Link>
-                <Nav.Link className='text-light'>Link 3</Nav.Link>
+                <Nav.Link className="mx-4" href='/'>HEIM</Nav.Link>
+                <Nav.Link className="mx-4" href='/om-oss'>OM OSS</Nav.Link>
+                <NavDropdown className="mx-4" title='HJELP' menuVariant='dark'>
+                    <NavDropdown.Item href='/faq'>OFTE STILTE SPØRSMÅL</NavDropdown.Item>
+                    <NavDropdown.Item href='/kontakt'>KONTAKT OSS</NavDropdown.Item>
+                </NavDropdown>
             </Nav>
         </Navbar>
     </>
