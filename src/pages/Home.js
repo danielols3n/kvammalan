@@ -5,7 +5,7 @@ import "../css/Home.css";
 import { IoMdTime, IoMdPricetag } from 'react-icons/io'
 import { MdOutlinePlace } from 'react-icons/md'
 import Footer from '../components/footer/Footer'
-import { signInUser } from "../firebase/functions";
+import { signOutUser } from "../firebase/functions";
 
 function Home() {
   return(
@@ -24,7 +24,7 @@ function Home() {
                 Les meir
               </NavLink>
               <Button onClick={() => {
-                signInUser('admin@kvam-esport.no', 'Kvamesport4622')
+                signOutUser()
               }}>
                 Test sign in
               </Button>
