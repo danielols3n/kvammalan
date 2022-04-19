@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Event from './pages/Event';
+import AddEvent from './pages/AddEvent';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/om-oss" element={<AboutUs />} />
-          <Route path="/kvammalan2022" element={<Event />} />
+          <Route path="/opprett-hending" element={<AddEvent />} />
+          <Route path="/logg-inn" element={<Login />} />
         </Routes>
       </Router>
     </>
