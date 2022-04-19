@@ -8,7 +8,7 @@ function AboutUs() {
   return (
     <Container fluid className="d-flex flex-column m-0 p-0 aboutus">
         <NavbarComponent data={{ background: 'transparent' }} />
-        <Container fluid className="d-flex flex-column">
+        <Container fluid className="d-flex flex-column mb-5">
             <h2 className="fw-bolder text-light display-5 align-self-center mt-5">OM OSS</h2>
             <h2 style={{ marginLeft: '2.5%' }} className="text-light fw-bold mt-3">Kven arrangerer KvammaLAN?</h2>
             <p style={{ fontSize: '1.1rem', marginLeft: '5%', width: '85%' }} className="text-light mt-3">

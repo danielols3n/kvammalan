@@ -4,6 +4,8 @@ import NavbarComponent from "../components/navbar/Navbar";
 import "../css/Home.css";
 import { IoMdTime, IoMdPricetag } from 'react-icons/io'
 import { MdOutlinePlace } from 'react-icons/md'
+import Footer from '../components/footer/Footer'
+import { signInUser } from "../firebase/functions";
 
 function Home() {
   return(
@@ -21,6 +23,11 @@ function Home() {
               <NavLink as={Button} href='/om-oss' style={{ color: '#fff' }} variant='secondary'>
                 Les meir
               </NavLink>
+              <Button onClick={() => {
+                signInUser('admin@kvam-esport.no', 'Kvamesport4622')
+              }}>
+                Test sign in
+              </Button>
             </Container>
             <div className="home-img">
               <img
@@ -104,7 +111,7 @@ function Home() {
             </Container>
           </Container>
           <div className="divider"></div>
-          <Container fluid className="d-flex flex-column m-0 p-0 mt-3">
+          <Container fluid className="d-flex flex-column m-0 p-0 mt-3 mb-3">
             <h2 className="mx-5 mt-3 fw-bolder">Hugseliste</h2>
             <ul className="todo-list" style={{ listStyleType: 'circle' }}>
               <li>Noko å spela på (konsoll, stasjonær pc, laptop etc.)</li>
@@ -115,6 +122,7 @@ function Home() {
               <li>Skøyteleidning(ar)</li>
             </ul>
           </Container>
+          <Footer />
       </Container>
   )
 }
