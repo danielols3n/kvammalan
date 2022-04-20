@@ -16,6 +16,7 @@ function App() {
           <Route path="/om-oss" element={<AboutUs />} />
           <Route path="/opprett-hending" element={<AddEvent />} />
           <Route path="/logg-inn" element={<Login />} />
+          <Route path="/kvammalan" element={<Event />} />
         </Routes>
       </Router>
     </>

@@ -6,10 +6,16 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const signIn = (event) => {
+        event.preventDefault()
+
+        signInUser(email, password)
+    }
+
     return (
     <Container fluid className="d-flex flex-column">
         <h1 className="fw-bolder align-self-center mt-5">LOGG INN</h1>
-        <Form className="w-75 align-self-center" onSubmit={signInUser(email, password)}>
+        <Form className="w-75 align-self-center" onSubmit={signIn}>
             <Form.Group>
                 <Form.Label>E-postadresse</Form.Label>
                 <Form.Control type='email' value={email} onChange={e => setEmail(e.target.value)} placeholder='E-postadresse' />

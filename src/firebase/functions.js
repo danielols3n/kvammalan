@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 export const signInUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        window.location.href = '/opprett-hending'
         return userCredential
     }).catch((error) => {
         console.error(error)
