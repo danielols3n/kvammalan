@@ -7,7 +7,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../firebase/config'
 
 function Event() {
-  const nextEventId = ' m8T5RrE1DAKWDSnHmoDh'
+  const nextEventId = 'm8T5RrE1DAKWDSnHmoDh'
   const [event, setEvent] = useState(null)
 
   useEffect(() => {
@@ -16,8 +16,11 @@ function Event() {
       const q = query(collection(db, 'hendingar'), where('eventId', '==', nextEventId))
 
       const querySnapshot = await getDocs(q)
+      console.log(querySnapshot)
 
       querySnapshot.forEach((doc) => {
+        console.log(doc)
+        console.log(doc.data())
         temp.push({
           title: doc.data().title, 
           eventId: doc.data().eventId,
@@ -29,7 +32,9 @@ function Event() {
           place: doc.data().place
         })
       })
-      setEvent(temp[0])
+      setTimeout(() => {
+        setEvent(temp[0])
+      }, 750)
     }
 
     fetchEvent()
@@ -39,7 +44,7 @@ function Event() {
     <Container fluid className="event d-flex flex-column p-0 m-0">
         <NavbarComponent data={{ background: 'transparent' }} />
           <Container fluid className="d-flex flex-column text-light">
-            {event !== null ? <h1 className='fw-bolder mt-3 align-self-center'>{event.title}</h1> : null}
+          
           </Container>
         <Footer />
     </Container>

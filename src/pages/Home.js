@@ -23,11 +23,6 @@ function Home() {
               <NavLink as={Button} href='/om-oss' style={{ color: '#fff' }} variant='secondary'>
                 Les meir
               </NavLink>
-              <Button onClick={() => {
-                signOutUser()
-              }}>
-                Test sign in
-              </Button>
             </Container>
             <div className="home-img">
               <img
