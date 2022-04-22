@@ -22,6 +22,7 @@ function NavbarComponent(props) {
             <Nav>
                 <Nav.Link className="mx-4" href='/'>HEIM</Nav.Link>
                 <Nav.Link className="mx-4" href='/om-oss'>OM OSS</Nav.Link>
+                <Nav.Link className="mx-4" href='/kvammalan'>KVAMMALAN 2022</Nav.Link>
                 <NavDropdown className="mx-4" title='HJELP' menuVariant='dark'>
                     <NavDropdown.Item href='/faq'>OFTE STILTE SPØRSMÅL</NavDropdown.Item>
                     <NavDropdown.Item href='/kontakt'>KONTAKT OSS</NavDropdown.Item>

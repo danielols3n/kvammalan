@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div className='footer'>
       <Row className="w-100 p-0 m-0">
-        <Col className="w-25 float-left d-flex align-items-center justify-content-center">
+        <Col className="w-25 float-left d-flex align-items-center justify-content-center m-0 p-0">
             <img
               src={require('../../img/logo.png')}
               alt='Logo Kvam E-sport'
@@ -21,7 +21,7 @@ function Footer() {
               }}
             />
         </Col>
-        <Col className="w-25 float-right d-flex align-items-center justify-content-center">
+        <Col className="w-25 float-right d-flex align-items-center justify-content-center m-0 p-0">
             <a title='Facebook' href='https://www.facebook.com/kvamesport'>
               <BsFacebook size='1.5rem' className="mx-4" />
             </a>
@@ -31,8 +31,8 @@ function Footer() {
         </Col>
       </Row>
       <Row className="w-100 p-0 m-0">
-        <Col className="w-100 float-left d-flex align-items-center justify-content-center mt-4">
-            <p className="text-light">Copyright © 2022 - <a style={{ color: '#fff', textDecoration: 'none', fontWeight: 'bold' }} href='https://kvam-esport.no'>Kvam E-sport</a></p>
+        <Col className="w-100 float-left d-flex align-items-center justify-content-center mt-4 m-0 p-0">
+            <p className="text-light m-0 p-0">Copyright © 2022 - <a style={{ color: '#fff', textDecoration: 'none', fontWeight: 'bold' }} href='https://kvam-esport.no'>Kvam E-sport</a></p>
         </Col>
       </Row>
     </div>
