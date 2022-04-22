@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 import '../css/Event.css'
 import NavbarComponent from '../components/navbar/Navbar'  
 import Footer from '../components/footer/Footer' 
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import Linkify from 'react-linkify'
+import { IoMdTime, IoMdPricetag } from 'react-icons/io'
+import { MdOutlinePlace } from 'react-icons/md'
 
 function Event() {
   const nextEventId = 'm8T5RrE1DAKWDSnHmoDh'
@@ -56,9 +58,10 @@ function Event() {
                 <Linkify className="text-light mt-3 w-75">
                   {event.desc}
                 </Linkify>
-                <Container fluid className="text-light d-flex flex-column p-0 m-0">
-                  <div>
-                    
+                <Container style={{ backgroundColor: '#171a1c' }} fluid className="text-light d-flex flex-column p-0 m-0">
+                  <div style={{ backgroundColor: '#171a1c' }}>
+                    <IoMdTime size='2rem' />
+                    <b>Start:</b>&nbsp;{event.starttime}
                   </div>
                 </Container>
               </>
