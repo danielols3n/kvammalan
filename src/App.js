@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs';
 import Event from './pages/Event';
 import AddEvent from './pages/AddEvent';
 import Login from './pages/Login';
+import Registration from './pages/Registration';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="/om-oss" element={<AboutUs />} />
           <Route path="/opprett-hending" element={<AddEvent />} />
           <Route path="/logg-inn" element={<Login />} />
-          <Route path="/kvammalan" element={<Event />} />
+          <Route path="/kvammalan" exact element={<Event />} />
+          <Route path="/kvammalan/pamelding" exact element={<Registration />} />
         </Routes>
       </Router>
     </>
