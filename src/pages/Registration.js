@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Tab, Tabs } from 'react-bootstrap'
+import { Container, Form, Row, Col } from 'react-bootstrap'
 import Footer from '../components/footer/Footer'
 import NavbarComponent from '../components/navbar/Navbar'
 import '../css/Registration.css'
@@ -10,6 +10,20 @@ import axios from 'axios'
 function Registration() {
     const nextEventId = 'm8T5RrE1DAKWDSnHmoDh'
     const [event, setEvent] = useState(null)
+
+    const [firstname, setFirstname] = useState('')
+    const [lastname, setLastname] = useState('')
+    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
+    const [birth, setBirth] = useState('')
+    const [minor, setMinor] = useState(false)
+
+    const [parentfirstname, setParentfirstname] = useState('')
+    const [parentlastname, setParentlastname] = useState('')
+    const [parentphone, setParentphone] = useState('')
+    const [parentemail, setParentemail] = useState('')
+
+    const [tickettype, setTickettype] = useState('')
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -38,21 +52,27 @@ function Registration() {
 
       setTimeout(() => {
         setEvent({
-          title: document.data().title, 
-            eventId: document.data().eventId,
-            desc: document.data().description,
-            start: document.data().start,
-            end: document.data().end,
-            img: document.data().img,
-            place: document.data().place,
-            prices: prices,
-            id: document.id
+          title: document.data().title,
+          eventId: document.data().eventId,
+          desc: document.data().description,
+          start: document.data().start,
+          end: document.data().end,
+          img: document.data().img,
+          place: document.data().place,
+          prices: prices,
+          id: document.id
         })
-      }, 750)
+      }, 1000)
     }
 
     fetchEvent()
   }, [])
+
+  const register = (event) => {
+    event.preventDefault()
+
+
+  }
 
   return (
     <Container fluid className="registration d-flex flex-column p-0 m-0">
@@ -61,15 +81,40 @@ function Registration() {
             {event !== null && event !== undefined ?
                 <> 
                     <h1 className="fw-bolder text-light align-self-center mt-4">Påmelding | {event.title}</h1>
-                    <Tabs defaultActiveKey={event.prices[0].name}>
-                        {event.prices.map((price) => {
-                            return (
-                                <Tab style={{ backgroundColor: '#171a1c' }} tabClassName='custom-tab' eventKey={price.name} title={price.name}>
-        
-                                </Tab>
-                            )
-                        })}
-                    </Tabs>
+                    <Form className="w-75 align-self-center mt-4" onSubmit={register}>
+                      <Form.Group className="mt-3 mb-3" as={Row}>
+                        <Col>
+                          <Form.FloatingLabel controlId='floatingFirstname' label='Fornamn'>
+                            <Form.Control placeholder='Fornamn' value={firstname} onChange={e => setFirstname(e.target.value)} type='text' />
+                          </Form.FloatingLabel>
+                        </Col>
+                        <Col>
+                          <Form.FloatingLabel controlId='floatingLastname' label='Etternamn'>
+                            <Form.Control placeholder='Etternamn' type='text' value={lastname} onChange={e => setLastname(e.target.value)} />
+                          </Form.FloatingLabel>
+                        </Col>
+                      </Form.Group>
+                      <Form.Group className="mt-3 mb-3" as={Row}>
+                        <Col>
+                          <Form.FloatingLabel controlId='floatingEmail' label='E-postadresse'>
+                            <Form.Control placeholder='E-postadresse' type='email' value={email} onChange={e => setEmail(e.target.value)} />
+                          </Form.FloatingLabel>
+                        </Col>
+                        <Col>
+                          <Form.FloatingLabel controlId='floatingPhone' label='Telefonnummer'>
+                            <Form.Control placeholder='Telefonnummer' type='tel' value={phone} onChange={e => setPhone(e.target.value)} />
+                          </Form.FloatingLabel>
+                        </Col>
+                      </Form.Group>
+                      <Form.Group className="mt-3 mb-3" as={Row}>
+                        <Col>
+                        
+                        </Col>
+                        <Col>
+                        
+                        </Col>
+                      </Form.Group>
+                    </Form>
                 </>
                 : null
             }

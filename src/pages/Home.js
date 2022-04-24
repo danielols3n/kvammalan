@@ -5,7 +5,6 @@ import "../css/Home.css";
 import { IoMdTime, IoMdPricetag } from 'react-icons/io'
 import { MdOutlinePlace } from 'react-icons/md'
 import Footer from '../components/footer/Footer'
-import { signOutUser } from "../firebase/functions";
 
 function Home() {
   return(
@@ -17,9 +16,9 @@ function Home() {
               Eit datatreff for born og ungdom i Kvam.
             </p>
             <Container className="w-50 d-flex justify-content-center gap-5 mt-2">
-              <Button variant='primary'>
+              <NavLink as={Button} href='/kvammalan' style={{ color: '#fff' }} variant='primary' >
                 Meld deg på
-              </Button>
+              </NavLink>
               <NavLink as={Button} href='/om-oss' style={{ color: '#fff' }} variant='secondary'>
                 Les meir
               </NavLink>
