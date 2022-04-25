@@ -6,6 +6,7 @@ import '../css/Registration.css'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import axios from 'axios'
+import moment from 'moment'
 
 function Registration() {
     const nextEventId = 'm8T5RrE1DAKWDSnHmoDh'
@@ -109,7 +110,16 @@ function Registration() {
                       <Form.Group lg={2} md={1} sm={1} xs={1} className="mt-3 mb-3" as={Row}>
                         <Col className="my-3">
                           <Form.FloatingLabel label='Fødselsdato'>
-                            <Form.Control placeholder='Fødselsdato' type='datetime-local' value={birth} onChange={e => setBirth(e.target.value)} />
+                            <Form.Control placeholder='Fødselsdato' type='date' value={birth} onChange={e => {
+                              setBirth(e.target.value)
+                              if (moment().unix() - moment(e.target.value).unix() < 568024668) {
+                                console.log('Minor')
+                                setMinor(true)
+                              } else {
+                                setMinor(false)
+                                console.log('Not minor')
+                              }
+                            }} />
                           </Form.FloatingLabel>
                         </Col>
                         <Col className="my-3">
@@ -128,6 +138,36 @@ function Registration() {
                           </Form.Select>
                         </Form.FloatingLabel>
                       </Form.Group>
+                      {minor === true ? 
+                        <>
+                        <h3 className="mt-5 text-light fw-bolder">Føresatt</h3>
+                        <Form.Group className="my-3" as ={Row} lg={2} md={1} sm={1} xs={1}>
+                          <Col>
+                            <Form.FloatingLabel label='Fornamn'>
+                              <Form.Control type='text' placeholder='Fornamn' value={parentfirstname} onChange={e => setParentfirstname(e.target.value)} />
+                            </Form.FloatingLabel>
+                          </Col>
+                          <Col>
+                            <Form.FloatingLabel label='Etternamn'>
+                              <Form.Control type='text' placeholder='Etternamn' value={parentlastname} onChange={e => setParentlastname(e.target.value)} />
+                            </Form.FloatingLabel>
+                          </Col>
+                        </Form.Group>
+                        <Form.Group className="my-3" as ={Row} lg={2} md={1} sm={1} xs={1}>
+                          <Col>
+                            <Form.FloatingLabel label='E-postadresse'>
+                              <Form.Control placeholder='E-postadresse' type='email' value={parentemail} onChange={e => setParentemail(e.target.value)} />
+                            </Form.FloatingLabel>
+                          </Col>
+                          <Col>
+                            <Form.FloatingLabel label='Telefonnummer'>
+                              <Form.Control placeholder='Telefonnummer' type='tel' value={parentphone} onChange={e => setParentphone(e.target.value)} />
+                            </Form.FloatingLabel>
+                          </Col>
+                        </Form.Group>
+                        </>
+                        : null
+                      }
                       <Row className="m-0 p-0 my-3">
                         <Button className="w-25 mt-5 mb-4" type='submit' variant='primary'>
                           Meld på
