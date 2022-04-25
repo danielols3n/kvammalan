@@ -72,7 +72,29 @@ function Registration() {
   const register = (event) => {
     event.preventDefault()
 
-    
+    if (minor === true) {
+      axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/create-checkout-session', {
+        priceId: tickettype,
+        email: parentemail,
+        success_url: `${window.location.href}/success`,
+        cancel_url: `${window.location.href}/cancel`
+      }).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.error(error)
+      })
+    } else if (minor === false) {
+      axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/create-checkout-session', {
+        priceId: tickettype,
+        email: email,
+        success_url: `${window.location.href}/success`,
+        cancel_url: `${window.location.href}/cancel`
+      }).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
   }
 
   return (
