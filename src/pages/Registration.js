@@ -3,7 +3,7 @@ import { Container, Form, Row, Col, Button } from 'react-bootstrap'
 import Footer from '../components/footer/Footer'
 import NavbarComponent from '../components/navbar/Navbar'
 import '../css/Registration.css'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, addDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import axios from 'axios'
 import moment from 'moment'
@@ -77,11 +77,19 @@ function Registration() {
         priceId: tickettype,
         email: parentemail,
         success_url: `${window.location.href}/success`,
-        cancel_url: `${window.location.href}/cancel`
-      }).then((response) => {
+        cancel_url: `${window.location.href}/cancel`,
+        metadata: {
+          name: `${firstname} ${lastname}`, 
+          email: email, 
+          phone: phone,
+          birth: birth,
+          minor: true,
+          parentname: `${parentfirstname} ${parentlastname}`,
+          parentemail: parentemail,
+          parentphone: parentphone
+        }
+      }).then(async (response) => {
         console.log(response)
-      }).catch((error) => {
-        console.error(error)
       })
     } else if (minor === false) {
       axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/create-checkout-session', {
@@ -162,7 +170,10 @@ function Registration() {
                       </Form.Group>
                       {minor === true ? 
                         <>
-                        <h3 className="mt-5 text-light fw-bolder">Føresatt</h3>
+                        <h3 className="mt-5 text-light fw-bolder">Foresatt</h3>
+                        <p className="text-light">
+                          Sidan du er under 18 år gamal, lyt ein foresatt stå oppført på deg.
+                        </p>
                         <Form.Group className="my-3" as ={Row} lg={2} md={1} sm={1} xs={1}>
                           <Col>
                             <Form.FloatingLabel label='Fornamn'>
