@@ -103,7 +103,7 @@ function Registration() {
           'email': email, 
           'phone': phone,
           'birth': birth,
-          'minor': true,
+          'minor': false,
           'parentname': `${parentfirstname} ${parentlastname}`,
           'parentemail': parentemail,
           'parentphone': parentphone

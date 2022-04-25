@@ -15,6 +15,7 @@
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",
     "react-linkify": "^1.0.0-alpha",
+    "react-loader-spinner": "^6.0.0-0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "stripe": "^8.219.0",

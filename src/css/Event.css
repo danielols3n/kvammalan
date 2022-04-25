@@ -3,4 +3,5 @@
     background-image: url('../img/home.svg');
     background-repeat: no-repeat;
     min-height: 100vh;
+    background-size: contain;
 }
