@@ -9,7 +9,7 @@ import axios from 'axios'
 import moment from 'moment'
 
 function Registration() {
-    const nextEventId = 'm8T5RrE1DAKWDSnHmoDh'
+    const nextEventId = 'hR5c3GstEzcO2UoeNuWY'
     const [event, setEvent] = useState(null)
 
     const [firstname, setFirstname] = useState('')
@@ -79,26 +79,38 @@ function Registration() {
         success_url: `${window.location.href}/success`,
         cancel_url: `${window.location.href}/cancel`,
         metadata: {
-          name: `${firstname} ${lastname}`, 
-          email: email, 
-          phone: phone,
-          birth: birth,
-          minor: true,
-          parentname: `${parentfirstname} ${parentlastname}`,
-          parentemail: parentemail,
-          parentphone: parentphone
+          'name': `${firstname} ${lastname}`, 
+          'email': email, 
+          'phone': phone,
+          'birth': birth,
+          'minor': true,
+          'parentname': `${parentfirstname} ${parentlastname}`,
+          'parentemail': parentemail,
+          'parentphone': parentphone
         }
       }).then(async (response) => {
         console.log(response)
+        window.location.href = response.data.session.url
       })
     } else if (minor === false) {
       axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/create-checkout-session', {
         priceId: tickettype,
         email: email,
         success_url: `${window.location.href}/success`,
-        cancel_url: `${window.location.href}/cancel`
+        cancel_url: `${window.location.href}/cancel`,
+        metadata: {
+          'name': `${firstname} ${lastname}`, 
+          'email': email, 
+          'phone': phone,
+          'birth': birth,
+          'minor': true,
+          'parentname': `${parentfirstname} ${parentlastname}`,
+          'parentemail': parentemail,
+          'parentphone': parentphone
+        }
       }).then((response) => {
         console.log(response)
+        window.location.href = response.data.session.url
       }).catch((error) => {
         console.error(error)
       })

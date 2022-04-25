@@ -7,6 +7,8 @@ import Event from './pages/Event';
 import AddEvent from './pages/AddEvent';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import Success from './pages/Success';
+import Cancel from './pages/Cancel';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/logg-inn" element={<Login />} />
           <Route path="/kvammalan" exact element={<Event />} />
           <Route path="/kvammalan/pamelding" exact element={<Registration />} />
+          <Route path="/kvammalan/pamelding/success" exact element={<Success />} />
+          <Route path="/kvammalan/pamelding/cancel" element={<Cancel />} />
         </Routes>
       </Router>
     </>

@@ -54,7 +54,6 @@ function AddEvent() {
                 name: priceName1,
                 price: price1
             }).then((response) => {
-                console.log(response)
                 prices.push({
                     priceId: response.data.price.id,
                     productId: response.data.product.id
@@ -125,7 +124,7 @@ function AddEvent() {
                             start: start,
                             end: end,
                             place: infoPlace,
-                            prices: priceList,
+                            prices: prices,
                             img: url
                         }).then(() => {
                             alert('Hending oppretta')
@@ -139,7 +138,7 @@ function AddEvent() {
                     start: start,
                     end: end,
                     place: infoPlace,
-                    prices: priceList
+                    prices: prices
                 }).then(() => {
                     alert('Hending oppretta')
                 })

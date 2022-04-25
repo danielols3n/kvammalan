@@ -13,7 +13,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function Event() {
-  const nextEventId = 'm8T5RrE1DAKWDSnHmoDh'
+  const nextEventId = 'hR5c3GstEzcO2UoeNuWY'
   const [event, setEvent] = useState(null)
   const navigate = useNavigate()
 
