@@ -8,7 +8,7 @@ import { collection, getDocs } from 'firebase/firestore'
 function Registrations() {
     const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
     const [user, setUser] = useState(null)
-    const [regs, setRegs] = useState([])
+    const regs = []
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -20,14 +20,11 @@ function Registrations() {
             }
         })
 
-        const temp = []
-
-        const fetchRegistrations = () => {
             const colRef = collection(db, 'hendingar', nextEventId, 'registreringar')
             
             getDocs(colRef).then((snap) => {
                 snap.forEach((doc) => {
-                    temp.push({
+                    regs.push({
                         name: doc.data().name, 
                         email: doc.data().email, 
                         phone: doc.data().phone,
@@ -42,16 +39,13 @@ function Registrations() {
                 })
             })
 
-            setRegs(temp)
-        }
-
-        fetchRegistrations()
+        console.log(regs)
     }, [])
 
   return (
     <Container fluid className="d-flex flex-column p-0 m-0">
         <h1 className="align-self-center fw-bolder mt-3">Påmeldingar</h1>
-        <Table striped bordered>
+        <Table className="mt-5" striped bordered>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -64,14 +58,17 @@ function Registrations() {
             </thead>
             <tbody>
                 {regs.map((item) => {
-                    <tr>
-                        <td>{item.id}</td>
-                        <td>{item.name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.phone}</td>
-                        <td>{item.minor === true ? 'Ja' : 'Nei'}</td>
-                        <td>Handlingar</td>
-                    </tr>
+                    console.log(item)
+                    return (
+                        <tr className="tablerow">
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            <td>{item.email}</td>
+                            <td>{item.phone}</td>
+                            <td>{item.minor === true ? 'Ja' : 'Nei'}</td>
+                            <td>Handlingar</td>
+                        </tr>
+                    )
                 })}
             </tbody>
         </Table>
