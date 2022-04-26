@@ -66,7 +66,7 @@ function Event() {
           <Container style={{ backgroundColor: '#171a1c' }} fluid className="d-flex flex-column text-light p-0 m-0">
             {event !== null && event !== undefined ? 
               <>
-                <h1 className='fw-bolder mt-3 align-self-center'>{event.title}</h1>
+                <h1 className='fw-bolder mt-3 align-self-center text-center'>{event.title}</h1>
                 {event.img !== undefined ? 
                 <img
                   src={event.img}

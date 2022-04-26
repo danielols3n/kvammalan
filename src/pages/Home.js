@@ -12,10 +12,10 @@ function Home() {
           <NavbarComponent data={{ background: 'transparent' }} />
           <Container fluid className="d-flex flex-column align-items-center">
             <h1 className="fw-bolder display-2 home-h1">KvammaLAN</h1>
-            <p className="font-italic" style={{ fontSize: '1.2rem', color: '#9ca9b3' }}>
+            <p className="font-italic text-center" style={{ fontSize: '1.2rem', color: '#9ca9b3' }}>
               Eit datatreff for born og ungdom i Kvam.
             </p>
-            <Container className="w-50 d-flex justify-content-center gap-5 mt-2">
+            <Container fluid className="d-flex justify-content-center gap-5 mt-2">
               <NavLink as={Button} href='/kvammalan' style={{ color: '#fff' }} variant='primary' >
                 Meld deg på
               </NavLink>
@@ -43,7 +43,7 @@ function Home() {
             <h1 className="fw-bolder display-5 mt-5 align-self-center mb-5">INFORMASJON</h1>
             <Container fluid className="d-flex m-0 p-0 mb-5">
               <Row className="d-flex justify-content-center m-auto p-0">
-                <Card className="col-lg-2 mx-2" bg='dark'>
+                <Card className="col-lg-2 mx-2 my-3" bg='dark'>
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdTime size='2.5rem' />
                   </Card.Header>
@@ -57,7 +57,7 @@ function Home() {
                     </div>
                   </Card.Body>
                 </Card>
-                <Card bg='dark' className="col-lg-2 mx-2">
+                <Card bg='dark' className="col-lg-2 mx-2 my-3">
                   <Card.Header className="d-flex justify-content-center">
                     <MdOutlinePlace size='2.5rem' />
                   </Card.Header>
@@ -72,7 +72,7 @@ function Home() {
                     </small>
                   </Card.Body>
                 </Card>
-                <Card bg='dark' className="col-lg-2 mx-2">
+                <Card bg='dark' className="col-lg-2 mx-2 my-3">
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdPricetag size='2.5rem' />
                   </Card.Header>
@@ -89,7 +89,7 @@ function Home() {
                     </ul>
                   </Card.Body>
                 </Card>
-                <Card bg='dark' className="col-lg-2 mx-2">
+                <Card bg='dark' className="col-lg-2 mx-2 my-3">
                   <Card.Header className="d-flex justify-content-center">
                     <h3 className="fw-bolder">Det vert</h3>
                   </Card.Header>

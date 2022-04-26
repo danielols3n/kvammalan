@@ -13,7 +13,7 @@ function Cancel() {
             Om du ikkje gjorde dette med vilje, prøv på nytt om nokre få minutt. 
             Viss problemet vedvarar, ta kontakt med oss på <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>.
         </p>
-        <NavLink as={Button} href='/' type='variant' className="w-25 text-light">
+        <NavLink as={Button} href='/' type='variant' className="w-50 text-light">
             Tilbake til framsida
         </NavLink>
       </Container>

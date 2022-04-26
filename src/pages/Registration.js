@@ -214,7 +214,7 @@ function Registration() {
                         : null
                       }
                       <Row className="m-0 p-0 my-3">
-                        <Button className="w-25 mt-5 mb-4" type='submit' variant='primary'>
+                        <Button style={{ width: '35%' }} className="mt-5 mb-4" type='submit' variant='primary'>
                           Meld på
                         </Button>
                       </Row>

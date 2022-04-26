@@ -57,7 +57,7 @@ function Success() {
                         registrerte foresatten som får e-posten. Om du har nokre spørsmål, ikkje vèr redd for å ta kontakt
                         med oss på <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>.
                     </p>
-                    <NavLink as={Button} href='/' type='variant' className="w-25 text-light">
+                    <NavLink as={Button} href='/' type='variant' className="w-50 text-light">
                         Tilbake til framsida
                     </NavLink>
                 </Container>
