@@ -8,6 +8,7 @@ import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase/config'
 
 function Success() {
+    const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
     const [searchParams] = useSearchParams()
     const [loading, setLoading] = useState(true)
 
@@ -15,10 +16,10 @@ function Success() {
         axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/session/get', {
             sessionId: searchParams.get('sessionId')
         }).then((response) => {
-            const docRef = collection(db, 'registreringar')
+            const docRef = collection(db, 'hendingar', nextEventId, 'registreringar')
 
             addDoc(docRef, {
-                name: response.data.session.metadata.name,
+                name: response.data.session.metadata.name,  
                 email: response.data.session.metadata.email,
                 birthdate: response.data.session.metadata.birth,
                 minor: response.data.session.metadata.minor,

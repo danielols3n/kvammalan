@@ -42,8 +42,8 @@ function Home() {
           <Container className="d-flex flex-column m-0 p-0" fluid>
             <h1 className="fw-bolder display-5 mt-5 align-self-center mb-5">INFORMASJON</h1>
             <Container fluid className="d-flex m-0 p-0 mb-5">
-              <Row className="d-flex justify-content-center m-auto p-0">
-                <Card className="col-lg-2 mx-2 my-3" bg='dark'>
+              <Row className="w-100 d-flex justify-content-center m-auto p-0">
+                <Card className="col-lg-3 my-3" bg='dark'>
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdTime size='2.5rem' />
                   </Card.Header>
@@ -57,7 +57,7 @@ function Home() {
                     </div>
                   </Card.Body>
                 </Card>
-                <Card bg='dark' className="col-lg-2 mx-2 my-3">
+                <Card bg='dark' className="col-lg-3 my-3">
                   <Card.Header className="d-flex justify-content-center">
                     <MdOutlinePlace size='2.5rem' />
                   </Card.Header>
@@ -72,7 +72,7 @@ function Home() {
                     </small>
                   </Card.Body>
                 </Card>
-                <Card bg='dark' className="col-lg-2 mx-2 my-3">
+                <Card bg='dark' className="col-lg-3 my-3">
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdPricetag size='2.5rem' />
                   </Card.Header>
@@ -89,7 +89,7 @@ function Home() {
                     </ul>
                   </Card.Body>
                 </Card>
-                <Card bg='dark' className="col-lg-2 mx-2 my-3">
+                <Card bg='dark' className="col-lg-3 my-3">
                   <Card.Header className="d-flex justify-content-center">
                     <h3 className="fw-bolder">Det vert</h3>
                   </Card.Header>
