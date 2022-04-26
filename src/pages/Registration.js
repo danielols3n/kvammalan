@@ -9,7 +9,7 @@ import axios from 'axios'
 import moment from 'moment'
 
 function Registration() {
-    const nextEventId = 'hR5c3GstEzcO2UoeNuWY'
+    const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
     const [event, setEvent] = useState(null)
 
     const [firstname, setFirstname] = useState('')
