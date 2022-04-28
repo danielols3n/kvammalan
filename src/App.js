@@ -11,6 +11,7 @@ import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import Registrations from './pages/Registrations';
 import DisplayRegistration from './pages/DisplayRegistration';
+import Privacy from './pages/Privacy';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/kvammalan/pamelding/cancel" element={<Cancel />} />
           <Route path="/pameldingar" element={<Registrations />} />
           <Route path="/pameldingar/:id" element={<DisplayRegistration />} />
+          <Route path="/personvern" element={<Privacy />} />
         </Routes>
       </Router>
     </>

@@ -40,7 +40,7 @@ function Registrations() {
                     parentname: doc.data().parentname,
                     parentphone: doc.data().parentphone, 
                     paid: doc.data().paid,
-                    id: doc.id
+                    id: doc.data().id
                 })
                 setRegs([...temp])
             })

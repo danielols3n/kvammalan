@@ -6,13 +6,14 @@ import { TailSpin } from 'react-loader-spinner'
 import axios from 'axios'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../firebase/config'
+import { v4 } from 'uuid'
 
 function Success() {
     const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
     const [searchParams] = useSearchParams()
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
+    const submit = () => {
         axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/session/get', {
             sessionId: searchParams.get('sessionId')
         }).then((response) => {
@@ -28,6 +29,7 @@ function Success() {
                 parentname: response.data.session.metadata.parentname,
                 parentphone: response.data.session.metadata.parentphone,
                 paid: true,
+                id: v4()
             }).then(() => {
                 setLoading(false)
             }).catch((error) => {
@@ -36,7 +38,10 @@ function Success() {
         }).catch((error) => {
             console.error(error)
         })
-    })
+    }
+
+    submit()
+
   return (
     <Container style={{ minHeight: '80vh' }} fluid className="d-flex flex-column align-items-center justify-content-center">
         {loading === true ? 
