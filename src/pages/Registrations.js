@@ -76,7 +76,7 @@ function Registrations() {
                                 <td>{item.phone}</td>
                                 <td>{item.minor === true ? 'Ja' : 'Nei'}</td>
                                 <td className="d-flex justify-content-center">
-                                    <BsEye title='View' style={{ cursor: 'pointer', margin: 'auto' }} size="1.5rem" />
+                                    <BsEye onClick={() => navigate(`/pameldingar/${item.id}`)} title='View' style={{ cursor: 'pointer', margin: 'auto' }} size="1.5rem" />
                                     <AiOutlineDelete title='Delete' style={{ cursor: 'pointer', margin: 'auto' }} color='red' size="1.5rem" />
                                 </td>
                             </tr>

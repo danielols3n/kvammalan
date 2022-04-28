@@ -10,6 +10,7 @@ import Registration from './pages/Registration';
 import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import Registrations from './pages/Registrations';
+import DisplayRegistration from './pages/DisplayRegistration';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/kvammalan/pamelding/success" exact element={<Success />} />
           <Route path="/kvammalan/pamelding/cancel" element={<Cancel />} />
           <Route path="/pameldingar" element={<Registrations />} />
+          <Route path="/pameldingar/:id" element={<DisplayRegistration />} />
         </Routes>
       </Router>
     </>
