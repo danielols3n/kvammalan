@@ -12,6 +12,7 @@ function Success() {
     const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
     const [searchParams] = useSearchParams()
     const [loading, setLoading] = useState(true)
+    const [submitted, setSubmitted] = useState(false)
 
     const submit = () => {
         axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/session/get', {
@@ -32,6 +33,7 @@ function Success() {
                 id: v4()
             }).then(() => {
                 setLoading(false)
+                setSubmitted(true)
             }).catch((error) => {
                 console.error(error)
             })
@@ -40,7 +42,11 @@ function Success() {
         })
     }
 
-    submit()
+    useEffect(() => {
+        if (submitted !== true) {
+            submit()
+        }
+    }, [])
 
   return (
     <Container style={{ minHeight: '80vh' }} fluid className="d-flex flex-column align-items-center justify-content-center">
