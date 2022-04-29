@@ -34,6 +34,9 @@ function Success() {
             }).then(() => {
                 setLoading(false)
                 setSubmitted(true)
+                axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/send-confirmationemail').then(() => {
+                    
+                })
             }).catch((error) => {
                 console.error(error)
             })
