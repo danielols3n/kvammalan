@@ -12,6 +12,7 @@ import Cancel from './pages/Cancel';
 import Registrations from './pages/Registrations';
 import DisplayRegistration from './pages/DisplayRegistration';
 import Privacy from './pages/Privacy';
+import TermsSale from './pages/TermsSale';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/pameldingar" element={<Registrations />} />
           <Route path="/pameldingar/:id" element={<DisplayRegistration />} />
           <Route path="/personvern" element={<Privacy />} />
+          <Route path="/salgsvilkar" element={<TermsSale />} />
         </Routes>
       </Router>
     </>
