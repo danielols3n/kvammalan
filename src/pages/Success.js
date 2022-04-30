@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { BsCheckCircle } from 'react-icons/bs'
 import { TailSpin } from 'react-loader-spinner'
 import axios from 'axios'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { v4 } from 'uuid'
 
@@ -13,6 +13,7 @@ function Success() {
     const [searchParams] = useSearchParams()
     const [loading, setLoading] = useState(true)
     const [submitted, setSubmitted] = useState(false)
+    const [event, setEvent] = useState({})
 
     const submit = () => {
         axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/session/get', {
@@ -34,8 +35,26 @@ function Success() {
             }).then(() => {
                 setLoading(false)
                 setSubmitted(true)
-                axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/send-confirmationemail').then(() => {
-                    
+                const eventRef = doc(db, 'hendingar', nextEventId)
+
+                getDoc(eventRef).then(async (doc) => {
+                    axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/send-confirmationemail', {
+                        name: response.data.session.metadata.name,  
+                        email: response.data.session.metadata.email,
+                        birthdate: response.data.session.metadata.birth,
+                        minor: response.data.session.metadata.minor,
+                        phone: response.data.session.metadata.phone,
+                        parentemail: response.data.session.metadata.parentemail,
+                        parentname: response.data.session.metadata.parentname,
+                        parentphone: response.data.session.metadata.parentphone,
+                        event: {
+                            title: doc.data().title,
+                            start: doc.data().start,
+                            end: doc.data().end
+                        },
+                    }).then(() => {
+                        
+                    })
                 })
             }).catch((error) => {
                 console.error(error)

@@ -43,6 +43,18 @@ function Privacy() {
             </p>
           </li>
         </ul>
+        <h3 className="fw-bolder">Sletting og lagring av persondata</h3>
+        <p className="mt-3">
+          Data om personar som melder seg på eit arrangement vert lagra frå personen melder seg inn og inntil 30 dagar etter arrangementet. Seinast 30 dagar etter arrangementet vert all
+          persondata om personen sletta. 
+        </p>
+        <h3 className="fw-bolder">Behandlingsansvarleg</h3>
+        <p className="mt-3">
+          Kvam E-sport er ansvarleg for behandlinga av personopplysningar sendt til KvammaLAN.
+        </p>
+        <p>
+          Kontaktinformasjon: KvammaLAN v/ Kvam E-sport (<a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>)
+        </p>
       </Container>
     </Container>
   )
