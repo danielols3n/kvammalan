@@ -28,14 +28,14 @@ function Privacy() {
           Kvam E-sport nyttar fylgjande tenester for å behandla data på vegne av Kvam E-sport.
         </p>
         <ul style={{ listStyle: 'none', marginLeft: 0 }}>
-          <li style={{ marginLeft: 0 }}>
+          <li>
             <h4 className="mt-3 fw-bolder">Firebase</h4>
             <p className="mt-2">
               <a href="https://firebase.google.com">Firebase</a> vert nytta til å lagra data om kvar einskild deltakar.
               Her vert namn, e-post, telefonnummer, fødselsdato og informasjon om foresatt (om oppgjeve) lagra. 
             </p>
           </li>
-          <li style={{ marginLeft: 0 }}>
+          <li>
             <h4 className="mt-3 fw-bolder">Stripe</h4>
             <p className="mt-2">
               <a href="https://stripe.com">Stripe</a> vert nytta til betaling av deltakaravgift. Denne tenesta har tilgang

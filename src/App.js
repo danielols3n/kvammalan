@@ -12,6 +12,8 @@ import Cancel from './pages/Cancel';
 import Registrations from './pages/Registrations';
 import DisplayRegistration from './pages/DisplayRegistration';
 import Privacy from './pages/Privacy';
+import FAQ from './pages/FAQ';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="/pameldingar" element={<Registrations />} />
           <Route path="/pameldingar/:id" element={<DisplayRegistration />} />
           <Route path="/personvern-og-vilkar" element={<Privacy />} />
+          <Route path="/kontakt-oss" element={<ContactUs />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </Router>
     </>

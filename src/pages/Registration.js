@@ -215,7 +215,7 @@ function Registration() {
                       }
                       <Row className="m-0 p-0 my-3">
                         <Button style={{ width: '35%' }} className="mt-5 mb-4" type='submit' variant='primary'>
-                          Meld på
+                          Gå til betaling
                         </Button>
                       </Row>
                     </Form>

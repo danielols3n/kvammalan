@@ -27,7 +27,7 @@ function NavbarComponent(props) {
                     <Nav.Link className="mx-4" href='/kvammalan'>KVAMMALAN 2022</Nav.Link>
                     <NavDropdown className="mx-4" title='HJELP' menuVariant='dark'>
                         <NavDropdown.Item href='/faq'>OFTE STILTE SPØRSMÅL</NavDropdown.Item>
-                        <NavDropdown.Item href='/kontakt'>KONTAKT OSS</NavDropdown.Item>
+                        <NavDropdown.Item href='/kontakt-oss'>KONTAKT OSS</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
