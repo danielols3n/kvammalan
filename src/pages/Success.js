@@ -31,29 +31,37 @@ function Success() {
                 parentname: response.data.session.metadata.parentname,
                 parentphone: response.data.session.metadata.parentphone,
                 paid: true,
-                id: v4()
-            }).then(() => {
+                id: v4(),
+                eventId: nextEventId,
+                checkedIn: false,
+            }).then((document) => {
+                console.log(document)
                 setLoading(false)
                 setSubmitted(true)
                 const eventRef = doc(db, 'hendingar', nextEventId)
 
-                getDoc(eventRef).then(async (doc) => {
-                    axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/send-confirmationemail', {
-                        name: response.data.session.metadata.name,  
-                        email: response.data.session.metadata.email,
-                        birthdate: response.data.session.metadata.birth,
-                        minor: response.data.session.metadata.minor,
-                        phone: response.data.session.metadata.phone,
-                        parentemail: response.data.session.metadata.parentemail,
-                        parentname: response.data.session.metadata.parentname,
-                        parentphone: response.data.session.metadata.parentphone,
-                        event: {
-                            title: doc.data().title,
-                            start: doc.data().start,
-                            end: doc.data().end
-                        },
-                    }).then(() => {
-                        
+                getDoc(eventRef).then(async (doc1) => {
+                    const docRef2 = doc(db, 'hendingar', nextEventId, 'registreringar', document.id)
+
+                    getDoc(docRef2).then((doc2) => {
+                        axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/send-confirmationemail', {
+                            name: response.data.session.metadata.name,  
+                            email: response.data.session.metadata.email,
+                            birthdate: response.data.session.metadata.birth,
+                            minor: response.data.session.metadata.minor,
+                            phone: response.data.session.metadata.phone,
+                            parentemail: response.data.session.metadata.parentemail,
+                            parentname: response.data.session.metadata.parentname,
+                            parentphone: response.data.session.metadata.parentphone,
+                            event: {
+                                title: doc1.data().title,
+                                start: doc1.data().start,
+                                end: doc1.data().end
+                            },
+                            reg_id: doc2.data().id
+                        }).then(() => {
+                            
+                        })
                     })
                 })
             }).catch((error) => {
