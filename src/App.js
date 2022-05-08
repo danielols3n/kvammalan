@@ -14,6 +14,7 @@ import DisplayRegistration from './pages/DisplayRegistration';
 import Privacy from './pages/Privacy';
 import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
+import EventRegistration from './pages/EventRegistration';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/personvern-og-vilkar" element={<Privacy />} />
           <Route path="/kontakt-oss" element={<ContactUs />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/registrering" element={<EventRegistration />} />
         </Routes>
       </Router>
     </>
