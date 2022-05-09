@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { Container, Tab, Tabs } from 'react-bootstrap'
+import { Container, Modal, Tab, Tabs } from 'react-bootstrap'
 import QrReader from 'react-web-qr-reader';
 import { collectionGroup, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { TailSpin } from 'react-loader-spinner';
+import { BiErrorCircle } from 'react-icons/bi'
 
 function EventRegistration() {
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorData, setErrorData] = useState(null)
 
     const checkIn = (result) => {
         setLoading(true)
@@ -22,8 +25,14 @@ function EventRegistration() {
             }).then(() => {
               setLoading(false)
               alert(`${document.data().name} er no sjekka inn.`)
+            }).catch(error => {
+              setError(true)
+              setErrorData(error)
             })
           })
+        }).catch(error => {
+          setError(true)
+          setErrorData(error)
         })
     }
 
@@ -41,13 +50,38 @@ function EventRegistration() {
             }).then(() => {
               setLoading(false)
               alert(`${document.data().name} er no sjekka ut.`)
+            }).catch(error => {
+              setError(true)
+              setErrorData(error)
             })
           })
+        }).catch(error => {
+          setError(true)
+          setErrorData(error)
         })
     }
 
   return (
-    <Container fluid className="d-flex flex-column p-0 m-0">
+    <Container fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh' }: {}} className="d-flex flex-column p-0 m-0">
+      <Modal show={error} onHide={() => setError(false)}>
+        <Modal.Header closeButton>
+          <BiErrorCircle color='red' size="15rem" />
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            Off då! Ein feil dukka opp! Last inn sida på nytt og prøv igjen. 
+          </p>
+          <p className="mt-3">
+            Viss feilen vedvarer, ta kontakt med Daniel Olsen.
+          </p>
+          {errorData !== null ?
+            <p className="mt-3 d-flex">
+              Feilkode:&nbsp;<p className="fw-bold">{errorData.code}</p>
+            </p>
+            : null
+          }
+        </Modal.Body>
+      </Modal>
         {loading === true ? 
             <>
                 <TailSpin
@@ -63,7 +97,7 @@ function EventRegistration() {
             <p className="text-center align-self-center mt-3">
                 Under kan du registrera folk eller sjekka dei ut.
             </p>
-            <Tabs fill defaultActiveKey='checkin' className="mt-5">
+            <Tabs fill className="mt-5">
                 <Tab eventKey='checkin' title="Innsjekk">
                     <Container fluid className='h-100 d-flex flex-column mt-5 align-items-center'>
                         <QrReader

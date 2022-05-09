@@ -40,7 +40,8 @@ function Registrations() {
                     parentname: doc.data().parentname,
                     parentphone: doc.data().parentphone, 
                     paid: doc.data().paid,
-                    id: doc.data().id
+                    id: doc.data().id,
+                    checkedIn: doc.data().checkedIn
                 })
                 setRegs([...temp])
             })
@@ -60,6 +61,7 @@ function Registrations() {
                     <th>E-post</th>
                     <th>Telefon</th>
                     <th>Under 18?</th>
+                    <th>Sjekka inn?</th>
                     <th>Handlingar</th>
                 </tr>
             </thead>
@@ -75,6 +77,7 @@ function Registrations() {
                                 <td>{item.email}</td>
                                 <td>{item.phone}</td>
                                 <td>{item.minor === true ? 'Ja' : 'Nei'}</td>
+                                <td>{item.checkedIn === true ? 'Ja' : 'Nei'}</td>
                                 <td className="d-flex justify-content-center">
                                     <BsEye onClick={() => navigate(`/pameldingar/${item.id}`)} title='View' style={{ cursor: 'pointer', margin: 'auto' }} size="1.5rem" />
                                     <AiOutlineDelete title='Delete' style={{ cursor: 'pointer', margin: 'auto' }} color='red' size="1.5rem" />
