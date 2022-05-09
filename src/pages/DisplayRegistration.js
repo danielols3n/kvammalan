@@ -1,5 +1,5 @@
 import { collectionGroup, getDocs, query, where } from 'firebase/firestore'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
 import { db } from '../firebase/config'
@@ -7,14 +7,15 @@ import { db } from '../firebase/config'
 function DisplayRegistration() {
   const location = useLocation()
   const id = location.pathname.split('/')[2]
+  const [reg, setReg] = useState(null)
 
   useEffect(() => {
     const fetchReg = async () => {
       const q = query(collectionGroup(db, 'registreringar'), where('id', '==', id))
 
-    const qSnap = await getDocs(q)
+      const qSnap = await getDocs(q)
 
-    console.log(qSnap[0])
+      setReg(qSnap.docs[0].data())
     }
 
     fetchReg()
@@ -22,7 +23,7 @@ function DisplayRegistration() {
 
   return (
     <Container fluid className="d-flex flex-column m-0 p-0">
-      <h1 className="fw-bolder"></h1>
+      {reg !== null ? <h1 className="fw-bolder mt-5 align-self-center">{reg.name}</h1> : null}
     </Container>
   )
 }
