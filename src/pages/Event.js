@@ -54,7 +54,7 @@ function Event() {
             prices: prices,
             id: document.id
         })
-      }, 1500)
+      }, 2000)
     }
 
     fetchEvent()

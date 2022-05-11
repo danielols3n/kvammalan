@@ -23,7 +23,33 @@ function DisplayRegistration() {
 
   return (
     <Container fluid className="d-flex flex-column m-0 p-0">
-      {reg !== null ? <h1 className="fw-bolder mt-5 align-self-center">{reg.name}</h1> : null}
+      {reg !== null ? 
+        <>
+          <h1 className="fw-bolder mt-5 align-self-center">{reg.name}</h1>
+          <Container fluid>
+            <Row>
+              <Col>
+                <b></b>
+              </Col>
+              <Col>
+              
+              </Col>
+              <Col>
+              
+              </Col>
+              <Col>
+              
+              </Col>
+              <Col>
+              
+              </Col>
+              <Col>
+              
+              </Col>
+            </Row>
+          </Container>
+        </>
+      : null}
     </Container>
   )
 }
