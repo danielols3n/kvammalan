@@ -1,6 +1,6 @@
 import { collectionGroup, getDocs, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
 import { db } from '../firebase/config'
 
