@@ -17,9 +17,9 @@ function Home() {
   }, [])
 
   return(
-      <Container fluid className="d-flex flex-column p-0 m-0 home text-light">
+      <Container fluid style={loading === true ? { overflow: 'hidden' } : {}} className="d-flex flex-column p-0 m-0 home text-light">
         {loading === true ?
-          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflowY: 'hidden' }: {}}>
+          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin
                 color="#00BFFF"
                 height={100}
