@@ -11,10 +11,12 @@ import moment from 'moment'
 import 'moment/locale/nn'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { TailSpin } from 'react-loader-spinner'
 
 function Event() {
   const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
   const [event, setEvent] = useState(null)
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -62,8 +64,18 @@ function Event() {
 
   return (
     <Container fluid className="event d-flex flex-column p-0 m-0">
+        {loading === true ?
+          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
+              <TailSpin
+                color="#00BFFF"
+                height={100}
+                width={100}
+            />    
+            <span>Lastar inn...</span>
+          </Container>
+          : null}
         <NavbarComponent data={{ background: 'transparent' }} />
-          <Container style={{ backgroundColor: '#171a1c' }} fluid className="d-flex flex-column text-light p-0 m-0">
+          <Container onLoad={() => setLoading(false)} style={{ backgroundColor: '#171a1c' }} fluid className="d-flex flex-column text-light p-0 m-0">
             {event !== null && event !== undefined ? 
               <>
                 <h1 className='fw-bolder mt-3 align-self-center text-center'>{event.title}</h1>

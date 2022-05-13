@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
 import '../css/ContactUs.css'
+import { TailSpin } from 'react-loader-spinner'
 
 function ContactUs() {
+  const [loading, setLoading] = useState(true)
   return (
     <Container fluid className="contactus d-flex flex-column p-0 m-0">
+      {loading === true ?
+          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
+              <TailSpin
+                color="#00BFFF"
+                height={100}
+                width={100}
+            />    
+            <span>Lastar inn...</span>
+          </Container>
+          : null}
       <NavbarComponent data={{ background: 'transparent' }} />
-        <Container fluid className="h-100 d-flex flex-column ">
+        <Container onLoad={() => setLoading(false)} fluid className="h-100 d-flex flex-column ">
           <h1 className="fw-bolder text-light mt-3 mx-3">KONTAKT OSS</h1>
           <p className="mt-3 mx-4 w-75 text-light fw-bold">
             Har du nokre spørsmål eller ynskjer du å kontakta oss? Då er du kome til rett plass!

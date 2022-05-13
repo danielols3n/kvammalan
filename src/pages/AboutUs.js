@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import '../css/AboutUs.css'
 import Footer from '../components/footer/Footer'
+import { TailSpin } from 'react-loader-spinner'
 
 function AboutUs() {
+  const [loading, setLoading] = useState(true)
+
   return (
     <Container fluid className="d-flex flex-column m-0 p-0 aboutus">
+        {loading === true ?
+          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
+              <TailSpin
+                color="#00BFFF"
+                height={100}
+                width={100}
+            />    
+            <span>Lastar inn...</span>
+          </Container>
+          : null}
         <NavbarComponent data={{ background: 'transparent' }} />
-        <Container fluid className="d-flex flex-column mb-5">
+        <Container fluid onLoad={() => setLoading(false)} style={loading ? { overflow: 'hidden' }: {}} className="d-flex flex-column mb-5">
             <h2 className="fw-bolder text-light display-5 align-self-center mt-5">OM OSS</h2>
             <h2 style={{ marginLeft: '2.5%' }} className="text-light fw-bold mt-3">Kven arrangerer KvammaLAN?</h2>
             <p style={{ fontSize: '1.1rem', marginLeft: '5%', width: '85%' }} className="text-light mt-3">

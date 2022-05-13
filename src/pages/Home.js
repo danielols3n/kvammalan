@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Card, Container, NavLink, Row } from "react-bootstrap";
 import NavbarComponent from "../components/navbar/Navbar";
 import "../css/Home.css";
@@ -10,14 +10,8 @@ import { TailSpin } from 'react-loader-spinner'
 function Home() {
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-      setTimeout(() => {
-        setLoading(false)
-      }, 750)
-  }, [])
-
   return(
-      <Container fluid style={loading === true ? { overflow: 'hidden' } : {}} className="d-flex flex-column p-0 m-0 home text-light">
+      <Container fluid className="d-flex flex-column p-0 m-0 home text-light">
         {loading === true ?
           <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin
@@ -29,7 +23,7 @@ function Home() {
           </Container>
           : null}
           <NavbarComponent data={{ background: 'transparent' }} />
-          <Container onLoadedData={() => setLoading(false)} fluid className="d-flex flex-column align-items-center">
+          <Container onLoad={() => setLoading(false)} style={loading ? { overflow: 'hidden' }: {}} fluid className="d-flex flex-column align-items-center">
             <h1 className="fw-bolder display-2 home-h1">KvammaLAN</h1>
             <p className="font-italic text-center" style={{ fontSize: '1.2rem', color: '#9ca9b3' }}>
               Eit datatreff for born og ungdom i Kvam.
