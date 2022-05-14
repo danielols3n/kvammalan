@@ -7,6 +7,7 @@ import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import axios from 'axios'
 import moment from 'moment'
+import { TailSpin } from 'react-loader-spinner'
 
 function Registration() {
     const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
@@ -25,6 +26,8 @@ function Registration() {
     const [parentemail, setParentemail] = useState('')
 
     const [tickettype, setTickettype] = useState('')
+
+    const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -63,6 +66,8 @@ function Registration() {
           prices: prices,
           id: document.id
         })
+
+        setLoading(false)
       }, 1500)
     }
 
@@ -118,7 +123,17 @@ function Registration() {
   }
 
   return (
-    <Container fluid className="registration d-flex flex-column p-0 m-0">
+    <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="registration d-flex flex-column p-0 m-0">
+        {loading === true ?
+          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
+              <TailSpin
+                color="#00BFFF"
+                height={100}
+                width={100}
+            />    
+            <span>Lastar inn...</span>
+          </Container>
+          : null}
         <NavbarComponent data={{ background: 'transparent' }} />
         <Container fluid className="d-flex flex-column p-0 m-0">
             {event !== null && event !== undefined ?

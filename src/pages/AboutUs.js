@@ -9,7 +9,7 @@ function AboutUs() {
   const [loading, setLoading] = useState(true)
 
   return (
-    <Container fluid className="d-flex flex-column m-0 p-0 aboutus">
+    <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column m-0 p-0 aboutus">
         {loading === true ?
           <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin

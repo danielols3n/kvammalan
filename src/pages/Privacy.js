@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
+import { TailSpin } from 'react-loader-spinner'
 
 function Privacy() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }, [])
   return (
-    <Container fluid className="d-flex flex-column p-0 m-0">
+    <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0">
+      {loading === true ?
+          <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
+              <TailSpin
+                color="#00BFFF"
+                height={100}
+                width={100}
+            />    
+            <span>Lastar inn...</span>
+          </Container>
+          : null}
       <h2 className='fw-bolder mx-4 mt-4'>Personvernerklæring</h2>
       <Container fluid className="d-flex flex-column">
         <p className="mt-3">

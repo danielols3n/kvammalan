@@ -11,7 +11,7 @@ function Home() {
   const [loading, setLoading] = useState(true)
 
   return(
-      <Container fluid className="d-flex flex-column p-0 m-0 home text-light">
+      <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0 home text-light">
         {loading === true ?
           <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin

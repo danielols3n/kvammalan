@@ -63,7 +63,7 @@ function Event() {
   }, [])
 
   return (
-    <Container fluid className="event d-flex flex-column p-0 m-0">
+    <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="event d-flex flex-column p-0 m-0">
         {loading === true ?
           <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin
