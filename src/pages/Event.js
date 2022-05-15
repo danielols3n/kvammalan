@@ -17,6 +17,7 @@ function Event() {
   const nextEventId = 'BX4GwZjW1hTBn2G8NFwz'
   const [event, setEvent] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [priceList, setPrices] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -37,12 +38,11 @@ function Event() {
             name: response.data.product.name,
             price: response.data.price.unit_amount / 100
           })
+          setPrices([...prices])
         }).catch(error => {
           console.error(error)
         })
       })
-
-      console.log(prices)
 
       setTimeout(() => {
         setEvent({
@@ -53,10 +53,9 @@ function Event() {
             end: document.data().end,
             img: document.data().img,
             place: document.data().place,
-            prices: prices,
             id: document.id
         })
-      }, 2000)
+      }, 1500)
     }
 
     fetchEvent()
@@ -110,7 +109,7 @@ function Event() {
                   </div>
                   <h4 className="fw-bolder text-light mt-5 ">Prisar</h4>
                   <ul className="text-light">
-                    {event.prices.map((price) => {
+                    {priceList.map((price) => {
                       return (
                         <li><b>{price.name}:</b>&nbsp;{price.price} kr</li>
                       )
