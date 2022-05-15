@@ -29,6 +29,8 @@ function Registration() {
 
     const [loading, setLoading] = useState(true)
 
+    const [priceList, setPrices] = useState([])
+
   useEffect(() => {
     const fetchEvent = async () => {
       const prices = []
@@ -47,12 +49,12 @@ function Registration() {
             name: response.data.product.name,
             price: response.data.price.unit_amount / 100
           })
+
+          setPrices([...prices])
         }).catch(error => {
           console.error(error)
         })
       })
-
-      console.log(prices)
 
       setTimeout(() => {
         setEvent({
@@ -63,7 +65,6 @@ function Registration() {
           end: document.data().end,
           img: document.data().img,
           place: document.data().place,
-          prices: prices,
           id: document.id
         })
 
@@ -170,11 +171,9 @@ function Registration() {
                             <Form.Control placeholder='Fødselsdato' type='date' value={birth} onChange={e => {
                               setBirth(e.target.value)
                               if (moment().unix() - moment(e.target.value).unix() < 568024668) {
-                                console.log('Minor')
                                 setMinor(true)
                               } else {
                                 setMinor(false)
-                                console.log('Not minor')
                               }
                             }} />
                           </Form.FloatingLabel>
@@ -187,7 +186,7 @@ function Registration() {
                         <Form.FloatingLabel controlId='formTickettype' label="Vel billettype">
                           <Form.Select aria-label='Vel billettype' value={tickettype} onChange={e => setTickettype(e.target.value)}>
                             <option>Vel billettype..</option>
-                            {event.prices.map((price) => {
+                            {priceList.map((price) => {
                               return(
                                 <option value={price.priceId}>{price.name} - {price.price} kr</option>
                               )

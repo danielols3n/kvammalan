@@ -102,7 +102,7 @@ function Registrations() {
                                 <td>{item.name}</td>
                                 <td>{item.email}</td>
                                 <td>{item.phone}</td>
-                                <td>{item.minor === true ? 'Ja' : 'Nei'}</td>
+                                <td>{item.minor === 'true' ? 'Ja' : 'Nei'}</td>
                                 <td onDoubleClick={() => updateCheckedIn(item)}>{item.checkedIn === true ? 'Ja' : 'Nei'}</td>
                                 <td className="d-flex justify-content-center">
                                     <BsEye onClick={() => navigate(`/pameldingar/${item.id}`)} title='View' style={{ cursor: 'pointer', margin: 'auto' }} size="1.5rem" />

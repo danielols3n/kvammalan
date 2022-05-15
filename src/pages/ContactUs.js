@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
@@ -7,8 +7,14 @@ import { TailSpin } from 'react-loader-spinner'
 
 function ContactUs() {
   const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+  }, [])
   return (
-    <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="contactus d-flex flex-column p-0 m-0">
+    <Container style={loading === false ? { height: '100vh' } : { overflow: 'hidden', position: 'fixed' }} fluid className="contactus d-flex flex-column p-0 m-0">
       {loading === true ?
           <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin
@@ -20,7 +26,7 @@ function ContactUs() {
           </Container>
           : null}
       <NavbarComponent data={{ background: 'transparent' }} />
-        <Container onLoad={() => setLoading(false)} fluid className="h-100 d-flex flex-column ">
+        <Container fluid className="h-100 d-flex flex-column ">
           <h1 className="fw-bolder text-light mt-3 mx-3">KONTAKT OSS</h1>
           <p className="mt-3 mx-4 w-75 text-light fw-bold">
             Har du nokre spørsmål eller ynskjer du å kontakta oss? Då er du kome til rett plass!
