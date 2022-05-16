@@ -61,6 +61,8 @@ function EventRegistration() {
         })
     }
 
+    document.title = 'Innsjekk | KvammaLAN'
+
   return (
     <Container fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh' }: {}} className="d-flex flex-column p-0 m-0">
       <Modal show={error} onHide={() => setError(false)}>

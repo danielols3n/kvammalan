@@ -13,6 +13,8 @@ function ContactUs() {
       setLoading(false)
     }, 1000)
   }, [])
+
+  document.title = 'Kontakt oss | KvammaLAN'
   return (
     <Container style={loading === false ? { height: '100vh' } : { overflow: 'hidden', position: 'fixed' }} fluid className="contactus d-flex flex-column p-0 m-0">
       {loading === true ?

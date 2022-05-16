@@ -61,6 +61,8 @@ function Event() {
     fetchEvent()
   }, [])
 
+  document.title = 'LAN | KvammaLAN'
+
   return (
     <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="event d-flex flex-column p-0 m-0">
         {loading === true ?

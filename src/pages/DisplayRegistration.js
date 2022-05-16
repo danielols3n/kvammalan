@@ -1,15 +1,18 @@
 import { collectionGroup, getDocs, query, where } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { useLocation } from 'react-router-dom'
-import { db } from '../firebase/config'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { auth, db } from '../firebase/config'
 import moment from 'moment'
 import 'moment/locale/nn'
+import { onAuthStateChanged } from 'firebase/auth'
 
 function DisplayRegistration() {
   const location = useLocation()
   const id = location.pathname.split('/')[2]
   const [reg, setReg] = useState(null)
+  const [user, setUser] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchReg = async () => {
@@ -20,8 +23,18 @@ function DisplayRegistration() {
       setReg(qSnap.docs[0].data())
     }
 
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          setUser(user)
+      } else {
+          navigate('/logg-inn', { replace: true })
+      }
+  })
+
     fetchReg()
   }, [])
+
+  document.title = 'Påmelding | KvammaLAN'
 
   return (
     <Container fluid className="d-flex flex-column m-0 p-0">

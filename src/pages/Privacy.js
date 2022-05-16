@@ -10,6 +10,8 @@ function Privacy() {
       setLoading(false)
     }, 1000)
   }, [])
+
+  document.title = 'Personvern og vilkår | KvammaLAN'
   return (
     <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0">
       {loading === true ?

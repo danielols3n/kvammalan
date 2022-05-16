@@ -123,6 +123,8 @@ function Registration() {
     }
   }
 
+  document.title = 'Påmelding | KvammaLAN'
+
   return (
     <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="registration d-flex flex-column p-0 m-0">
         {loading === true ?
@@ -139,7 +141,7 @@ function Registration() {
         <Container fluid className="d-flex flex-column p-0 m-0">
             {event !== null && event !== undefined ?
                 <> 
-                    <h1 className="fw-bolder text-light align-self-center mt-4 text-center">Påmelding | {event.title}</h1>
+                    <h1 className="fw-bolder text-light align-self-center mt-4 text-center">Påmelding - {event.title}</h1>
                     <Form className="w-75 align-self-center mt-4" onSubmit={register}>
                       <Form.Group lg={2} md={1} sm={1} xs={1} className="mt-3 mb-3" as={Row}>
                         <Col className="my-3">
@@ -228,7 +230,7 @@ function Registration() {
                         : null
                       }
                       <Row className="m-0 p-0 my-3">
-                        <Button style={{ width: '35%' }} className="mt-5 mb-4" type='submit' variant='primary'>
+                        <Button disabled style={{ width: '35%' }} className="mt-5 mb-4" type='submit' variant='primary'>
                           Gå til betaling
                         </Button>
                       </Row>

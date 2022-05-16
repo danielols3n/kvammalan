@@ -78,6 +78,8 @@ function Success() {
         }
     }, [])
 
+    document.title = 'Vellukka | KvammaLAN'
+
   return (
     <Container style={{ minHeight: '80vh' }} fluid className="d-flex flex-column align-items-center justify-content-center">
         {loading === true ? 

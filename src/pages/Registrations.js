@@ -76,6 +76,8 @@ function Registrations() {
         })
     }
 
+    document.title = 'Påmeldingar | KvammaLAN'
+
   return (
     <Container fluid className="d-flex flex-column p-0 m-0">
         <h1 className="align-self-center fw-bolder mt-3">Påmeldingar</h1>

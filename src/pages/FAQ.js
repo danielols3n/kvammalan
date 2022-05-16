@@ -13,6 +13,8 @@ function FAQ() {
       setLoading(false)
     }, 1000)
   })
+
+  document.title = 'Ofte stitle spørsmål | KvammaLAN'
   return (
     <Container style={loading === false ? { height: '100vh' } : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0 faq">
       {loading === true ?

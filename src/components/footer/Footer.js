@@ -22,10 +22,10 @@ function Footer() {
             />
         </Col>
         <Col className="w-25 float-right d-flex align-items-center justify-content-center m-0 p-0">
-            <a title='Facebook' href='https://www.facebook.com/kvamesport'>
+            <a title='Facebook' target='_blank' rel='noreferrer' href='https://www.facebook.com/kvamesport'>
               <BsFacebook size='1.5rem' className="mx-4" />
             </a>
-            <a title='Instagram' href='https://www.instagram.com/kvam_esport/'>
+            <a title='Instagram' target='_blank' rel='noreferrer' href='https://www.instagram.com/kvam_esport/'>
               <BsInstagram size='1.5rem' className="mx-4" />
             </a>
         </Col>

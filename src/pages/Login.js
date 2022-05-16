@@ -12,6 +12,8 @@ function Login() {
         signInUser(email, password)
     }
 
+    document.title = 'Logg inn | KvammaLAN'
+
     return (
     <Container fluid className="d-flex flex-column">
         <h1 className="fw-bolder align-self-center mt-5">LOGG INN</h1>

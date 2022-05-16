@@ -3,6 +3,8 @@ import { Button, Container, NavLink } from 'react-bootstrap'
 import { GiCancel } from 'react-icons/gi'
 
 function Cancel() {
+
+  document.title = 'Kansellert | KvammaLAN'
   return (
     <Container style={{ minHeight: '80vh' }} fluid className="d-flex flex-column justify-content-center align-items-center">
       <Container fluid className="d-flex flex-column justify-content-center align-items-center">

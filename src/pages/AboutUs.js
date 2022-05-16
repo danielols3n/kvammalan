@@ -8,6 +8,7 @@ import { TailSpin } from 'react-loader-spinner'
 function AboutUs() {
   const [loading, setLoading] = useState(true)
 
+  document.title = 'Om oss | KvammaLAN'
   return (
     <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column m-0 p-0 aboutus">
         {loading === true ?

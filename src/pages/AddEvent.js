@@ -42,6 +42,8 @@ function AddEvent() {
         })
     }, [])
 
+    document.title = 'Opprett hending | KvammaLAN'
+
     const createEvent = (event) => {
         event.preventDefault()
 

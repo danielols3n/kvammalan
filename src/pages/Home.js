@@ -10,6 +10,7 @@ import { TailSpin } from 'react-loader-spinner'
 function Home() {
   const [loading, setLoading] = useState(true)
 
+  document.title = 'Heim | KvammaLAN'
   return(
       <Container style={loading === false ? {} : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0 home text-light">
         {loading === true ?
@@ -60,13 +61,9 @@ function Home() {
                   <Card.Header className="d-flex justify-content-center">
                     <IoMdTime size='2.5rem' />
                   </Card.Header>
-                  <Card.Body>
+                  <Card.Body className="align-items-center justify-content-center">
                     <div>
-                      <b>JuniorLAN:</b>&nbsp;13.06.2022 kl. 14:00 til 13.06.2022 kl. 19:00
-                    </div>
-                    <br></br>
-                    <div>
-                      <b>SeniorLAN:</b>&nbsp;13.06.2022 kl. 20:00 til 14.06.2022 kl. 08:00
+                      <b>KvammaLAN:</b>&nbsp;10.10.2022 kl. 15:00 til 12.10.2022 kl. 15:00
                     </div>
                   </Card.Body>
                 </Card>
@@ -74,15 +71,10 @@ function Home() {
                   <Card.Header className="d-flex justify-content-center">
                     <MdOutlinePlace size='2.5rem' />
                   </Card.Header>
-                  <Card.Body className="d-flex flex-column">
-                    <b style={{ alignSelf: 'center', fontSize: '1.1rem' }}>Kvam ungdomsskule</b>
-                    <p className="m-0 mt-3">Holmatunvegen 12</p>
+                  <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+                    <b style={{ alignSelf: 'center', fontSize: '1.1rem' }}>Øystese idrettshall</b>
+                    <p className="m-0 mt-3">Holmane 20</p>
                     <p>5610 Øystese</p>
-                    <small>
-                      Me held til i fyrste etasje på Kvam ungdomsskule.
-                      Inngangen finn du på framsida av skule
-                      (den sida med sandvolleyballbanen).
-                    </small>
                   </Card.Body>
                 </Card>
                 <Card bg='dark' className="mx-2 my-3">
@@ -90,15 +82,11 @@ function Home() {
                     <IoMdPricetag size='2.5rem' />
                   </Card.Header>
                   <Card.Body>
-                    <b>JuniorLAN</b>
-                    <br></br>
-                    <p className="mt-2">kr 50 ,-</p>
-                    <br></br>
-                    <b>SeniorLAN</b>
+                    <b>KvammaLAN</b>
                     <br></br>
                     <ul style={{ listStyleType: 'circle' }}>
-                      <li>Ikkje medlem: kr 150 ,-</li>
-                      <li>Medlem: kr 100 ,-</li>
+                      <li>Ikkje medlem: kr 250 ,-</li>
+                      <li>Medlem: kr 150 ,-</li>
                     </ul>
                   </Card.Body>
                 </Card>
@@ -111,6 +99,7 @@ function Home() {
                       <li>Kiosk</li>
                       <li>Konkurransar</li>
                       <li>God stemning</li>
+                      <li>Mykje speling</li>
                     </ul>
                   </Card.Body>
                 </Card>
@@ -127,6 +116,10 @@ function Home() {
               <li>Nettverkskabel (nokre kan sitja så langt som 15 meter vekke frå næraste nettverkspunkt)</li>
               <li>Stol (om du ynskjer. Me har stolar som du òg kan bruka)</li>
               <li>Skøyteleidning(ar)</li>
+              <li>Mobil og ladar</li>
+              <li>Drikkeflaske med vatn</li>
+              <li>Pengar om du ynskjer å handla i kiosken</li>
+              <li>Sovepose, liggjeunderlag og pute (om du skal sova på LANet)</li>
             </ul>
           </Container>
           <Footer />
