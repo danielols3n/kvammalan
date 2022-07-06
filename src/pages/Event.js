@@ -57,7 +57,7 @@ function Event() {
                   </ul>
                 </Container>
                 <Row className="m-0 p-0 w-100 d-flex justify-content-center align-items-center">
-                  <Button className="w-25 m-5" onClick={() => window.location.href = 'http://kvamesport.portal.styreweb.com/arrangement/ArrangementSession2?ID=XHAE-SRBQ&Preview=lJD86ngj9vWO3ngeHSuXsq5d%2beBAwJY%2fDNM9i1lX62Y%3d'} variant='primary'>
+                  <Button className="w-25 m-5" onClick={() => window.location.href = 'https://arena360.no/events/80779/7247'} variant='primary'>
                     Meld deg på
                   </Button>
                 </Row>            
