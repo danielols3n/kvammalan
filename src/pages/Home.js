@@ -63,7 +63,7 @@ function Home() {
                   </Card.Header>
                   <Card.Body className="align-items-center justify-content-center">
                     <div>
-                      <b>KvammaLAN:</b>&nbsp;10.10.2022 kl. 15:00 til 12.10.2022 kl. 15:00
+                      <b>KvammaLAN:</b>&nbsp;10.10.2022 kl. 14:00 til 12.10.2022 kl. 14:00
                     </div>
                   </Card.Body>
                 </Card>
@@ -85,8 +85,8 @@ function Home() {
                     <b>KvammaLAN</b>
                     <br></br>
                     <ul style={{ listStyleType: 'circle' }}>
-                      <li>Ikkje medlem: kr 250 ,-</li>
-                      <li>Medlem: kr 150 ,-</li>
+                      <li>Ikkje medlem: kr 400 ,-</li>
+                      <li>Medlem: kr 250 ,-</li>
                     </ul>
                   </Card.Body>
                 </Card>

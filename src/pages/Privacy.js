@@ -39,9 +39,12 @@ function Privacy() {
           <li><b>E-postadresse:</b>&nbsp;E-postadresse vert samla inn for å kunne kontakta deg om dette er naudsynt. </li>
           <li><b>Telefonnummer:</b>&nbsp;Telefonnummer vert samla inn for å ha ein kontaktmoglegheit i tillegg til e-post.</li>
           <li><b>Fødselsdato:</b>&nbsp;Fødselsdato vert samla inn for å sjekka om du er under 18 år gamal.</li>
+          <li><b>Adresse</b>&nbsp;Adresse vert samla inn for å kunne senda faktura til denne adressa.</li>
+          <li><b>Kjønn</b></li>
           <li><b>Namn på foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
           <li><b>E-postadresse til foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
           <li><b>Telefonnummer til foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
+          <li><b>Fødselsdato til foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
         </ul>
         <h3 className="fw-bolder mt-3">Databehandlarar</h3>
         <p className="mt-2">
@@ -49,17 +52,10 @@ function Privacy() {
         </p>
         <ul style={{ listStyle: 'none', marginLeft: 0 }}>
           <li>
-            <h4 className="mt-3 fw-bolder">Firebase</h4>
+            <h4 className="mt-3 fw-bolder">Styreweb</h4>
             <p className="mt-2">
-              <a href="https://firebase.google.com">Firebase</a> vert nytta til å lagra data om kvar einskild deltakar.
-              Her vert namn, e-post, telefonnummer, fødselsdato og informasjon om foresatt (om oppgjeve) lagra. 
-            </p>
-          </li>
-          <li>
-            <h4 className="mt-3 fw-bolder">Stripe</h4>
-            <p className="mt-2">
-              <a href="https://stripe.com">Stripe</a> vert nytta til betaling av deltakaravgift. Denne tenesta har tilgang
-              til e-postadresse, samt kortinformasjon som vert skrive inn. 
+              <a href="https://styreweb.com">Styreweb</a> er ein plattform for administrering av organisasjonar. Styreweb står for påmeldingssystem og betalingssystem. Styreweb har
+              dermed tilgang til informasjonen ovanfor, samt kortinformasjon som du skriv inn ved påmelding. 
             </p>
           </li>
         </ul>
@@ -105,7 +101,7 @@ function Privacy() {
           <h4 className="fw-bolder">4) Angrerett</h4>
           <p className="mt-2">
             Du har rett til å angra etter kjøp av billett(ar). Dette kan seinast skje 3 dagar før arrangementstart. Ved angring av kjøp må dette sendast skriftleg til oss på e-post
-            (kvammalan@kvam-esport.no). Du vil då få refundert beløpet (minus betalingsavgift på 3%). Angrar du på kjøpet seinare enn 3 dagar før arrangementstart får du ikkje refundert
+            (kvammalan@kvam-esport.no). Du vil då få refundert beløpet (minus betalingsavgift). Angrar du på kjøpet seinare enn 3 dagar før arrangementstart får du ikkje refundert
             beløpet.
           </p>
           <h4 className="fw-bolder">5) Konfliktløysning</h4>
@@ -118,6 +114,11 @@ function Privacy() {
             Kjøparen har høve til å endra ein allereie kjøpt billett. Dette må spørjast om via e-post (kvammalan@kvam-esport.no). Dersom beløpet av den nye billetten er lågare enn den
             opprinnelege billetten, vil du verta refundert forskjellen i pris mellom desse billettane. Dersom beløpet av den nye billetten er høgare enn den opprinnelege billetten, er du nøydd
             til å betala forskjellen i pris mellom desse billettane. 
+          </p>
+          <h4 className="fw-bolder">7) Kansellering</h4>
+          <p className="mt-2">
+            KvammaLAN v/ Kvam E-sport forbeholder retten til å avlysa arrangementet. Dette vil alle påmelde deltakarar få skriftleg beskjed om. Alle deltakarar vil få refundert billettprisen
+            (minus betalingsavgift).
           </p>
           <p className="my-5">
             Spørsmål kan rettast til KvammaLAN v/ Kvam E-sport på e-post: <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>
