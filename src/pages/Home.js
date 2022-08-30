@@ -28,7 +28,7 @@ function Home() {
           <Container onLoad={() => setLoading(false)} style={loading ? { overflow: 'hidden' }: {}} fluid className="d-flex flex-column align-items-center">
             <h1 className="fw-bolder display-2 home-h1">KvammaLAN</h1>
             <p className="font-italic text-center" style={{ fontSize: '1.2rem', color: '#9ca9b3' }}>
-              Eit datatreff for born og ungdom i Kvam.
+              Eit datatreff for born og ungdom i Kvam og nabokommunane.
             </p>
             <Container fluid className="d-flex justify-content-center gap-5 mt-2">
               <NavLink as={Button} href='/kvammalan' style={{ color: '#fff' }} variant='primary' >
