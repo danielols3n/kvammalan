@@ -7,6 +7,8 @@ import Event from './pages/Event';
 import Privacy from './pages/Privacy';
 import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
+import Registration from './pages/Registration'
+import Setup from './pages/Setup';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path="/personvern-og-vilkar" element={<Privacy />} />
           <Route path="/kontakt-oss" element={<ContactUs />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/pamelding" element={<Registration />} />
+          <Route path="/kvammalan/oppsett" element={<Setup />} />
         </Routes>
       </Router>
     </>
