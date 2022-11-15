@@ -75,7 +75,7 @@ function Setup() {
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
-                <Form.Group as={Row} className="w-100 mt-3">
+                <Form.Group as={Row} className="w-100 my-3">
                   <Col lg={1}></Col>
                   <Col lg={4}>
                     <Form.FloatingLabel controlId="eventPlace" label="STAD">
@@ -90,17 +90,21 @@ function Setup() {
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
-                <Form.Group as={Row} className="w-100">
+                <Form.Group as={Row} className="w-100 mt-5">
                   <Col lg={1}></Col>
-                  <Col lg={4}>
-                    <Form.FloatingLabel controlId="eventName" label="NAMN">
-                      <Form.Control value={name} onChange={e => setName(e.target.value)} type="text" placeholder="NAMN" />
+                  <Col lg={10}>
+                    <Form.FloatingLabel controlId="eventDescription" label="BESKRIVELSE">
+                      <Form.Control as='textarea' rows={10} value={description} onChange={e => setDescription(e.target.value)} placeholder="BESKRIVELSE" />
                     </Form.FloatingLabel>
                   </Col>
-                  <Col lg={2}></Col>
-                  <Col lg={4}>
-                    <Form.Label controlId="eventImage" className="text-light">BILETE</Form.Label>
-                      <Form.Control value={image} onChange={e => setImage(e.target.files[0])} type="file" placeholder="BILETE" />
+                  <Col lg={1}></Col>
+                </Form.Group>
+                <Form.Group as={Row} className="w-100 mt-5">
+                  <Col lg={1}></Col>
+                  <Col lg={10}>
+                    <Form.FloatingLabel controlId="eventDescription" label="BESKRIVELSE">
+                      <Form.Control as='textarea' rows={10} value={description} onChange={e => setDescription(e.target.value)} placeholder="BESKRIVELSE" />
+                    </Form.FloatingLabel>
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
