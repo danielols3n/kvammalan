@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import { Card, Col, Container, Form, Row } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
 import '../css/Setup.css'
@@ -13,6 +13,8 @@ function Setup() {
   const [description, setDescription] = useState('')
   const [products, setProducts] = useState([])
   const [image, setImage] = useState(null)
+  const [place, setPlace] = useState('')
+  const [address, setAddress] = useState('')
 
   useEffect(() => {
     setTimeout(() => {
@@ -41,7 +43,8 @@ function Setup() {
       <NavbarComponent data={{ background: 'transparent' }} />
         <Container fluid className="h-100 d-flex flex-column align-items-center justify-content-center">
             <h1 className="text-light fw-bolder">OPPSETT</h1>
-            <Container fluid className="d-flex justify-content-center customform">
+            <Container fluid className="d-flex justify-content-center">
+              <Card style={{ width: '85%' }} className="p-4 my-3" bg='dark'>
               <Form className="w-100" onSubmit={createEvent}>
                 <Form.Group as={Row} className="w-100">
                   <Col lg={1}></Col>
@@ -53,35 +56,37 @@ function Setup() {
                   <Col lg={2}></Col>
                   <Col lg={4}>
                     <Form.Label controlId="eventImage" className="text-light">BILETE</Form.Label>
-                      <Form.Control value={image} onChange={e => setImage(e.target.files[0])} type="file" placeholder="BILETE" />
+                    <Form.Control value={image} onChange={e => setImage(e.target.files[0])} type="file" placeholder="BILETE" />
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
-                <Form.Group as={Row} className="w-100">
+                <Form.Group as={Row} className="w-100 mt-3">
                   <Col lg={1}></Col>
                   <Col lg={4}>
-                    <Form.FloatingLabel controlId="eventName" label="NAMN">
-                      <Form.Control value={name} onChange={e => setName(e.target.value)} type="text" placeholder="NAMN" />
+                    <Form.FloatingLabel controlId="eventStartTime" label="STARTTIDSPUNKT">
+                      <Form.Control value={startTime} onChange={e => setStartTime(e.target.value)} type="datetime-local" placeholder="STARTTIDSPUNKT" />
                     </Form.FloatingLabel>
                   </Col>
                   <Col lg={2}></Col>
                   <Col lg={4}>
-                    <Form.Label controlId="eventImage" className="text-light">BILETE</Form.Label>
-                      <Form.Control value={image} onChange={e => setImage(e.target.files[0])} type="file" placeholder="BILETE" />
+                  <Form.FloatingLabel controlId="eventEndTime" label="SLUTTIDSPUNKT">
+                      <Form.Control value={endTime} onChange={e => setEndTime(e.target.value)} type="datetime-local" placeholder="SLUTTIDSPUNKT" />
+                    </Form.FloatingLabel>
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
-                <Form.Group as={Row} className="w-100">
+                <Form.Group as={Row} className="w-100 mt-3">
                   <Col lg={1}></Col>
                   <Col lg={4}>
-                    <Form.FloatingLabel controlId="eventName" label="NAMN">
-                      <Form.Control value={name} onChange={e => setName(e.target.value)} type="text" placeholder="NAMN" />
+                    <Form.FloatingLabel controlId="eventPlace" label="STAD">
+                      <Form.Control value={place} onChange={e => setPlace(e.target.value)} type="text" placeholder="STAD" />
                     </Form.FloatingLabel>
                   </Col>
                   <Col lg={2}></Col>
                   <Col lg={4}>
-                    <Form.Label controlId="eventImage" className="text-light">BILETE</Form.Label>
-                      <Form.Control value={image} onChange={e => setImage(e.target.files[0])} type="file" placeholder="BILETE" />
+                    <Form.FloatingLabel controlId="eventAddress" label="ADRESSE (eks. Nedre Vik 4, 5610 Øystese)">
+                      <Form.Control value={address} onChange={e => setAddress(e.target.value)} type="text" placeholder="ADRESSE" />
+                    </Form.FloatingLabel>
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
@@ -100,6 +105,7 @@ function Setup() {
                   <Col lg={1}></Col>
                 </Form.Group>
               </Form>
+              </Card>
             </Container>
         </Container>
       <Footer />
