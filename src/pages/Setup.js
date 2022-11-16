@@ -29,7 +29,7 @@ function Setup() {
   document.title = 'Oppsett | KvammaLAN'
 
   return (
-    <Container style={loading === false ? { height: '100vh' } : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0 faq">
+    <Container style={loading === false ? { minHeight: '100vh' } : { overflow: 'hidden', position: 'fixed' }} fluid className="d-flex flex-column p-0 m-0 faq">
       {loading === true ?
           <Container className="d-flex flex-column p-0 m-0 home text-light" fluid style={loading === true ? { alignItems: 'center', justifyContent: 'center', height: '100vh', overflow: 'hidden' }: {}}>
               <TailSpin
@@ -41,7 +41,7 @@ function Setup() {
           </Container>
       : null}
       <NavbarComponent data={{ background: 'transparent' }} />
-        <Container fluid className="h-100 d-flex flex-column align-items-center justify-content-center">
+        <Container fluid className="d-flex flex-column align-items-center justify-content-center">
             <h1 className="text-light fw-bolder">OPPSETT</h1>
             <Container fluid className="d-flex justify-content-center">
               <Card style={{ width: '85%' }} className="p-4 my-3" bg='dark'>
@@ -93,18 +93,15 @@ function Setup() {
                 <Form.Group as={Row} className="w-100 mt-5">
                   <Col lg={1}></Col>
                   <Col lg={10}>
-                    <Form.FloatingLabel controlId="eventDescription" label="BESKRIVELSE">
+                      <Form.Label controlId="eventDescription">BESKRIVELSE</Form.Label>
                       <Form.Control as='textarea' rows={10} value={description} onChange={e => setDescription(e.target.value)} placeholder="BESKRIVELSE" />
-                    </Form.FloatingLabel>
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
                 <Form.Group as={Row} className="w-100 mt-5">
                   <Col lg={1}></Col>
                   <Col lg={10}>
-                    <Form.FloatingLabel controlId="eventDescription" label="BESKRIVELSE">
-                      <Form.Control as='textarea' rows={10} value={description} onChange={e => setDescription(e.target.value)} placeholder="BESKRIVELSE" />
-                    </Form.FloatingLabel>
+                      
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
