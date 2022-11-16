@@ -27,8 +27,25 @@ function Setup() {
   const createEvent = (event) => {
     event.preventDefault()
 
-    const ticketPrice = document.getElementById('formTicketPrice')
-    console.log(ticketPrice)
+    const values = []
+
+    {[...Array(counter + 1)].forEach((item, idx) => {
+      const ticketname = document.getElementById(`formTicketName-${idx}`).value
+      const ticketprice = document.getElementById(`formTicketPrice-${idx}`).value
+
+      console.log(ticketname)
+      console.log(ticketprice)
+
+      values.push({
+        ticketname: ticketname,
+        ticketprice: ticketprice,
+        id: idx + 1
+      })
+    })}
+
+    setTimeout(() => {
+      console.log(values)
+    }, 3000)
   }
 
   document.title = 'Oppsett | KvammaLAN'
@@ -107,26 +124,39 @@ function Setup() {
                   <h5 className="text-light fw-bolder">BILLETTAR</h5>
                   <div className="setup-divider mb-3"></div>
                 </Form.Group>
-                <Form.Group as={Row} className="w-100 my-3">
-                  <Col lg={1}></Col>
-                  <Col lg={4}>
-                    <Form.FloatingLabel controlId="formTicketName" label="BILLETTNAMN">
-                      <Form.Control type="text" placeholder="BILLETTNAMN" />
-                    </Form.FloatingLabel>
-                  </Col>
-                  <Col lg={2}></Col>
-                  <Col lg={4}>
-                    <Form.FloatingLabel controlId="eventTicketPrice" label="BILLETTPRIS (nok)">
-                      <Form.Control id='formTicketPrice' type="number" placeholder="BILLETTPRIS (nok)" />
-                    </Form.FloatingLabel>
-                  </Col>
-                  <Col lg={1}></Col>
-                </Form.Group>
-                <Form.Group as={Row} className="w-100 mb-3 mt-1">
-                  <Button style={{ marginLeft: '10%', width: '15%' }} onClick={() => setCounter(counter + 1)}>LEGG TIL</Button>
+                {[...Array(counter + 1)].map((element, idx) => {
+                  return (
+                    <div>
+                      <Form.Group as={Row} className="w-100 my-3 mt-4">
+                        <Col lg={1}></Col>
+                        <Col lg={4}>
+                          <Form.FloatingLabel controlId="formTicketName" label="BILLETTNAMN">
+                            <Form.Control id={`formTicketName-${idx}`} type="text" placeholder="BILLETTNAMN" />
+                          </Form.FloatingLabel>
+                        </Col>
+                        <Col lg={2}></Col>
+                        <Col lg={4}>
+                          <Form.FloatingLabel controlId="eventTicketPrice" label="BILLETTPRIS (nok)">
+                            <Form.Control id={`formTicketPrice-${idx}`} type="number" placeholder="BILLETTPRIS (nok)" />
+                          </Form.FloatingLabel>
+                        </Col>
+                        <Col lg={1}></Col>
+                      </Form.Group>
+                      {counter === idx ? 
+                        <>
+                          <Form.Group as={Row} className="w-100 mb-3 mt-2">
+                            <Button style={{ marginLeft: '10%', width: '15%' }} onClick={() => setCounter(counter + 1)}>LEGG TIL</Button>
+                          </Form.Group>
+                        </>
+                        : null
+                      }
+                    </div>
+                  )
+                })}
+                <Form.Group as={Row} className="w-100 mb-3 mt-5">
+                  <Button style={{ marginLeft: '10%', width: '15%' }} type='submit'>OPPRETT EVENT</Button>
                 </Form.Group>
               </Form>
-              <Form.Control value='' onChange={(e) => e.target.parentElement.value = e.target.value} id='formTicketPrice' type="text" placeholder="BILLETTPRIS (nok)" />
               </Card>
             </Container>
         </Container>
