@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Col, Container, Form, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
 import '../css/Setup.css'
@@ -16,6 +16,8 @@ function Setup() {
   const [place, setPlace] = useState('')
   const [address, setAddress] = useState('')
 
+  const [counter, setCounter] = useState(0)
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
@@ -24,6 +26,9 @@ function Setup() {
 
   const createEvent = (event) => {
     event.preventDefault()
+
+    const ticketPrice = document.getElementById('formTicketPrice')
+    console.log(ticketPrice)
   }
 
   document.title = 'Oppsett | KvammaLAN'
@@ -98,14 +103,30 @@ function Setup() {
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
-                <Form.Group as={Row} className="w-100 mt-5">
+                <Form.Group as={Row} style={{ width: '85%' }} className="mt-5 d-flex flex-column m-auto">
+                  <h5 className="text-light fw-bolder">BILLETTAR</h5>
+                  <div className="setup-divider mb-3"></div>
+                </Form.Group>
+                <Form.Group as={Row} className="w-100 my-3">
                   <Col lg={1}></Col>
-                  <Col lg={10}>
-                      
+                  <Col lg={4}>
+                    <Form.FloatingLabel controlId="formTicketName" label="BILLETTNAMN">
+                      <Form.Control type="text" placeholder="BILLETTNAMN" />
+                    </Form.FloatingLabel>
+                  </Col>
+                  <Col lg={2}></Col>
+                  <Col lg={4}>
+                    <Form.FloatingLabel controlId="eventTicketPrice" label="BILLETTPRIS (nok)">
+                      <Form.Control id='formTicketPrice' type="number" placeholder="BILLETTPRIS (nok)" />
+                    </Form.FloatingLabel>
                   </Col>
                   <Col lg={1}></Col>
                 </Form.Group>
+                <Form.Group as={Row} className="w-100 mb-3 mt-1">
+                  <Button style={{ marginLeft: '10%', width: '15%' }} onClick={() => setCounter(counter + 1)}>LEGG TIL</Button>
+                </Form.Group>
               </Form>
+              <Form.Control value='' onChange={(e) => e.target.parentElement.value = e.target.value} id='formTicketPrice' type="text" placeholder="BILLETTPRIS (nok)" />
               </Card>
             </Container>
         </Container>
