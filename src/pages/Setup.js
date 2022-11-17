@@ -4,6 +4,8 @@ import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
 import '../css/Setup.css'
 import { TailSpin } from 'react-loader-spinner'
+import axios from 'axios'
+import { collection } from 'firebase/firestore'
 
 function Setup() {
   const [loading, setLoading] = useState(true)
@@ -15,6 +17,7 @@ function Setup() {
   const [image, setImage] = useState(null)
   const [place, setPlace] = useState('')
   const [address, setAddress] = useState('')
+  const [formLoading, setFormLoading] = useState(false)
 
   const [counter, setCounter] = useState(0)
 
@@ -25,6 +28,7 @@ function Setup() {
   })
 
   const createEvent = (event) => {
+    setFormLoading(true)
     event.preventDefault()
 
     const values = []
@@ -36,16 +40,21 @@ function Setup() {
       console.log(ticketname)
       console.log(ticketprice)
 
-      values.push({
-        ticketname: ticketname,
-        ticketprice: ticketprice,
-        id: idx + 1
-      })
-    })}
+      axios.post('https://Kvam-E-sport-API.olsendaniel04.repl.co/add-product', {
+        name: ticketname,
+        price: ticketprice
+      }).then((res) => {
+        values.push({
+          ticketname: res.body.data.product.name,
+          price: `${ticketprice} nok`,
+          price_id: res.body.data.price.id,
+          product_id: res.body.data.product.id,
+          id: idx + 1
+        })
 
-    setTimeout(() => {
-      console.log(values)
-    }, 3000)
+        const colRef = collection(db)
+      }).catch(error => console.error(error))
+    })}
   }
 
   document.title = 'Oppsett | KvammaLAN'
@@ -154,7 +163,7 @@ function Setup() {
                   )
                 })}
                 <Form.Group as={Row} className="w-100 mb-3 mt-5">
-                  <Button style={{ marginLeft: '10%', width: '15%' }} type='submit'>OPPRETT EVENT</Button>
+                  <Button disabled={formLoading} style={{ marginLeft: '10%', width: '15%' }} type='submit'>{formLoading ? 'Vent litt..' : 'OPPRETT EVENT'}</Button>
                 </Form.Group>
               </Form>
               </Card>
