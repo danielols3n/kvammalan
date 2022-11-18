@@ -72,7 +72,7 @@ function Setup() {
                 image: url,
                 place: place,
                 address: address,
-                values: values
+                tickets: values
               }).then(() => {
                 setLoading(false)
                 alert('Event added')
@@ -89,7 +89,7 @@ function Setup() {
             endTime: endTime, 
             place: place,
             address: address,
-            values: values
+            tickets: values
           }).then(() => {
             setLoading(false)
             alert('Event added')

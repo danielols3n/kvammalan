@@ -10,6 +10,7 @@ import ContactUs from './pages/ContactUs';
 import Registration from './pages/Registration'
 import Setup from './pages/Setup';
 import Events from './pages/Events';
+import ViewEvent from './pages/ViewEvent';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/pamelding" element={<Registration />} />
           <Route path="/kvammalan/oppsett" element={<Setup />} />
           <Route path="/admin/events" element={<Events />} />
+          <Route path="/admin/events/:id" element={<ViewEvent />} />
         </Routes>
       </Router>
     </>
