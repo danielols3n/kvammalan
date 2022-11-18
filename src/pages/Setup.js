@@ -30,7 +30,7 @@ function Setup() {
   })
 
   const createEvent = (event) => {
-      setFormLoading(false)
+      setFormLoading(true)
       event.preventDefault()
   
       const values = []
@@ -47,7 +47,7 @@ function Setup() {
           console.log(res)
           values.push({
             ticketname: res.data.product.name,
-            price: `${ticketprice} nok`,
+            price: ticketprice,
             price_id: res.data.price.id,
             product_id: res.data.product.id,
             id: idx + 1
@@ -95,7 +95,7 @@ function Setup() {
             alert('Event added')
           }).catch(error => console.error(error))
         }
-      }, 10000)
+      }, 3000)
   }
 
   document.title = 'Oppsett | KvammaLAN'

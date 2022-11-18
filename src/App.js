@@ -9,6 +9,7 @@ import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
 import Registration from './pages/Registration'
 import Setup from './pages/Setup';
+import Events from './pages/Events';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/pamelding" element={<Registration />} />
           <Route path="/kvammalan/oppsett" element={<Setup />} />
+          <Route path="/admin/events" element={<Events />} />
         </Routes>
       </Router>
     </>
