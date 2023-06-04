@@ -17,14 +17,13 @@ function NavbarComponent(props) {
                         height: 'auto',
                     }}
                 />
-                {/* <h1 className='fw-bold text-light' style={{ marginLeft: '2.5%' }}>KvammaLAN</h1> */}
             </Navbar.Brand>
             <Navbar.Toggle style={{ marginRight: '2.5%' }} aria-controls='responsive-navbar-nav' />
             <Navbar.Collapse id='responsive-navbar-nav'>
                 <Nav>
                     <Nav.Link className="mx-4" href='/'>HEIM</Nav.Link>
                     <Nav.Link className="mx-4" href='/om-oss'>OM OSS</Nav.Link>
-                    <Nav.Link className="mx-4" href='/kvammalan'>KVAMMALAN 2022</Nav.Link>
+                    <Nav.Link className="mx-4" href='/kvammalan'>KVAMMALAN 2023</Nav.Link>
                     <NavDropdown className="mx-4" title='HJELP' menuVariant='dark'>
                         <NavDropdown.Item href='/faq'>OFTE STILTE SPØRSMÅL</NavDropdown.Item>
                         <NavDropdown.Item href='/kontakt-oss'>KONTAKT OSS</NavDropdown.Item>
