@@ -25,9 +25,9 @@ function Event() {
                 </Container>
               </Col>
               <Col className="d-flex" lg={4}>
-                <Container style={{ width: '75%', backgroundColor: '#d3d3d3' }} className="m-0 p-0 rounded d-flex flex-column my-auto">
+                <Container style={{ width: '75%', backgroundColor: '#ffffff' }} className="m-0 p-0 rounded d-flex flex-column my-auto">
                   <h3 className="text-dark mx-auto mt-4">BILLETTAR</h3>
-                  <Container fluid className="d-flex flex-column p-0 m-0 mt-2">
+                  <Container fluid className="d-flex flex-column p-0 m-0 my-3">
                     <Row className="w-100 p-2 m-0">
                       <Col lg={2} className="d-flex">
                         <HiOutlineTicket color='#000' size='2rem' className="m-auto" />
