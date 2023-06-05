@@ -5,9 +5,13 @@ import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer' 
 import 'moment/locale/nn'
 import eventpic from '../img/eventpage.jpg'
+import { HiOutlineTicket } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 
 function Event() {
   document.title = 'KvammaLAN 2023'
+
+  const navigate = useNavigate()
 
   return (
     <Container fluid className="event d-flex flex-column p-0 m-0">
@@ -21,8 +25,36 @@ function Event() {
                 </Container>
               </Col>
               <Col className="d-flex" lg={4}>
-                <Container style={{ width: '75%' }} className="m-0 p-0 rounded bg-light d-flex flex-column my-auto">
-                  <h3 className="fw-bolder text-dark mx-auto mt-4">BILLETTAR</h3>
+                <Container style={{ width: '75%', backgroundColor: '#d3d3d3' }} className="m-0 p-0 rounded d-flex flex-column my-auto">
+                  <h3 className="text-dark mx-auto mt-4">BILLETTAR</h3>
+                  <Container fluid className="d-flex flex-column p-0 m-0 mt-2">
+                    <Row className="w-100 p-2 m-0">
+                      <Col lg={2} className="d-flex">
+                        <HiOutlineTicket color='#000' size='2rem' className="m-auto" />
+                      </Col>
+                      <Col lg={6} className="fw-bolder d-flex">
+                        <b className="my-auto text-dark">Billett - Medlem</b>
+                      </Col>
+                      <Col lg={4} className="d-flex">
+                        <Button variant="primary" className="my-auto" onClick={() => navigate('/kvammalan/checkout/seat-map?ticketId=Medlem')}>
+                          400 ,-
+                        </Button>
+                      </Col>
+                    </Row>
+                    <Row className="w-100 p-2 m-0">
+                      <Col lg={2} className="d-flex">
+                        <HiOutlineTicket color='#000' size='2rem' className="m-auto" />
+                      </Col>
+                      <Col lg={6} className="fw-bolder d-flex">
+                        <b className="my-auto text-dark">Billett - Ikkje medlem</b>
+                      </Col>
+                      <Col lg={4} className="d-flex">
+                        <Button variant="primary" className="my-auto" onClick={() => navigate('/kvammalan/checkout/seat-map?ticketId=Ikkje-medlem')}>
+                          650 ,-
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Container>
                 </Container>
               </Col>
             </Row>

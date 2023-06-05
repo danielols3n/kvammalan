@@ -8,9 +8,7 @@ import Privacy from './pages/Privacy';
 import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
 import Registration from './pages/Registration'
-import Setup from './pages/Setup';
-import Events from './pages/Events';
-import ViewEvent from './pages/ViewEvent';
+import SeatMap from './pages/SeatMap';
 
 
 function App() {
@@ -25,9 +23,7 @@ function App() {
           <Route path="/kontakt-oss" element={<ContactUs />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/pamelding" element={<Registration />} />
-          <Route path="/kvammalan/oppsett" element={<Setup />} />
-          <Route path="/admin/events" element={<Events />} />
-          <Route path="/admin/events/:id" element={<ViewEvent />} />
+          <Route path="/kvammalan/checkout/seat-map" element={<SeatMap />} />
         </Routes>
       </Router>
     </>
