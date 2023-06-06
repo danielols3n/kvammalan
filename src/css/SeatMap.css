@@ -4,3 +4,11 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.seat-avail:hover {
+    background-color: darkgreen;
+}
+
+.seat-avail {
+    background-color: green;
+}

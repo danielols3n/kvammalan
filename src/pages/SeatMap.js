@@ -5,7 +5,12 @@ import Footer from '../components/footer/Footer'
 import '../css/SeatMap.css'
 
 function SeatMap() {
-  let counter = 1
+  let rowCount = 0
+
+  const checkout = () => {
+    console.log('Checkout')
+  }
+
   return (
     <Container fluid className="seatmap d-flex flex-column m-0 p-0">
         <NavbarComponent data={{ background: 'transparent' }} />
@@ -13,12 +18,17 @@ function SeatMap() {
           <div className="bg-light w-25 mx-auto d-flex mb-5" style={{ height: '15vh' }}>
             <h3 className="fw-bolder text-center m-auto">SCENE</h3>
           </div>
-          {[0,1,2,3,4,5,6,7,8].map((row) => {
+          {[1,2,3,4,5,6,7,8].map((row) => {
+            if (row === 3 || row === 6) {
+
+            } else {
+              rowCount += 1
+            }
             return (
               <Row className="d-flex">
                 {
-                  row === 2 || row === 5 || row === 8 ?
-                    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
+                  row === 3 || row === 6 ?
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
                       return (
                         <div style={{ width: '40px', height: '40px', background: 'transparent' }}>
                           &nbsp;
@@ -26,10 +36,10 @@ function SeatMap() {
                       )
                     })
                     : 
-                    [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
                       return ( 
-                        <div>
-                          <span className="text-light">Row: {row}, seat: {seat}</span>
+                        <div onClick={true === true ? checkout : null} className={true === true ? 'p-3 seat-avail' : 'p-3'} style={true === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
+                          {seat < 10 ? <span className='text-light'>{rowCount}0{seat}</span> : <span className='text-light'>{rowCount}{seat}</span>}
                         </div>
                       )
                     })
