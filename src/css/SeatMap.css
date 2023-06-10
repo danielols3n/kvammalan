@@ -12,3 +12,7 @@
 .seat-avail {
     background-color: green;
 }
+
+.seat-taken {
+    background-color: red;
+}

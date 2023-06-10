@@ -3,6 +3,8 @@ import { Container, Row } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar' 
 import Footer from '../components/footer/Footer'
 import '../css/SeatMap.css'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../Firebase'
 
 function SeatMap() {
   let rowCount = 0
@@ -37,8 +39,24 @@ function SeatMap() {
                     })
                     : 
                     [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
+                      let availability = true
+                      const colRef = collection(db, 'events', 'kvammalan2023', 'reservations')
+
+                      if (seat < 10) {
+                        let seatNumber = rowCount + `0` + seat
+                        const q = query(colRef, where('seat' , '==', Number(seatNumber)))
+                        
+                        getDocs(q).then((querySnapshot) => {
+                          console.log(querySnapshot.empty, seatNumber)
+                          if (querySnapshot.empty === true) {
+                            availability = true
+                          } else {
+                            availability = false
+                          }
+                        })
+                      }
                       return ( 
-                        <div onClick={true === true ? checkout : null} className={true === true ? 'p-3 seat-avail' : 'p-3'} style={true === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
+                        <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={true === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
                           {seat < 10 ? <span className='text-light'>{rowCount}0{seat}</span> : <span className='text-light'>{rowCount}{seat}</span>}
                         </div>
                       )
