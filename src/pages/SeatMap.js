@@ -16,7 +16,7 @@ function SeatMap() {
   return (
     <Container fluid className="seatmap d-flex flex-column m-0 p-0">
         <NavbarComponent data={{ background: 'transparent' }} />
-        <Container fluid className="d-flex flex-column align-items-center p-0 m-0">
+        <Container fluid className="d-flex flex-column align-items-center p-0 m-0 mb-5">
           <div className="bg-light w-25 mx-auto d-flex mb-5" style={{ height: '15vh' }}>
             <h3 className="fw-bolder text-center m-auto">SCENE</h3>
           </div>
@@ -54,12 +54,19 @@ function SeatMap() {
                             availability = false
                           }
                         })
+                        
+                        return ( 
+                          <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={availability === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
+                            <span className='text-light'>{rowCount}0{seat}</span>
+                          </div>
+                        )
+                      } else {
+                        return ( 
+                          <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={availability === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
+                            <span className='text-light'>{rowCount}{seat}</span>
+                          </div>
+                        )
                       }
-                      return ( 
-                        <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={true === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
-                          {seat < 10 ? <span className='text-light'>{rowCount}0{seat}</span> : <span className='text-light'>{rowCount}{seat}</span>}
-                        </div>
-                      )
                     })
                   }
               </Row>
