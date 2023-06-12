@@ -50,22 +50,20 @@ function SeatMap() {
                           console.log(querySnapshot.empty, seatNumber)
                           if (querySnapshot.empty === true) {
                             availability = true
+                            return ( 
+                              <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={true === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
+                                {seat < 10 ? <span className='text-light'>{rowCount}0{seat}</span> : <span className='text-light'>{rowCount}{seat}</span>}
+                              </div>
+                            )
                           } else {
                             availability = false
+                            return ( 
+                              <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={true === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
+                                {seat < 10 ? <span className='text-light'>{rowCount}0{seat}</span> : <span className='text-light'>{rowCount}{seat}</span>}
+                              </div>
+                            )
                           }
                         })
-                        
-                        return ( 
-                          <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={availability === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
-                            <span className='text-light'>{rowCount}0{seat}</span>
-                          </div>
-                        )
-                      } else {
-                        return ( 
-                          <div onClick={availability === true ? checkout : null} className={availability === true ? 'p-3 seat-avail' : 'p-3 seat-taken'} style={availability === true ? { width: '4rem', cursor: 'pointer' } : { width: '4rem', backgroundColor: 'red' }}>
-                            <span className='text-light'>{rowCount}{seat}</span>
-                          </div>
-                        )
                       }
                     })
                   }
