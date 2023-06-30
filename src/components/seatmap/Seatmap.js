@@ -1,16 +1,30 @@
 import React from 'react'
-import './Seatmap.css'
-import { useState } from 'react'
 import { useEffect } from 'react'
-import { collection, query, where, getDocs } from 'firebase/firestore'
-import { db } from '../../Firebase'
+import { useState } from 'react'
+import SeatPicker from 'react-seat-picker'
+import { db } from '../../Firebase.js'
+import { collection, getDocs } from 'firebase/firestore'
 
 function Seatmap() {
-    const [occupied, setOccupied] = useState([])
-    let rowCount = 0
+    const [loading, setLoading] = useState(false)
+    const [rows, setRows] = useState([])
 
-    const checkout = () => {
-        console.log('Checkout')
+    const addSeatCallback = async ({ row, number, id }, addCb) => {
+        setLoading(true)
+            await new Promise(resolve => setTimeout(resolve, 1500))
+            console.log(`Added seat ${number}, row ${row}, id ${id}`)
+            const newTooltip = `tooltip for id-${id} added by callback`
+            addCb(row, number, id, newTooltip)
+        setLoading(false)
+    }
+
+    const removeSeatCallback = async ({ row, number, id }, removeCb) => {
+        setLoading(true)
+            await new Promise(resolve => setTimeout(resolve, 1500))
+            console.log(`Removed seat ${number}, row ${row}, id ${id}`)
+            const newTooltip = ['A', 'B', 'C'].includes(row) ? null : ''
+            removeCb(row, number, newTooltip)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -18,64 +32,70 @@ function Seatmap() {
 
         getDocs(colRef).then((snapshot) => {
             const temp = []
-            snapshot.forEach(doc => {
-                temp.push(doc.data.seat)
-            })
-            setOccupied(temp)
-        })
-    }, [occupied])
 
-    const MapComponent = (seat, row) => {
-        if (seat < 10) {
-            let seatNumber = row + `0` + seat
-            
-            if (occupied.includes(Number(seatNumber))) {
-                return (
-                    <div className={'p-3 seat-taken'} style={{ width: '4rem', backgroundColor: 'red' }}>
-                        <span className='text-light'>{rowCount}0{seat}</span>
-                    </div>
-                )
-            } else {
-                <div onClick={checkout} className={'p-3 seat-avail'} style={{ width: '4rem', cursor: 'pointer' }}>
-                    <span className='text-light'>{rowCount}0{seat}</span>
-                </div>
-            }
-        } else {
-
-        }
-    }
-
-    return (
-        <table>
-            <tbody>
-                {[1,2,3,4,5,6,7,8].map((row) => {
-                    if (row === 3 || row === 6) {
-                        
-                    } else {
-                        rowCount += 1
-                    }
-                    return(
-                        <tr className="d-flex row">
-                            {
-                                row === 3 || row === 6 ?
-                                [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
-                                  return (
-                                    <div style={{ width: '40px', height: '40px', background: 'transparent' }}>
-                                      &nbsp;
-                                    </div>
-                                  )
+            [1,2,3,4,5,6,7,8].forEach((row) => {
+                const tempRow = []
+                let rowCount = 1
+                if (row === 3 || row === 6) {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                        tempRow.push(null)
+                    })
+                } else {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                        if (seat < 10) {
+                            if (snapshot.docs.includes(Number(rowCount + `0` + seat))) {
+                                tempRow.push({
+                                    id: rowCount + `0` + seat,
+                                    number: rowCount + `0` + seat,
+                                    isReserved: true
                                 })
-                                : 
-                                [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
-                                    <MapComponent seat={seat} row={row} />
+                            } else {
+                                tempRow.push({
+                                    id: rowCount + `0` + seat,
+                                    number: rowCount + `0` + seat,
+                                    isReserverd: false
                                 })
                             }
-                        </tr>
-                    )
-                })}
-            </tbody>
-        </table>
-    )
+                        } else {
+                            if (snapshot.docs.includes(Number(rowCount + seat))) {
+                                tempRow.push({
+                                    id: rowCount + seat,
+                                    number: rowCount + seat,
+                                    isReserved: true
+                                })
+                            } else {
+                                tempRow.push({
+                                    id: rowCount + seat,
+                                    number: rowCount + seat,
+                                    isReserverd: false
+                                })
+                            }
+                        }
+                        rowCount += 1
+                    })
+                }
+                temp.push(tempRow)
+                console.log(temp)
+            })
+            setRows(temp)
+        })
+    }, [])
+      
+  return (
+    <div>
+        <SeatPicker
+            addSeatCallback={addSeatCallback}
+            removeSeatCallback={removeSeatCallback}
+            rows={rows}
+            maxReservableSeats={3}
+            alpha
+            visible
+            selectedByDefault
+            loading={loading}
+            tooltipProps={{multiline: true}}
+          />
+    </div>
+  )
 }
 
 export default Seatmap
