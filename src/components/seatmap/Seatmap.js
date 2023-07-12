@@ -72,8 +72,8 @@ function Seatmap() {
                                 })
                             }
                         }
-                        rowCount += 1
                     })
+                    rowCount += 1
                 }
                 temp.push(tempRow)
             })
