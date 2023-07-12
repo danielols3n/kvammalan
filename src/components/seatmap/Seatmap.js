@@ -28,20 +28,21 @@ function Seatmap() {
     }
 
     useEffect(() => {
+        setLoading(true)
         const colRef = collection(db, 'events', 'kvammalan2023', 'reservations')
 
-        getDocs(colRef).then((snapshot) => {
-            const temp = []
+        const temp = []
 
-            [1,2,3,4,5,6,7,8].forEach((row) => {
+        getDocs(colRef).then((snapshot) => {
+            [1,2,3,4,5,6,7,8].map((row) => {
                 const tempRow = []
                 let rowCount = 1
                 if (row === 3 || row === 6) {
-                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
                         tempRow.push(null)
                     })
                 } else {
-                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
                         if (seat < 10) {
                             if (snapshot.docs.includes(Number(rowCount + `0` + seat))) {
                                 tempRow.push({
@@ -53,7 +54,7 @@ function Seatmap() {
                                 tempRow.push({
                                     id: rowCount + `0` + seat,
                                     number: rowCount + `0` + seat,
-                                    isReserverd: false
+                                    isReserved: false
                                 })
                             }
                         } else {
@@ -67,7 +68,7 @@ function Seatmap() {
                                 tempRow.push({
                                     id: rowCount + seat,
                                     number: rowCount + seat,
-                                    isReserverd: false
+                                    isReserved: false
                                 })
                             }
                         }
@@ -75,9 +76,10 @@ function Seatmap() {
                     })
                 }
                 temp.push(tempRow)
-                console.log(temp)
             })
             setRows(temp)
+            console.log(rows)
+            setLoading(false)
         })
     }, [])
       
@@ -87,7 +89,7 @@ function Seatmap() {
             addSeatCallback={addSeatCallback}
             removeSeatCallback={removeSeatCallback}
             rows={rows}
-            maxReservableSeats={3}
+            maxReservableSeats={1}
             alpha
             visible
             selectedByDefault
