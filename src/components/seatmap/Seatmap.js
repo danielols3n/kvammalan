@@ -4,10 +4,12 @@ import { useState } from 'react'
 import SeatPicker from 'react-seat-picker'
 import { db } from '../../Firebase.js'
 import { collection, getDocs } from 'firebase/firestore'
+import { Container } from 'react-bootstrap'
 
 function Seatmap() {
     const [loading, setLoading] = useState(false)
     const [rows, setRows] = useState([])
+    const [seat, setSeat] = useState(null)
 
     const addSeatCallback = async ({ row, number, id }, addCb) => {
         setLoading(true)
@@ -15,6 +17,7 @@ function Seatmap() {
             console.log(`Added seat ${number}, row ${row}, id ${id}`)
             const newTooltip = `tooltip for id-${id} added by callback`
             addCb(row, number, id, newTooltip)
+            setSeat(number)
         setLoading(false)
     }
 
@@ -24,6 +27,7 @@ function Seatmap() {
             console.log(`Removed seat ${number}, row ${row}, id ${id}`)
             const newTooltip = ['A', 'B', 'C'].includes(row) ? null : ''
             removeCb(row, number, newTooltip)
+            setSeat(null)
         setLoading(false)
     }
 
@@ -32,11 +36,11 @@ function Seatmap() {
         const colRef = collection(db, 'events', 'kvammalan2023', 'reservations')
 
         const temp = []
+        let rowCount = 1
 
         getDocs(colRef).then((snapshot) => {
             [1,2,3,4,5,6,7,8].map((row) => {
                 const tempRow = []
-                let rowCount = 1
                 if (row === 3 || row === 6) {
                     [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
                         tempRow.push(null)
@@ -58,16 +62,16 @@ function Seatmap() {
                                 })
                             }
                         } else {
-                            if (snapshot.docs.includes(Number(rowCount + seat))) {
+                            if (snapshot.docs.includes(Number(`${rowCount}${seat}`))) {
                                 tempRow.push({
-                                    id: rowCount + seat,
-                                    number: rowCount + seat,
+                                    id: `${rowCount}${seat}`,
+                                    number: `${rowCount}${seat}`,
                                     isReserved: true
                                 })
                             } else {
                                 tempRow.push({
-                                    id: rowCount + seat,
-                                    number: rowCount + seat,
+                                    id: `${rowCount}${seat}`,
+                                    number: `${rowCount}${seat}`,
                                     isReserved: false
                                 })
                             }
@@ -84,7 +88,7 @@ function Seatmap() {
     }, [])
       
   return (
-    <div>
+    <Container fluid className="d-flex flex-column">
         <SeatPicker
             addSeatCallback={addSeatCallback}
             removeSeatCallback={removeSeatCallback}
@@ -96,7 +100,10 @@ function Seatmap() {
             loading={loading}
             tooltipProps={{multiline: true}}
           />
-    </div>
+          <Container fluid className="d-flex flex-column">
+            
+          </Container>
+    </Container>
   )
 }
 
