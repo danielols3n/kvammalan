@@ -9,6 +9,7 @@ import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
 import Registration from './pages/Registration'
 import SeatMap from './pages/SeatMap';
+import CheckoutInfo from './pages/CheckoutInfo';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/pamelding" element={<Registration />} />
           <Route path="/kvammalan/checkout/seat-map" element={<SeatMap />} />
+          <Route path="/kvammalan/checkout/participant-info" element={<CheckoutInfo />} />
         </Routes>
       </Router>
     </>

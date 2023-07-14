@@ -4,12 +4,16 @@ import { useState } from 'react'
 import SeatPicker from 'react-seat-picker'
 import { db } from '../../Firebase.js'
 import { collection, getDocs } from 'firebase/firestore'
-import { Container } from 'react-bootstrap'
+import { Button, Container } from 'react-bootstrap'
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 
 function Seatmap() {
     const [loading, setLoading] = useState(false)
     const [rows, setRows] = useState([])
     const [seat, setSeat] = useState(null)
+
+    const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
 
     const addSeatCallback = async ({ row, number, id }, addCb) => {
         setLoading(true)
@@ -101,7 +105,10 @@ function Seatmap() {
             tooltipProps={{multiline: true}}
           />
           <Container fluid className="d-flex flex-column">
-            
+            <Container fluid className="d-flex m-auto align-items-center justify-content-center mt-5">
+                <Button className="m-2" variant='secondary' onClick={() => navigate('/kvammalan')}>AVBRYT</Button>
+                <Button className="m-2" variant='primary' onClick={() => navigate(`/kvammalan/checkout/participant-info?ticketId=${searchParams.get('ticketId')}&seatId=${seat}`)}>NESTE</Button>
+            </Container>
           </Container>
     </Container>
   )
