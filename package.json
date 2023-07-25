@@ -4,6 +4,8 @@
   "homepage": ".",
   "private": true,
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.1.1",
+    "@stripe/stripe-js": "^1.54.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
@@ -24,7 +26,7 @@
     "react-seat-picker": "^1.5.3",
     "react-tooltip": "^4.5.0",
     "react-web-qr-reader": "^1.0.4",
-    "stripe": "^8.219.0",
+    "stripe": "^8.222.0",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
     "yup": "^1.2.0"
