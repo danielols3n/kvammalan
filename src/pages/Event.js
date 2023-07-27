@@ -50,7 +50,7 @@ function Event() {
                       </Col>
                       <Col lg={4} className="d-flex">
                         <Button variant="primary" className="my-auto" onClick={() => navigate('/kvammalan/checkout/seat-map?ticketId=Ikkje-medlem')}>
-                          650 ,-
+                          600 ,-
                         </Button>
                       </Col>
                     </Row>

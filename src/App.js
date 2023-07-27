@@ -10,7 +10,7 @@ import ContactUs from './pages/ContactUs';
 import Registration from './pages/Registration'
 import SeatMap from './pages/SeatMap';
 import CheckoutInfo from './pages/CheckoutInfo';
-import Payment from './pages/Payment';
+import Confirmation from './pages/Confirmation';
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
           <Route path="/pamelding" element={<Registration />} />
           <Route path="/kvammalan/checkout/seat-map" element={<SeatMap />} />
           <Route path="/kvammalan/checkout/participant-info" element={<CheckoutInfo />} />
-          <Route path="/kvammalan/checkout/payment" element={<Payment />} />
+          <Route path="/kvammalan/checkout/confirmation" element={<Confirmation />} />
         </Routes>
       </Router>
     </>

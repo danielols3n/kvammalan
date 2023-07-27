@@ -80,7 +80,7 @@ function CheckoutInfo() {
         seatId: searchParams.get('seatId'),
         ticketId: searchParams.get('ticketId')
       }).then(() => {
-        navigate(`/kvammalan/checkout/payment?ticketId=${searchParams.get('ticketId')}&seatId=${searchParams.get('seatId')}&reservationId=${id}`)
+        navigate(`/kvammalan/checkout/confirmation?ticketId=${searchParams.get('ticketId')}&seatId=${searchParams.get('seatId')}&reservationId=${id}`)
       })
     }
 
@@ -339,7 +339,7 @@ function CheckoutInfo() {
               </Row>
               <Row className="w-100 d-flex">
                 <Button className="my-2 p-1" variant="secondary" onClick={() => navigate('/kvammalan')}>AVBRYT</Button>
-                <Button className="my-2 p-1" variant="primary" type='submit'>GÅ TIL BETALING</Button>
+                <Button className="my-2 p-1" variant="primary" type='submit'>GÅ TIL BEKREFTELSE</Button>
               </Row>
             </Form>
           </Container>
