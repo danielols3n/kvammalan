@@ -27,11 +27,11 @@ function Confirmation() {
 
     const payment = () => {
         console.log('Payment')
-        axios.post('https://kvam-e-sport-or-api.olsendaniel04.repl.co/', {
-            ticketId: searchParams.get('ticketId')
+        axios.post('https://kvam-e-sport-or-api.olsendaniel04.repl.co/create-checkout-session', {
+            ticketId: searchParams.get('ticketId'),
+            reservationId: searchParams.get('reservationId')
         }).then((res)=> {
-            console.log(res)
-            window.location.href = res.url
+            window.location.href = res.data.url
         }).catch(error => console.error(error))
     }
 
