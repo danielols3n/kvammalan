@@ -217,7 +217,7 @@ function Confirmation() {
                     <h3 className="fw-bolder text-light m-auto text-center">HAR DU SJEKKA GJENNOM ALT?</h3>
                 </Row>
                 <Row className="w-50 m-auto d-flex mt-3 mb-5">
-                    <Button className="my-2 p-1" variant="secondary" onClick={() => navigate('/kvammalan')}>AVBRYT</Button>
+                    <Button className="my-2 p-1" variant="secondary" onClick={() => navigate(`/kvammalan/checkout/cancel?reservationId=${searchParams.get('reservationId')}`)}>AVBRYT</Button>
                     <Button className="my-2 p-1" variant="primary" onClick={payment}>GÅ TIL BETALING</Button>
                 </Row>    
             </Container>

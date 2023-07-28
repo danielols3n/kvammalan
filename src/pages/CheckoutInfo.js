@@ -7,6 +7,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { db } from '../Firebase'
 import { collection, addDoc, updateDoc } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
+import moment from 'moment/moment'
 
 function CheckoutInfo() {
   const [name, setName] = useState('')
@@ -42,7 +43,7 @@ function CheckoutInfo() {
   const submit = (event) => {
     event.preventDefault()
 
-    if (name === '' || phone === '' || email === '' || address === '' || zipcode === '' || city === '' || country === '' || birthdate === '' || parent1_email === '' || parent1_name === '' || parent1_phone === '' || birthdate === ' ' || gender === '') {
+    if (name === '' || phone === '' || email === '' || address === '' || zipcode === '' || city === '' || country === '' || birthdate === '' || parent1_email === '' && moment().diff(new Date(birthdate), 'years', true) < 18 || parent1_name === '' && moment().diff(new Date(birthdate), 'years', true) < 18 || parent1_phone === '' && moment().diff(new Date(birthdate), 'years', true) < 18 || birthdate === ' ' || gender === '') {
       setValidate(true)
       window.scrollTo(0, 0)
       console.log(validate)
@@ -175,52 +176,57 @@ function CheckoutInfo() {
               <Row className="w-100">
                 &nbsp;
               </Row>
-              <Row>
-                <h2 className="fw-bolder text-light mt-3">FORESATTE - KONTAKTINFORMASJON</h2>
-              </Row>
-              <Row className="w-100 my-3 mt-3">
-                <h3 className="fw-bolder text-light mx-4">Foresatt 1</h3>
-                <Form.Group controlId='formName2' as={Col} lg={6}>
-                  <Form.FloatingLabel label='NAMN'>
-                    <Form.Control placeholder='NAMN' value={parent1_name} onChange={(e) => setParent1Name(e.target.value)} type='text' />
-                  </Form.FloatingLabel>
-                  {parent1_name === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
-                </Form.Group>
-                <Form.Group controlId='formPhone2' as={Col} lg={6}>
-                  <Form.FloatingLabel label='TELEFONNUMMER'>
-                    <Form.Control placeholder='TELEFONNUMMER' value={parent1_phone} onChange={(e) => setParent1Phone(e.target.value)} type='tel' />
-                  </Form.FloatingLabel>
-                  {parent1_phone === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
-                </Form.Group>
-              </Row>
-              <Row className="w-100 my-3">
-                <Form.Group controlId='formEmail2' as={Col} lg={12}>
-                  <Form.FloatingLabel label='E-POSTADRESSE'>
-                    <Form.Control placeholder='E-POSTADRESSE' value={parent1_email} onChange={(e) => setParent1Email(e.target.value)} type='email' />
-                  </Form.FloatingLabel>
-                  {parent1_email === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
-                </Form.Group>
-              </Row>
-              <Row className="w-100 my-3 mt-5">
-                <h3 className="fw-bolder text-light mx-4">Foresatt 2</h3>
-                <Form.Group as={Col} lg={6}>
-                  <Form.FloatingLabel label='NAMN'>
-                    <Form.Control placeholder='NAMN' value={parent2_name} onChange={(e) => setParent2Name(e.target.value)} type='text' />
-                  </Form.FloatingLabel>
-                </Form.Group>
-                <Form.Group as={Col} lg={6}>
-                  <Form.FloatingLabel label='TELEFONNUMMER'>
-                    <Form.Control placeholder='TELEFONNUMMER' value={parent2_phone} onChange={(e) => setParent2Phone(e.target.value)} type='tel' />
-                  </Form.FloatingLabel>
-                </Form.Group>
-              </Row>
-              <Row className="w-100 my-3">
-                <Form.Group as={Col} lg={12}>
-                  <Form.FloatingLabel label='E-POSTADRESSE'>
-                    <Form.Control placeholder='E-POSTADRESSE' value={parent2_email} onChange={(e) => setParent2Email(e.target.value)} type='email' />
-                  </Form.FloatingLabel>
-                </Form.Group>
-              </Row>
+              {moment().diff(new Date(birthdate), 'years', true) < 18 ? 
+                <>
+                  <Row>
+                  <h2 className="fw-bolder text-light mt-3">FORESATTE - KONTAKTINFORMASJON</h2>
+                </Row>
+                <Row className="w-100 my-3 mt-3">
+                  <h3 className="fw-bolder text-light mx-4">Foresatt 1</h3>
+                  <Form.Group controlId='formName2' as={Col} lg={6}>
+                    <Form.FloatingLabel label='NAMN'>
+                      <Form.Control placeholder='NAMN' value={parent1_name} onChange={(e) => setParent1Name(e.target.value)} type='text' />
+                    </Form.FloatingLabel>
+                    {parent1_name === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
+                  </Form.Group>
+                  <Form.Group controlId='formPhone2' as={Col} lg={6}>
+                    <Form.FloatingLabel label='TELEFONNUMMER'>
+                      <Form.Control placeholder='TELEFONNUMMER' value={parent1_phone} onChange={(e) => setParent1Phone(e.target.value)} type='tel' />
+                    </Form.FloatingLabel>
+                    {parent1_phone === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
+                  </Form.Group>
+                </Row>
+                <Row className="w-100 my-3">
+                  <Form.Group controlId='formEmail2' as={Col} lg={12}>
+                    <Form.FloatingLabel label='E-POSTADRESSE'>
+                      <Form.Control placeholder='E-POSTADRESSE' value={parent1_email} onChange={(e) => setParent1Email(e.target.value)} type='email' />
+                    </Form.FloatingLabel>
+                    {parent1_email === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
+                  </Form.Group>
+                </Row>
+                <Row className="w-100 my-3 mt-5">
+                  <h3 className="fw-bolder text-light mx-4">Foresatt 2</h3>
+                  <Form.Group as={Col} lg={6}>
+                    <Form.FloatingLabel label='NAMN'>
+                      <Form.Control placeholder='NAMN' value={parent2_name} onChange={(e) => setParent2Name(e.target.value)} type='text' />
+                    </Form.FloatingLabel>
+                  </Form.Group>
+                  <Form.Group as={Col} lg={6}>
+                    <Form.FloatingLabel label='TELEFONNUMMER'>
+                      <Form.Control placeholder='TELEFONNUMMER' value={parent2_phone} onChange={(e) => setParent2Phone(e.target.value)} type='tel' />
+                    </Form.FloatingLabel>
+                  </Form.Group>
+                </Row>
+                <Row className="w-100 my-3">
+                  <Form.Group as={Col} lg={12}>
+                    <Form.FloatingLabel label='E-POSTADRESSE'>
+                      <Form.Control placeholder='E-POSTADRESSE' value={parent2_email} onChange={(e) => setParent2Email(e.target.value)} type='email' />
+                    </Form.FloatingLabel>
+                  </Form.Group>
+                </Row>
+                </>
+                : null
+              }
               <Row className="w-100">
                 &nbsp;
               </Row>
@@ -253,7 +259,7 @@ function CheckoutInfo() {
                   })}
                 </Form.Group>
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('Fortnite') ? 
                   <>
                     <Form.Group col={6}>
@@ -265,7 +271,7 @@ function CheckoutInfo() {
                   </>
                 : null}
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('Counter-Strike: Global Offensive') ? 
                   <>
                     <Form.Group col={6}>
@@ -277,7 +283,7 @@ function CheckoutInfo() {
                   </>
                 : null}
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('Valorant') ? 
                   <>
                     <Form.Group col={6}>
@@ -289,7 +295,7 @@ function CheckoutInfo() {
                   </>
                 : null}
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('Forza Horizon 5') ? 
                   <>
                     <Form.Group col={6}>
@@ -301,7 +307,7 @@ function CheckoutInfo() {
                   </>
                 : null}
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('Minecraft') ? 
                   <>
                     <Form.Group col={6}>
@@ -313,7 +319,7 @@ function CheckoutInfo() {
                   </>
                 : null}
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('Rocket League') ? 
                   <>
                     <Form.Group col={6}>
@@ -325,7 +331,7 @@ function CheckoutInfo() {
                   </>
                 : null}
               </Row>
-              <Row className="w-100 my-2">
+              <Row className="w-100 my-3">
                 {selectedGames.includes('League of Legends') ? 
                   <>
                     <Form.Group col={6}>
@@ -338,7 +344,7 @@ function CheckoutInfo() {
                 : null}
               </Row>
               <Row className="w-100 d-flex">
-                <Button className="my-2 p-1" variant="secondary" onClick={() => navigate('/kvammalan')}>AVBRYT</Button>
+                <Button className="my-2 p-1" variant="secondary" onClick={() => navigate(`/kvammalan/checkout/cancel?reservationId=${searchParams.get('reservationId')}`)}>AVBRYT</Button>
                 <Button className="my-2 p-1" variant="primary" type='submit'>GÅ TIL BEKREFTELSE</Button>
               </Row>
             </Form>

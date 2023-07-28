@@ -11,6 +11,8 @@ import Registration from './pages/Registration'
 import SeatMap from './pages/SeatMap';
 import CheckoutInfo from './pages/CheckoutInfo';
 import Confirmation from './pages/Confirmation';
+import Cancel from './pages/Cancel';
+import Success from './pages/Success';
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
           <Route path="/kvammalan/checkout/seat-map" element={<SeatMap />} />
           <Route path="/kvammalan/checkout/participant-info" element={<CheckoutInfo />} />
           <Route path="/kvammalan/checkout/confirmation" element={<Confirmation />} />
+          <Route path="/kvammalan/checkout/cancel" element={<Cancel />} />
+          <Route path="/kvammalan/checkout/success" element={<Success />} />
         </Routes>
       </Router>
     </>
