@@ -12,7 +12,21 @@ function Success() {
     const [searchParams] = useSearchParams()
 
     useEffect(() => {
-        axios.post('https://kvam-e-sport-or-api.olsendaniel04.repl.co/success-email')
+        const q = query(collection(db, 'events', 'kvammalan2023', 'registrations'), where('reservationId', '==', searchParams.get('reservationId')))
+
+        getDocs(q).then((querySnapshot) => {
+            const document = querySnapshot.docs[0]
+
+            axios.post('https://kvam-e-sport-or-api.olsendaniel04.repl.co/success-email', {
+                reservationId: searchParams.get('reservationId'),
+                name: document.data().name, 
+                email: document.data().email,
+                parent1_email: document.data().parent1_email,
+                parent2_email: document.data().parent2_email, 
+            }).then((res) => {
+                console.log(res)
+            }).catch(error => console.error(error))
+        })
     }, [])
   return (
     <Container fluid className="d-flex flex-column m-0 p-0">
