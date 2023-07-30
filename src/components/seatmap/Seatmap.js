@@ -5,7 +5,7 @@ import SeatPicker from 'react-seat-picker'
 import { db } from '../../Firebase.js'
 import { collection, getDocs } from 'firebase/firestore'
 import { Button, Container } from 'react-bootstrap'
-import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 function Seatmap() {
     const [loading, setLoading] = useState(false)
@@ -37,22 +37,25 @@ function Seatmap() {
 
     useEffect(() => {
         setLoading(true)
-        const colRef = collection(db, 'events', 'kvammalan2023', 'reservations')
+        const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
 
         const temp = []
         let rowCount = 1
 
         getDocs(colRef).then((snapshot) => {
-            [1,2,3,4,5,6,7,8].map((row) => {
+            [1,2,3,4,5,6,7,8].forEach((row) => {
                 const tempRow = []
                 if (row === 3 || row === 6) {
-                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
                         tempRow.push(null)
                     })
                 } else {
-                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((seat) => {
+                    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
                         if (seat < 10) {
-                            if (snapshot.docs.includes(Number(rowCount + `0` + seat))) {
+                            console.log(snapshot.docs)
+                            const currentSeat = rowCount + `0` + seat
+                            if (snapshot.docs.some(document => document.data().seatId === Number(currentSeat))) {
+                                console.log('Reserved')
                                 tempRow.push({
                                     id: rowCount + `0` + seat,
                                     number: rowCount + `0` + seat,
@@ -66,7 +69,9 @@ function Seatmap() {
                                 })
                             }
                         } else {
-                            if (snapshot.docs.includes(Number(`${rowCount}${seat}`))) {
+                            const currentSeat = {rowCount} + {seat}
+                            if (snapshot.docs.some(document => document.data().seatId === Number(currentSeat))) {
+                                console.log('Reserved')
                                 tempRow.push({
                                     id: `${rowCount}${seat}`,
                                     number: `${rowCount}${seat}`,

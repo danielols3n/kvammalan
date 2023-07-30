@@ -78,7 +78,7 @@ function CheckoutInfo() {
         parent2_email: parent2_email, 
         parent2_phone: parent2_phone,
         reservationId: id,
-        seatId: searchParams.get('seatId'),
+        seatId: Number(searchParams.get('seatId')),
         ticketId: searchParams.get('ticketId')
       }).then(() => {
         navigate(`/kvammalan/checkout/confirmation?ticketId=${searchParams.get('ticketId')}&seatId=${searchParams.get('seatId')}&reservationId=${id}`)
