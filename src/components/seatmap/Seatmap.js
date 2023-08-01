@@ -54,7 +54,7 @@ function Seatmap() {
                         if (seat < 10) {
                             console.log(snapshot.docs)
                             const currentSeat = rowCount + `0` + seat
-                            if (snapshot.docs.some(document => document.data().seatId === Number(currentSeat))) {
+                            if (snapshot.docs.some(document => document.data().seatId === currentSeat)) {
                                 console.log('Reserved')
                                 tempRow.push({
                                     id: rowCount + `0` + seat,
@@ -69,18 +69,18 @@ function Seatmap() {
                                 })
                             }
                         } else {
-                            const currentSeat = {rowCount} + {seat}
-                            if (snapshot.docs.some(document => document.data().seatId === Number(currentSeat))) {
+                            const currentSeat = `${rowCount}` + `${seat}`
+                            if (snapshot.docs.some(document => document.data().seatId === currentSeat)) {
                                 console.log('Reserved')
                                 tempRow.push({
-                                    id: `${rowCount}${seat}`,
-                                    number: `${rowCount}${seat}`,
+                                    id: `${rowCount}` + `${seat}`,
+                                    number: `${rowCount}` + `${seat}`,
                                     isReserved: true
                                 })
                             } else {
                                 tempRow.push({
-                                    id: `${rowCount}${seat}`,
-                                    number: `${rowCount}${seat}`,
+                                    id: `${rowCount}` + `${seat}`,
+                                    number: `${rowCount}` + `${seat}`,
                                     isReserved: false
                                 })
                             }

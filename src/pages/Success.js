@@ -24,7 +24,7 @@ function Success() {
                 parent1_email: document.data().parent1_email,
                 parent2_email: document.data().parent2_email, 
             }).then((res) => {
-                console.log(res)
+                
             }).catch(error => console.error(error))
         })
     }, [])

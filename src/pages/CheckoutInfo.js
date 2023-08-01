@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, Form, Row, Col, Button } from 'react-bootstrap'
+import { Container, Form, Row, Col, Button, Modal } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar' 
 import Footer from '../components/footer/Footer'
 import '../css/CheckoutInfo.css'
@@ -8,6 +8,7 @@ import { db } from '../Firebase'
 import { collection, addDoc, updateDoc } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment/moment'
+import axios from 'axios'
 
 function CheckoutInfo() {
   const [name, setName] = useState('')
@@ -40,6 +41,8 @@ function CheckoutInfo() {
   const [rl, setRl] = useState('')
   const [lol, setLol] = useState('')
 
+  const [modal, setModal] = useState(false)
+
   const submit = (event) => {
     event.preventDefault()
 
@@ -48,41 +51,87 @@ function CheckoutInfo() {
       window.scrollTo(0, 0)
       console.log(validate)
     } else {
-      setValidate(false)
-      const id = uuidv4()
+      if (searchParams.get('ticketId') === 'Medlem') {
+        axios.post('https://kvam-e-sport-or-api.olsendaniel04.repl.co/member-check',{
+          memberName: name,
+        }).then((res) => {
+          if (res.data.memberStatus === true) {
+            setValidate(false)
+            const id = uuidv4()
 
-      const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
+            const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
 
-      addDoc(colRef, {
-        name: name, 
-        phone: phone, 
-        email: email,
-        address: address,
-        zipcode: zipcode, 
-        city: city, 
-        country: country,
-        birthdate: birthdate, 
-        gender: gender, 
-        selectedGames: selectedGames,
-        fortnite: fortnite, 
-        csgo: csgo, 
-        valorant: valorant,
-        fh5: fh5, 
-        mc: mc, 
-        rl: rl,
-        lol: lol,
-        parent1_name: parent1_name, 
-        parent1_email: parent1_email,
-        parent1_phone: parent1_phone,
-        parent2_name: parent2_name, 
-        parent2_email: parent2_email, 
-        parent2_phone: parent2_phone,
-        reservationId: id,
-        seatId: Number(searchParams.get('seatId')),
-        ticketId: searchParams.get('ticketId')
-      }).then(() => {
-        navigate(`/kvammalan/checkout/confirmation?ticketId=${searchParams.get('ticketId')}&seatId=${searchParams.get('seatId')}&reservationId=${id}`)
-      })
+            addDoc(colRef, {
+              name: name, 
+              phone: phone, 
+              email: email,
+              address: address,
+              zipcode: zipcode, 
+              city: city, 
+              country: country,
+              birthdate: birthdate, 
+              gender: gender, 
+              selectedGames: selectedGames,
+              fortnite: fortnite, 
+              csgo: csgo, 
+              valorant: valorant,
+              fh5: fh5, 
+              mc: mc, 
+              rl: rl,
+              lol: lol,
+              parent1_name: parent1_name, 
+              parent1_email: parent1_email,
+              parent1_phone: parent1_phone,
+              parent2_name: parent2_name, 
+              parent2_email: parent2_email, 
+              parent2_phone: parent2_phone,
+              reservationId: id,
+              seatId: searchParams.get('seatId'),
+              ticketId: searchParams.get('ticketId')
+            }).then(() => {
+              navigate(`/kvammalan/checkout/confirmation?ticketId=${searchParams.get('ticketId')}&seatId=${searchParams.get('seatId')}&reservationId=${id}`)
+            })
+          } else {
+            setModal(true)
+          }
+        }).catch(error => console.error(error))
+      } else {
+        setValidate(false)
+        const id = uuidv4()
+
+        const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
+
+        addDoc(colRef, {
+          name: name, 
+          phone: phone, 
+          email: email,
+          address: address,
+          zipcode: zipcode, 
+          city: city, 
+          country: country,
+          birthdate: birthdate, 
+          gender: gender, 
+          selectedGames: selectedGames,
+          fortnite: fortnite, 
+          csgo: csgo, 
+          valorant: valorant,
+          fh5: fh5, 
+          mc: mc, 
+          rl: rl,
+          lol: lol,
+          parent1_name: parent1_name, 
+          parent1_email: parent1_email,
+          parent1_phone: parent1_phone,
+          parent2_name: parent2_name, 
+          parent2_email: parent2_email, 
+          parent2_phone: parent2_phone,
+          reservationId: id,
+          seatId: searchParams.get('seatId'),
+          ticketId: searchParams.get('ticketId')
+        }).then(() => {
+          navigate(`/kvammalan/checkout/confirmation?ticketId=${searchParams.get('ticketId')}&seatId=${searchParams.get('seatId')}&reservationId=${id}`)
+        })
+      }
     }
 
     
@@ -350,6 +399,21 @@ function CheckoutInfo() {
             </Form>
           </Container>
         </Container>
+        <Modal show={modal} onHide={() => setModal(false)} centered backdrop>
+          <Modal.Header closeButton>
+            <h2 className="fw-bolder text-center">IKKJE REGISTRERT SOM MEDLEM</h2>
+          </Modal.Header>
+          <Modal.Body>
+            <p className="text-center">
+              Du er ikkje registrert som medlem i Kvam E-sport. Dersom du meiner dette er feil, vèr venleg å ta kontakt med 
+              Kvam E-sport på e-post <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>. Dersom du har trykka på 
+              medlems-billetten ved ein feil, kan du gå tilbake ved å trykkja på knappen under.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant='primary' onClick={() => navigate('/kvammalan')}>GÅ TIL FRAMSIDA</Button>
+          </Modal.Footer>
+        </Modal>
         <Footer />
     </Container>
   )
