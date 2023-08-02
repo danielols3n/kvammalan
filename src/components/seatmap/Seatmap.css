@@ -1,11 +1,16 @@
-.seat-avail:hover {
-    background-color: darkgreen;
-}
-
-.seat-avail {
-    background-color: green;
-}
-
-.seat-taken {
-    background-color: red;
-}
+div.seat {
+    background-color: rgb(10, 194, 10);
+  }
+  
+  div.seat--reserved {
+    background-color: rgb(233, 42, 42);
+  }
+  
+  div.seat--selected {
+    background-color: rgb(121, 121, 255);
+  }
+  
+  .seat-picker {
+    margin: auto;
+  }
+  

@@ -13,6 +13,7 @@ import CheckoutInfo from './pages/CheckoutInfo';
 import Confirmation from './pages/Confirmation';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
+import AudienceCheckout from './pages/AudienceCheckout';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/kvammalan/checkout/confirmation" element={<Confirmation />} />
           <Route path="/kvammalan/checkout/cancel" element={<Cancel />} />
           <Route path="/kvammalan/checkout/success" element={<Success />} />
+          <Route path="/kvammalan/checkout/audience" element={<AudienceCheckout />} />
         </Routes>
       </Router>
     </>

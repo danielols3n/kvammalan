@@ -32,7 +32,7 @@ function Cancel() {
             på vår side. Dersom det har skjedd ein feil på vår side, ber me deg om å prøva på nytt igjen. Dersom problemet vedvarer, 
             ta kontakt med oss på <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>
         </p>
-        <Button className="mt-3 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
+        <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
     </Container>
   )
 }

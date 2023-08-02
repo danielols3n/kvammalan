@@ -6,6 +6,7 @@ import { db } from '../../Firebase.js'
 import { collection, getDocs } from 'firebase/firestore'
 import { Button, Container } from 'react-bootstrap'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import './Seatmap.css'
 
 function Seatmap() {
     const [loading, setLoading] = useState(false)
@@ -19,7 +20,7 @@ function Seatmap() {
         setLoading(true)
             await new Promise(resolve => setTimeout(resolve, 1500))
             console.log(`Added seat ${number}, row ${row}, id ${id}`)
-            const newTooltip = `tooltip for id-${id} added by callback`
+            const newTooltip = `${number}`
             addCb(row, number, id, newTooltip)
             setSeat(number)
         setLoading(false)
@@ -28,7 +29,6 @@ function Seatmap() {
     const removeSeatCallback = async ({ row, number, id }, removeCb) => {
         setLoading(true)
             await new Promise(resolve => setTimeout(resolve, 1500))
-            console.log(`Removed seat ${number}, row ${row}, id ${id}`)
             const newTooltip = ['A', 'B', 'C'].includes(row) ? null : ''
             removeCb(row, number, newTooltip)
             setSeat(null)
@@ -52,7 +52,6 @@ function Seatmap() {
                 } else {
                     [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
                         if (seat < 10) {
-                            console.log(snapshot.docs)
                             const currentSeat = rowCount + `0` + seat
                             if (snapshot.docs.some(document => document.data().seatId === currentSeat)) {
                                 console.log('Reserved')
@@ -71,7 +70,6 @@ function Seatmap() {
                         } else {
                             const currentSeat = `${rowCount}` + `${seat}`
                             if (snapshot.docs.some(document => document.data().seatId === currentSeat)) {
-                                console.log('Reserved')
                                 tempRow.push({
                                     id: `${rowCount}` + `${seat}`,
                                     number: `${rowCount}` + `${seat}`,
@@ -91,13 +89,12 @@ function Seatmap() {
                 temp.push(tempRow)
             })
             setRows(temp)
-            console.log(rows)
             setLoading(false)
         })
     }, [])
       
   return (
-    <Container fluid className="d-flex flex-column">
+    <Container fluid className="seatmap-container d-flex flex-column">
         <SeatPicker
             addSeatCallback={addSeatCallback}
             removeSeatCallback={removeSeatCallback}
@@ -107,7 +104,6 @@ function Seatmap() {
             visible
             selectedByDefault
             loading={loading}
-            tooltipProps={{multiline: true}}
           />
           <Container fluid className="d-flex flex-column">
             <Container fluid className="d-flex m-auto align-items-center justify-content-center mt-5">

@@ -5,7 +5,7 @@ import Footer from '../components/footer/Footer'
 import '../css/CheckoutInfo.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { db } from '../Firebase'
-import { collection, addDoc, updateDoc } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { v4 as uuidv4 } from 'uuid'
 import moment from 'moment/moment'
 import axios from 'axios'
@@ -46,7 +46,7 @@ function CheckoutInfo() {
   const submit = (event) => {
     event.preventDefault()
 
-    if (name === '' || phone === '' || email === '' || address === '' || zipcode === '' || city === '' || country === '' || birthdate === '' || parent1_email === '' && moment().diff(new Date(birthdate), 'years', true) < 18 || parent1_name === '' && moment().diff(new Date(birthdate), 'years', true) < 18 || parent1_phone === '' && moment().diff(new Date(birthdate), 'years', true) < 18 || birthdate === ' ' || gender === '') {
+    if (name === '' || phone === '' || email === '' || address === '' || zipcode === '' || city === '' || country === '' || birthdate === '' || (parent1_email === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || (parent1_name === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || (parent1_phone === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || birthdate === ' ' || gender === '') {
       setValidate(true)
       window.scrollTo(0, 0)
       console.log(validate)
@@ -148,13 +148,13 @@ function CheckoutInfo() {
           <Container fluid className="d-flex flex-column align-items-center">
             <Form className="checkout-form mt-5" onSubmit={submit}>
               <Row className="w-100 my-3">
-                <Form.Group controlId='formName' as={Col} lg={6}>
+                <Form.Group controlId='formName' className="my-2" as={Col} lg={6}>
                   <Form.FloatingLabel label='NAMN'>
                     <Form.Control placeholder='NAMN' value={name} onChange={(e) => setName(e.target.value)} type='text' />
                   </Form.FloatingLabel>
                   {name === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
                 </Form.Group>
-                <Form.Group controlId='formPhone' as={Col} lg={6}>
+                <Form.Group controlId='formPhone' className='my-2' as={Col} lg={6}>
                   <Form.FloatingLabel label='TELEFONNUMMER'>
                     <Form.Control placeholder='TELEFONNUMMER' value={phone} onChange={(e) => setPhone(e.target.value)} type='tel' />
                   </Form.FloatingLabel>
@@ -181,13 +181,13 @@ function CheckoutInfo() {
                 </Form.Group>
               </Row>
               <Row className="w-100 my-3">
-                <Form.Group controlId='formZip' as={Col} lg={3}>
+                <Form.Group controlId='formZip' className="my-2" as={Col} lg={3}>
                   <Form.FloatingLabel label='POSTNUMMER'>
                     <Form.Control placeholder='POSTNUMMER' value={zipcode} onChange={(e) => setZipcode(e.target.value)} type='text' />
                   </Form.FloatingLabel>
                   {zipcode === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
                 </Form.Group>
-                <Form.Group controlId='formCity' as={Col} lg={9}>
+                <Form.Group controlId='formCity' className="my-2" as={Col} lg={9}>
                   <Form.FloatingLabel label='POSTSTAD'>
                     <Form.Control placeholder='POSTSTAD' value={city} onChange={(e) => setCity(e.target.value)} type='text' />
                   </Form.FloatingLabel>
@@ -206,13 +206,13 @@ function CheckoutInfo() {
                 &nbsp;
               </Row>
               <Row className="w-100 my-3 mt-5">
-                <Form.Group controlId='formBirthdate' as={Col} lg={6}>
+                <Form.Group controlId='formBirthdate' className="my-2" as={Col} lg={6}>
                   <Form.FloatingLabel label='FØDSELSDATO'>
                     <Form.Control value={birthdate} onChange={(e) => setBirthdate(e.target.value)} type='date' />
                   </Form.FloatingLabel>
                   {birthdate === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
                 </Form.Group>
-                <Form.Group controlId='formGender' as={Col} lg={6}>
+                <Form.Group controlId='formGender' className='my-2' as={Col} lg={6}>
                   <Form.Select className="py-3" onChange={(e) => setGender(e.target.value)}>
                     <option value=' '>VEL KJØNN</option>
                     <option value='Mann'>Mann</option>
@@ -232,13 +232,13 @@ function CheckoutInfo() {
                 </Row>
                 <Row className="w-100 my-3 mt-3">
                   <h3 className="fw-bolder text-light mx-4">Foresatt 1</h3>
-                  <Form.Group controlId='formName2' as={Col} lg={6}>
+                  <Form.Group controlId='formName2' className='my-2' as={Col} lg={6}>
                     <Form.FloatingLabel label='NAMN'>
                       <Form.Control placeholder='NAMN' value={parent1_name} onChange={(e) => setParent1Name(e.target.value)} type='text' />
                     </Form.FloatingLabel>
                     {parent1_name === '' && validate === true ? <p className="text-danger mt-2">Dette feltet er ikkje fylt ut.</p> : null}
                   </Form.Group>
-                  <Form.Group controlId='formPhone2' as={Col} lg={6}>
+                  <Form.Group controlId='formPhone2' className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='TELEFONNUMMER'>
                       <Form.Control placeholder='TELEFONNUMMER' value={parent1_phone} onChange={(e) => setParent1Phone(e.target.value)} type='tel' />
                     </Form.FloatingLabel>
@@ -255,12 +255,12 @@ function CheckoutInfo() {
                 </Row>
                 <Row className="w-100 my-3 mt-5">
                   <h3 className="fw-bolder text-light mx-4">Foresatt 2</h3>
-                  <Form.Group as={Col} lg={6}>
+                  <Form.Group className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='NAMN'>
                       <Form.Control placeholder='NAMN' value={parent2_name} onChange={(e) => setParent2Name(e.target.value)} type='text' />
                     </Form.FloatingLabel>
                   </Form.Group>
-                  <Form.Group as={Col} lg={6}>
+                  <Form.Group className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='TELEFONNUMMER'>
                       <Form.Control placeholder='TELEFONNUMMER' value={parent2_phone} onChange={(e) => setParent2Phone(e.target.value)} type='tel' />
                     </Form.FloatingLabel>

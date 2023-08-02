@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import React from 'react'
 import { useEffect } from 'react'
 import { Button, Container } from 'react-bootstrap'
@@ -28,6 +28,7 @@ function Success() {
             }).catch(error => console.error(error))
         })
     }, [])
+    
   return (
     <Container fluid className="d-flex flex-column m-0 p-0">
         <AiOutlineCheckCircle size='15rem' color='green' className="mx-auto mt-5" />
@@ -43,7 +44,7 @@ function Success() {
         <p className="w-50 text-center mx-auto mt-3">
             Me ser fram til å ha deg med under årets versjon av KvammaLAN!
         </p>
-        <Button className="mt-3 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
+        <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
     </Container>
   )
 }

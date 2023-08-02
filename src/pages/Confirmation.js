@@ -13,8 +13,6 @@ function Confirmation() {
 
     const navigate = useNavigate()
 
-    const games = ['Fortnite', 'Counter-Strike: Global Offensive', 'Valorant', 'Forza Horizon 5', 'Minecraft', 'Rocket League', 'League of Legends']
-
     useEffect(() => {
         const q = query(collection(db, 'events', 'kvammalan2023', 'registrations'), where('reservationId', '==', searchParams.get('reservationId')))
 
@@ -46,12 +44,12 @@ function Confirmation() {
             </p>
             <Form className="checkout-form mt-5">
                 <Row className="w-100 my-3">
-                    <Form.Group controlId='formName' as={Col} lg={6}>
+                    <Form.Group className="my-2" controlId='formName' as={Col} lg={6}>
                     <Form.FloatingLabel label='NAMN'>
                         <Form.Control placeholder='NAMN' defaultValue={participant.name} readOnly type='text' disabled />
                     </Form.FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='formPhone' as={Col} lg={6}>
+                    <Form.Group className="my-2" controlId='formPhone' as={Col} lg={6}>
                     <Form.FloatingLabel label='TELEFONNUMMER'>
                         <Form.Control placeholder='TELEFONNUMMER' defaultValue={participant.phone} readOnly type='tel' disabled />
                     </Form.FloatingLabel>
@@ -75,12 +73,12 @@ function Confirmation() {
                     </Form.Group>
                 </Row>
                 <Row className="w-100 my-3">
-                    <Form.Group controlId='formZip' as={Col} lg={3}>
+                    <Form.Group className="my-2" controlId='formZip' as={Col} lg={3}>
                     <Form.FloatingLabel label='POSTNUMMER'>
                         <Form.Control placeholder='POSTNUMMER' defaultValue={participant.zipcode} readOnly type='text' disabled />
                     </Form.FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='formCity' as={Col} lg={9}>
+                    <Form.Group className="my-2" controlId='formCity' as={Col} lg={9}>
                     <Form.FloatingLabel label='POSTSTAD'>
                         <Form.Control placeholder='POSTSTAD' defaultValue={participant.city} readOnly type='text' disabled />
                     </Form.FloatingLabel>
@@ -97,12 +95,12 @@ function Confirmation() {
                     &nbsp;
                 </Row>
                 <Row className="w-100 my-3 mt-5">
-                    <Form.Group controlId='formBirthdate' as={Col} lg={6}>
+                    <Form.Group className="my-2" controlId='formBirthdate' as={Col} lg={6}>
                     <Form.FloatingLabel label='FØDSELSDATO'>
                         <Form.Control defaultValue={participant.birthdate} readOnly type='date' disabled />
                     </Form.FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='formGender' as={Col} lg={6}>
+                    <Form.Group className="my-2" controlId='formGender' as={Col} lg={6}>
                         <Form.FloatingLabel label='KJØNN'>
                             <Form.Control placeholder='KJØNN' defaultValue={participant.gender} readOnly type='text' disabled />
                         </Form.FloatingLabel>
@@ -116,12 +114,12 @@ function Confirmation() {
                 </Row>
                 <Row className="w-100 my-3 mt-3">
                     <h3 className="fw-bolder text-light mx-4">Foresatt 1</h3>
-                    <Form.Group controlId='formName2' as={Col} lg={6}>
+                    <Form.Group controlId='formName2' className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='NAMN'>
                         <Form.Control placeholder='NAMN' defaultValue={participant.parent1_name} readOnly type='text' disabled />
                     </Form.FloatingLabel>
                     </Form.Group>
-                    <Form.Group controlId='formPhone2' as={Col} lg={6}>
+                    <Form.Group controlId='formPhone2' className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='TELEFONNUMMER'>
                         <Form.Control placeholder='TELEFONNUMMER' defaultValue={participant.parent1_phone} readOnly type='tel' disabled />
                     </Form.FloatingLabel>
@@ -136,12 +134,12 @@ function Confirmation() {
                 </Row>
                 <Row className="w-100 my-3 mt-5">
                     <h3 className="fw-bolder text-light mx-4">Foresatt 2</h3>
-                    <Form.Group as={Col} lg={6}>
+                    <Form.Group className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='NAMN'>
                         <Form.Control placeholder='NAMN' defaultValue={participant.parent2_name} readOnly type='text' disabled />
                     </Form.FloatingLabel>
                     </Form.Group>
-                    <Form.Group as={Col} lg={6}>
+                    <Form.Group className="my-2" as={Col} lg={6}>
                     <Form.FloatingLabel label='TELEFONNUMMER'>
                         <Form.Control placeholder='TELEFONNUMMER' defaultValue={participant.parent2_phone} readOnly type='tel' disabled />
                     </Form.FloatingLabel>
