@@ -1,20 +1,11 @@
-import React, { useState } from 'react'
-import { Container, Row } from 'react-bootstrap'
+import React from 'react'
+import { Container } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar' 
 import Footer from '../components/footer/Footer'
-import { collection, getDocs, query, where } from 'firebase/firestore'
-import { db } from '../Firebase'
 import Seatmap from '../components/seatmap/Seatmap'
 import '../css/SeatMap.css'
 
 function SeatMap() {
-  let seatNumber
-  let rowCount = 0
-
-  const checkout = () => {
-    console.log('Checkout')
-  }
-
   return (
     <Container fluid className="seatmap d-flex flex-column m-0 p-0">
         <NavbarComponent data={{ background: 'transparent' }} />

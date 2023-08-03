@@ -28,7 +28,7 @@ function App() {
           <Route path="/kontakt-oss" element={<ContactUs />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/pamelding" element={<Registration />} />
-          <Route path="/kvammalan/checkout/seat-map" element={<SeatMap />} />
+          <Route path="/kvammalan/checkout/seat-map" exact element={<SeatMap />} />
           <Route path="/kvammalan/checkout/participant-info" element={<CheckoutInfo />} />
           <Route path="/kvammalan/checkout/confirmation" element={<Confirmation />} />
           <Route path="/kvammalan/checkout/cancel" element={<Cancel />} />

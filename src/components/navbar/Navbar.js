@@ -1,7 +1,7 @@
 import React from 'react'
 import './Navbar.css'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import logo from '../../img/logo.png'
+import logo from '../logo.png'
 
 function NavbarComponent(props) {
   return (

@@ -2,6 +2,7 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import './Footer.css'
 import { BsFacebook, BsInstagram } from 'react-icons/bs'
+import keslogo from '../logo.png'
 
 function Footer() {
   return (
@@ -9,7 +10,7 @@ function Footer() {
       <Row className="w-100 p-0 m-0">
         <Col className="w-25 float-left d-flex align-items-center justify-content-center m-0 p-0">
             <img
-              src={require('../../img/logo.png')}
+              src={keslogo}
               alt='Logo Kvam E-sport'
               title='Kvam E-sport'
               style={{

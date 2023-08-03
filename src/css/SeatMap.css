@@ -4,7 +4,3 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
-
-.seat-picker__row--selected, .seat-picker__row:hover {
-    background-color: #171a1c;
-}

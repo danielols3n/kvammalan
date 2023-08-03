@@ -108,7 +108,7 @@ function Seatmap() {
           <Container fluid className="d-flex flex-column">
             <Container fluid className="d-flex m-auto align-items-center justify-content-center mt-5">
                 <Button className="m-2" variant='secondary' onClick={() => navigate('/kvammalan')}>AVBRYT</Button>
-                <Button className="m-2" variant='primary' onClick={() => navigate(`/kvammalan/checkout/participant-info?ticketId=${searchParams.get('ticketId')}&seatId=${seat}`)}>NESTE</Button>
+                <Button className="m-2" variant='primary' onClick={() => seat !== null ? navigate(`/kvammalan/checkout/participant-info?ticketId=${searchParams.get('ticketId')}&seatId=${seat}`) : alert('Vel eit sete')}>NESTE</Button>
             </Container>
           </Container>
     </Container>

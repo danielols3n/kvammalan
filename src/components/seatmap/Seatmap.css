@@ -12,5 +12,9 @@ div.seat {
   
   .seat-picker {
     margin: auto;
+    background-color: transparent !important;
   }
   
+  .seat-picker__row--enabled:hover {
+    background-color: transparent !important;
+  }
