@@ -135,7 +135,7 @@ function Home() {
               <li>Skjerm(ar)</li>
               <li>Alt av nødvendig utstyr for å spela (tastatur, mus, headset, musematte, ladarar etc.)</li>
               <li>Nettverkskabel (nokre kan sitja så langt som 15 meter vekke frå næraste nettverkspunkt)</li>
-              <li>Stol (om du ynskjer. Me har stolar som du òg kan bruka)</li>
+              <li>Stol (om du ynskjer. Me har stablestolar som du òg kan bruka)</li>
               <li>Skøyteleidning(ar)</li>
               <li>Mobil og ladar</li>
               <li>Drikkeflaske med vatn</li>
