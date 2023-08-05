@@ -15,6 +15,10 @@ import Cancel from './pages/Cancel';
 import Success from './pages/Success';
 import AudienceCheckout from './pages/AudienceCheckout';
 import ParentalConsent from './pages/ParentalConsent';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminLanding from './pages/admin/AdminLanding';
+import AdminParticipants from './pages/admin/AdminParticipants';
+import AdminCheckIn from './pages/admin/AdminCheckIn';
 
 
 function App() {
@@ -36,6 +40,10 @@ function App() {
           <Route path="/kvammalan/checkout/success" element={<Success />} />
           <Route path="/kvammalan/checkout/audience" element={<AudienceCheckout />} />
           <Route path="/kvammalan/parent-consent" element={<ParentalConsent />} />
+          <Route path="/kvammalan/admin/login" element={<AdminLogin />} />
+          <Route path="/kvammalan/admin/" element={<AdminLanding />} />
+          <Route path="/kvammalan/admin/participants" element={<AdminParticipants /> } />
+          <Route path="/kvammalan/admin/check-in" element={<AdminCheckIn />} />
         </Routes>
       </Router>
     </>
