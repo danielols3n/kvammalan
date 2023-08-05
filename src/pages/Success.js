@@ -6,11 +6,13 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { db } from '../Firebase'
 import axios from 'axios'
+import moment from 'moment'
 
 function Success() {
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
     const [ticketId, setTicketId] = useState('')
+    const [disabled, setDisabled] = useState(true)
 
     useEffect(() => {
         const q = query(collection(db, 'events', 'kvammalan2023', 'registrations'), where('reservationId', '==', searchParams.get('reservationId')))
@@ -26,7 +28,14 @@ function Success() {
                 email: document.data().email,
                 ticketId: document.data().ticketId
             }).then((res) => {
-                
+                if (moment().diff(new Date(document.data().birthdate), 'years', true) < 18) {
+                    axios.post('https://kvam-e-sport-or-api.olsendaniel04.repl.co/parental-consent', {
+                        reservationId: searchParams.get('reservationId'),
+                        parent_email: document.data().parent1_email
+                    }).then(() => {
+                        setDisabled(false)
+                    }).catch(error => console.error(error))
+                } 
             }).catch(error => console.error(error))
         })
     }, [])
@@ -46,7 +55,7 @@ function Success() {
                 <p className="w-50 text-center mx-auto mt-3">
                     Me ser fram til å ha deg med under årets versjon av KvammaLAN!
                 </p>
-                <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
+                <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' disabled={disabled} onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
             </>
             :
             <>
@@ -62,7 +71,7 @@ function Success() {
                 <p className="w-50 text-center mx-auto mt-3">
                     Me ser fram til å ha deg med under årets versjon av KvammaLAN!
                 </p>
-                <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
+                <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' disabled={disabled} onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>
             </>
         }
     </Container>

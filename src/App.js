@@ -14,6 +14,7 @@ import Confirmation from './pages/Confirmation';
 import Cancel from './pages/Cancel';
 import Success from './pages/Success';
 import AudienceCheckout from './pages/AudienceCheckout';
+import ParentalConsent from './pages/ParentalConsent';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/kvammalan/checkout/cancel" element={<Cancel />} />
           <Route path="/kvammalan/checkout/success" element={<Success />} />
           <Route path="/kvammalan/checkout/audience" element={<AudienceCheckout />} />
+          <Route path="/kvammalan/parent-consent" element={<ParentalConsent />} />
         </Routes>
       </Router>
     </>
