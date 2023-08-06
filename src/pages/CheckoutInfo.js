@@ -11,6 +11,8 @@ import moment from 'moment/moment'
 import axios from 'axios'
 
 function CheckoutInfo() {
+  document.title = 'Checkout | KvammaLAN'
+
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')

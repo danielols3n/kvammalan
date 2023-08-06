@@ -7,7 +7,6 @@ import Event from './pages/Event';
 import Privacy from './pages/Privacy';
 import FAQ from './pages/FAQ';
 import ContactUs from './pages/ContactUs';
-import Registration from './pages/Registration'
 import SeatMap from './pages/SeatMap';
 import CheckoutInfo from './pages/CheckoutInfo';
 import Confirmation from './pages/Confirmation';
@@ -32,7 +31,6 @@ function App() {
           <Route path="/personvern-og-vilkar" element={<Privacy />} />
           <Route path="/kontakt-oss" element={<ContactUs />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/pamelding" element={<Registration />} />
           <Route path="/kvammalan/checkout/seat-map" exact element={<SeatMap />} />
           <Route path="/kvammalan/checkout/participant-info" element={<CheckoutInfo />} />
           <Route path="/kvammalan/checkout/confirmation" element={<Confirmation />} />

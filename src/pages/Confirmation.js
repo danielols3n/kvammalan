@@ -8,6 +8,8 @@ import '../css/Confirmation.css'
 import axios from 'axios'
 
 function Confirmation() {
+    document.title = 'Checkout | KvammaLAN'
+
     const [participant, setParticipant] = useState(null)
     const [searchParams] = useSearchParams()
 

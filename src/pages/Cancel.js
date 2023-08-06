@@ -7,6 +7,8 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { db } from '../Firebase'
 
 function Cancel() {
+    document.title = 'Cancel | KvammaLAN'
+
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
 

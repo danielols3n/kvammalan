@@ -6,6 +6,8 @@ import { db } from '../Firebase'
 import moment from 'moment'
 
 function ParentalConsent() {
+    document.title = 'Samtykkeskjema | KvammaLAN'
+
     const navigate = useNavigate()
 
     const [name, setName] = useState('')
