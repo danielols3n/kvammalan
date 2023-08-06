@@ -112,7 +112,7 @@ function AdminLanding() {
                     <Row className="w-100 m-0 p-0 mt-3">
                         <span className="mx-auto text-center mt-4">Antal deltakarar påmeldt: <b>{registrations.length}</b></span>
                         <span className="mx-auto text-center mt-4">Antal LAN-deltakarar påmeldt: <b>{registrations.filter(item => item.data().ticketId === 'Medlem').length + registrations.filter(item => item.data().ticketId === 'Ikkje-medlem').length}</b></span>
-                        <span className="mx-auto text-center mt-4">Antal publikum påmeldt: <b>{registrations.filter(item => item.data().ticketId === 'Publikum').length}</b></span>
+                        <span className="mx-auto text-center mt-4 mb-4">Antal publikum påmeldt: <b>{registrations.filter(item => item.data().ticketId === 'Publikum').length}</b></span>
                     </Row>
                 </Col>
             </Row>
