@@ -25,18 +25,20 @@ function AdminLanding() {
                     if (document.data().admin === true) {
                         console.log('Admin access granted')
 
-                        const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
+                            setLoading(true)
+                            const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
 
-                        getDocs(colRef).then((snapshot) => {
-                            setRegistrations(snapshot.docs)
-                            
-                                const temp = []
-                                let rowCount = 1
+                            const temp = []
+                            let rowCount = 1
 
-                                  [1,2,3,4,5,6,7,8].forEach((row) => {
+                            getDocs(colRef).then((snapshot) => {
+                                console.log(registrations)
+                                setRegistrations(snapshot.docs)
+
+                                [1,2,3,4,5,6,7,8].forEach((row) => {
                                     const tempRow = []
                                     if (row === 3 || row === 6) {
-                                        [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                                        [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach(() => {
                                             tempRow.push(null)
                                         })
                                     } else {
