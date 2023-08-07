@@ -11,7 +11,6 @@ import SeatPicker from 'react-seat-picker'
 function AdminLanding() {
     const navigate = useNavigate()
     const [registrations, setRegistrations] = useState([])
-    const [chartData, setChartData] = useState(null)
     const [loading, setLoading] = useState(true)
 
     const [rows, setRows] = useState([])
@@ -32,56 +31,64 @@ function AdminLanding() {
                             let rowCount = 1
 
                             getDocs(colRef).then((snapshot) => {
-                                console.log(registrations)
-                                setRegistrations(snapshot.docs)
+                                const documents = snapshot.docs.filter(document => document.data().ticketId !== 'Publikum')
 
-                                [1,2,3,4,5,6,7,8].forEach((row) => {
-                                    const tempRow = []
-                                    if (row === 3 || row === 6) {
-                                        [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach(() => {
-                                            tempRow.push(null)
-                                        })
-                                    } else {
-                                        [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
-                                            if (seat < 10) {
-                                                const currentSeat = rowCount + `0` + seat
-                                                if (snapshot.docs.some(document => document.data().seatId === currentSeat)) {
-                                                    console.log('Reserved')
-                                                    tempRow.push({
-                                                        id: rowCount + `0` + seat,
-                                                        number: rowCount + `0` + seat,
-                                                        isReserved: true
-                                                    })
+                                if (documents && documents.length > 0) {
+                                    setRegistrations(documents);
+
+                                    [1,2,3,4,5,6,7,8].forEach((row) => {
+                                        const tempRow = []
+                                        if (row === 3 || row === 6) {
+                                            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach(() => {
+                                                tempRow.push(null)
+                                            })
+                                        } else {
+                                            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                                                if (seat < 10) {
+                                                    const currentSeat = rowCount + `0` + seat
+    
+                                                    if (documents.some(document => document.data().seatId === currentSeat)) {
+                                                        tempRow.push({
+                                                            id: document.data().reservationId,
+                                                            number: rowCount + `0` + seat,
+                                                            isReserved: true,
+                                                            tooltip: `Setet er reservert av ${document.data().name}`
+                                                        })
+                                                    } else {
+                                                        tempRow.push({
+                                                            id: document.data().reservationId,
+                                                            number: rowCount + `0` + seat,
+                                                            isReserved: false
+                                                        })
+                                                    }
                                                 } else {
-                                                    tempRow.push({
-                                                        id: rowCount + `0` + seat,
-                                                        number: rowCount + `0` + seat,
-                                                        isReserved: false
-                                                    })
+                                                    const currentSeat = `${rowCount}` + `${seat}`
+                                                    if (documents.some(document => document.data().seatId === currentSeat)) {
+                                                        tempRow.push({
+                                                            id: document.data().reservationId,
+                                                            number: `${rowCount}` + `${seat}`,
+                                                            isReserved: true,
+                                                            tooltip: `Setet er reservert av ${document.data().name}`
+                                                        })
+                                                    } else {
+                                                        tempRow.push({
+                                                            id: document.data().reservationId,
+                                                            number: `${rowCount}` + `${seat}`,
+                                                            isReserved: false
+                                                        })
+                                                    }
                                                 }
-                                            } else {
-                                                const currentSeat = `${rowCount}` + `${seat}`
-                                                if (snapshot.docs.some(document => document.data().seatId === currentSeat)) {
-                                                    tempRow.push({
-                                                        id: `${rowCount}` + `${seat}`,
-                                                        number: `${rowCount}` + `${seat}`,
-                                                        isReserved: true
-                                                    })
-                                                } else {
-                                                    tempRow.push({
-                                                        id: `${rowCount}` + `${seat}`,
-                                                        number: `${rowCount}` + `${seat}`,
-                                                        isReserved: false
-                                                    })
-                                                }
-                                            }
-                                        })
-                                        rowCount += 1
-                                    }
-                                    temp.push(tempRow)
-                                })
-                                setRows(temp)
-                                setLoading(false)
+                                            })
+                                            rowCount += 1
+                                        }
+                                        temp.push(tempRow)
+                                    })
+                                    setRows(temp)
+                                    setLoading(false)
+
+                                  } else {
+                                    console.log("No valid documents found.");
+                                  }
                         }).catch(error => console.error(error))
                     } else {
                         navigate('/kvammalan/admin/login')
@@ -97,8 +104,19 @@ function AdminLanding() {
         <AdminNavbar />
         <Container fluid className="d-flex flex-column m-0 p-0">
             <Row className="w-100 d-flex m-0 p-0">
-                <Col lg={8} className="d-flex flex-column m-0 p-0">
-                    
+                <Col lg={7} className="d-flex flex-column m-3 p-0">
+                    <Container fluid className="m-auto">
+                        {rows.length !== 0 && <SeatPicker
+                            addSeatCallback={() => console.log('addSeat')}
+                            removeSeatCallback={() => console.log('removeSeat')}
+                            rows={rows}
+                            maxReservableSeats={1}
+                            alpha
+                            visible
+                            selectedByDefault
+                            loading={loading}
+                        />}
+                    </Container>
                 </Col>
                 <Col className="m-0 p-0" style={{ borderTop: '1px solid lightgray', borderLeft: '1px solid lightgray', borderBottom: '1px solid lightgray' }} lg={4}>
                     <Row className="w-100 m-0 p-0 d-flex flex-column mt-5">
@@ -115,18 +133,6 @@ function AdminLanding() {
                         <span className="mx-auto text-center mt-4 mb-4">Antal publikum påmeldt: <b>{registrations.filter(item => item.data().ticketId === 'Publikum').length}</b></span>
                     </Row>
                 </Col>
-            </Row>
-            <Row className="w-100 d-flex m-0 p-0">
-                {rows.length !== 0 && <SeatPicker
-                    addSeatCallback={() => console.log('addSeat')}
-                    removeSeatCallback={() => console.log('removeSeat')}
-                    rows={rows}
-                    maxReservableSeats={1}
-                    alpha
-                    visible
-                    selectedByDefault
-                    loading={loading}
-                />}
             </Row>
         </Container>
     </Container>
