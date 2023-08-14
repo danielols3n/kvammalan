@@ -33,7 +33,7 @@ function Footer() {
       </Row>
       <Row className="w-100 p-0 m-0">
         <Col className="w-100 float-left d-flex align-items-center justify-content-center mt-4 m-0 p-0">
-            <p className="text-light m-0 p-0">Copyright © 2022 - <a style={{ color: '#fff', textDecoration: 'none', fontWeight: 'bold' }} href='https://kvam-esport.no'>Kvam E-sport</a></p>
+            <p className="text-light m-0 p-0">Copyright © 2023 - <a style={{ color: '#fff', textDecoration: 'none', fontWeight: 'bold' }} href='https://kvam-esport.no'>Kvam E-sport</a></p>
         </Col>
       </Row>
     </div>

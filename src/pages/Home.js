@@ -85,8 +85,8 @@ function Home() {
                     <b>KvammaLAN</b>
                     <br></br>
                     <ul style={{ listStyleType: 'circle' }}>
-                      <li>Ikkje medlem: kr 400 ,-</li>
-                      <li>Medlem: kr 250 ,-</li>
+                      <li>Ikkje medlem: kr 600 ,-</li>
+                      <li>Medlem: kr 400 ,-</li>
                     </ul>
                   </Card.Body>
                 </Card>
