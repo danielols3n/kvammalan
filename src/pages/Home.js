@@ -6,7 +6,6 @@ import { IoMdTime, IoMdPricetag } from 'react-icons/io'
 import { MdOutlinePlace } from 'react-icons/md'
 import Footer from '../components/footer/Footer'
 import { TailSpin } from 'react-loader-spinner'
-import samtykkeskjema from '../img/Samtykkeskjema_KvammaLAN.png'
 
 function Home() {
   const [loading, setLoading] = useState(true)
@@ -64,7 +63,7 @@ function Home() {
                   </Card.Header>
                   <Card.Body className="align-items-center justify-content-center">
                     <div>
-                      <b>KvammaLAN:</b>&nbsp;10.10.2022 kl. 14:00 til 12.10.2022 kl. 14:00
+                      <b>KvammaLAN:</b>&nbsp;10.10.2022 kl. 16:00 til 13.10.2022 kl. 12:00
                     </div>
                   </Card.Body>
                 </Card>
@@ -101,31 +100,12 @@ function Home() {
                       <li>Konkurransar</li>
                       <li>God stemning</li>
                       <li>Mykje speling</li>
+                      <li>Spanande underhaldning</li>
                     </ul>
                   </Card.Body>
                 </Card>
               </Row>
             </Container>
-          </Container>
-          <div className="divider"></div>
-          <Container className="d-flex flex-column m-0 p-0 mb-5" fluid>
-            <h2 className="fw-bolder m-auto mt-5">SAMTYKKESKJEMA</h2>
-            <p className="m-auto text-center mt-3">Klikk på biletet under for å koma til samtykkeskjemaet.</p>
-            <div className="home-agreementpaper">
-              <a href="SamtykkeskjemaKvammaLAN.pdf" target='_blank' rel='noreferrer' style={{ width: '100%', textDecoration: 'none', color: '#fff' }}>
-                <img 
-                  src={samtykkeskjema}
-                  alt='Samtykkeskjema'
-                  title='Samtykkeskjema'
-                  style={{
-                    objectFit: 'contain',
-                    width: '100%',
-                    height: 'auto',
-                    borderRadius: '.5%'
-                  }}
-                />
-              </a>
-            </div>
           </Container>
           <div className="divider"></div>
           <Container fluid className="d-flex flex-column m-0 p-0 mt-3 mb-3">

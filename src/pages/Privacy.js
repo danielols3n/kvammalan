@@ -40,11 +40,10 @@ function Privacy() {
           <li><b>Telefonnummer:</b>&nbsp;Telefonnummer vert samla inn for å ha ein kontaktmoglegheit i tillegg til e-post.</li>
           <li><b>Fødselsdato:</b>&nbsp;Fødselsdato vert samla inn for å sjekka om du er under 18 år gamal.</li>
           <li><b>Adresse</b>&nbsp;Adresse vert samla inn for å kunne senda faktura til denne adressa.</li>
-          <li><b>Kjønn</b></li>
+          <li><b>Kjønn:</b>&nbsp;Dette vert samla inn berre for statistikk, som vert brukt for å forbetra arrangmentet frå år til år.</li>
           <li><b>Namn på foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
           <li><b>E-postadresse til foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
           <li><b>Telefonnummer til foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
-          <li><b>Fødselsdato til foresatt:</b>&nbsp;Om du er under 18 år er du nøydd til å skriva opp ein foresatt som skal stå som ansvarleg.</li>
         </ul>
         <h3 className="fw-bolder mt-3">Databehandlarar</h3>
         <p className="mt-2">
@@ -52,16 +51,23 @@ function Privacy() {
         </p>
         <ul style={{ listStyle: 'none', marginLeft: 0 }}>
           <li>
-            <h4 className="mt-3 fw-bolder">Styreweb</h4>
+            <h4 className="mt-3 fw-bolder">Firebase</h4>
             <p className="mt-2">
-              <a href="https://styreweb.com">Styreweb</a> er ein plattform for administrering av organisasjonar. Styreweb står for påmeldingssystem og betalingssystem. Styreweb har
-              dermed tilgang til informasjonen ovanfor, samt kortinformasjon som du skriv inn ved påmelding. 
+              <a href="https://firebase.google.com/">Firebase</a> er ein skybasert database der all informasjon me samlar inn vert lagra. Meir informasjon om Firebase sin personvernerklæring,
+               finn du på deira nettside.
+            </p>
+          </li>
+          <li>
+            <h4 className="mt-3 fw-bolder">Stripe</h4>
+            <p className="mt-2">
+              <a href="https://stripe.com/">Stripe</a> er ei betalingsteneste me nyttar for å motta betaling for billettar. All kortinformasjon du oppgjev er kryptert og blir berre nytta til autentisering av kortet ditt. Berre namn og naudsynt informasjon vert lagra i ettertid. Kvam E-sport som organisasjon har ikkje tilgang til kortinformasjonen du oppgjev på nettsida. Denne vert berre behandla av Stripe. Meir informasjon om Stripe sin personvernerklæring,
+               finn du på deira nettside.
             </p>
           </li>
         </ul>
         <h3 className="fw-bolder">Sletting og lagring av persondata</h3>
         <p className="mt-3">
-          Data om personar som melder seg på eit arrangement vert lagra frå personen melder seg inn og inntil 30 dagar etter arrangementet. Seinast 30 dagar etter arrangementet vert all
+          Data om personar som melder seg på eit arrangement vert lagra frå personen melder seg inn og inntil 12 månadar etter arrangementet. Seinast 12 månadar etter arrangementets sluttdato vert all
           persondata om personen sletta. 
         </p>
         <h3 className="fw-bolder">Behandlingsansvarleg</h3>
@@ -74,7 +80,7 @@ function Privacy() {
       </Container>
       <div className="mt-5" style={{ width: '85%', height: '1px', backgroundColor: '#000', alignSelf: 'center' }}></div>
       <Container fluid className="d-flex flex-column">
-        <h1 className="fw-bolder mx-3 mt-5">Salgsvilkår</h1>
+        <h1 className="fw-bolder mx-3 mt-5">Salsvilkår</h1>
           <p className='mt-3'>
             Desse salsvilkåra gjelder for alt sal av billettar gjennom KvammaLAN (Kvam E-sport) til forbrukarane. Salsvilkåra utgjer saman med di bestilling, det samla 
             avtalegrunnlaget for kjøpet. Salsvilkåra og anna informasjon på kvammalan.kvam-esport.no er berre tilgjengeleg på norsk.
@@ -89,13 +95,13 @@ function Privacy() {
           </p>
           <h4 className="fw-bolder">2) Betaling</h4>
           <p className="mt-2">
-            Kjøpssummen kan betalast med anten bankkort eller via VIPPS. Me forbeholder retten til å nekta deg adgang til arrangementa dersom du har betalt for lite ifm. feil val av 
+            Kjøpssummen kan betalast med bankkort. Me forbeholder retten til å nekta deg adgang til arrangementa dersom du har betalt for lite ifm. feil val av 
             billettype. 
           </p>
           <h4 className="fw-bolder">3) Levering</h4>
           <p className='mt-2'>
             Det skjer ingen fysisk levering frå oss. Etter kjøp vil du få tilsendt eit digitalt bevis på betalt deltakaravgift, samt ein QR-kode som er ditt deltakarbevis. Leveringa av 
-            deltakarbevis og bevis på betalt deltakaravgift vert sendt på e-post oppgjeve i påmeldinga. Er du under 18 år vil e-posten verta sendt til den oppgjeve foresatten. Er du over 18 år
+            deltakarbevis og bevis på betalt deltakaravgift vert sendt på e-post oppgjeve i påmeldinga. Er du under 18 år vil e-posten òg verta sendt til den oppgjeve forelderen. Er du over 18 år
             vil e-posten verta sendt til den oppgjevne e-postadressa i påmeldinga. 
           </p>
           <h4 className="fw-bolder">4) Angrerett</h4>
@@ -118,7 +124,7 @@ function Privacy() {
           <h4 className="fw-bolder">7) Kansellering</h4>
           <p className="mt-2">
             KvammaLAN v/ Kvam E-sport forbeholder retten til å avlysa arrangementet. Dette vil alle påmelde deltakarar få skriftleg beskjed om. Alle deltakarar vil få refundert billettprisen
-            (minus betalingsavgift).
+            (minus betalingsavgift) ved kansellering av arrangementet.
           </p>
           <p className="my-5">
             Spørsmål kan rettast til KvammaLAN v/ Kvam E-sport på e-post: <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>

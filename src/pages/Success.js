@@ -69,6 +69,9 @@ function Success() {
                     I tillegg står det ein del praktisk informasjon og ei lita pakkeliste!
                 </p>
                 <p className="w-50 text-center mx-auto mt-3">
+                    Dersom du er under 18 år kjem det òg eit samtykkeskjema på e-post til foresatte som må signerast for at påmeldinga skal vera gyldig. 
+                </p>
+                <p className="w-50 text-center mx-auto mt-3">
                     Me ser fram til å ha deg med under årets versjon av KvammaLAN!
                 </p>
                 <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' disabled={disabled} onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>

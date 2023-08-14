@@ -4,3 +4,7 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+.countdown {
+    font-size: 4rem;
+}

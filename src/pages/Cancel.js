@@ -31,7 +31,7 @@ function Cancel() {
         </h2>
         <p className="w-50 text-center mx-auto mt-3">
             Det har skjedd noko feil under påmeldinga. Enten har du avbrutt påmeldinga manuelt, eller så har det skjedd ein feil 
-            på vår side. Dersom det har skjedd ein feil på vår side, ber me deg om å prøva på nytt igjen. Dersom problemet vedvarer, 
+            på vår side. Dersom det har skjedd ein feil, ber me deg om å prøva på nytt igjen. Dersom problemet vedvarer, 
             ta kontakt med oss på <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>
         </p>
         <Button className="mt-3 mb-5 w-50 mx-auto" variant='primary' onClick={() => navigate('/')}>GÅ TILBAKE TIL FRAMSIDA</Button>

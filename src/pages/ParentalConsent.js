@@ -96,7 +96,7 @@ function ParentalConsent() {
                                     name='consent'
                                     className="mx-2"
                                 />
-                                <Form.Label htmlFor='name' className="fw-bolder">Eg samtykkjer herved at deltakaren som er namngjeven over kan delta på arrangementet KvammaLAN 2023 10. - 13. oktober 2023 i Øystese idrettshall.</Form.Label>
+                                <Form.Label htmlFor='name' className="fw-bolder">Eg samtykkjer herved at deltakaren som er namngjeven over kan delta på arrangementet KvammaLAN 2023 10. - 13. oktober 2023 i Øystese idrettshall. Eg aksepterer òg med dette at samtykket som forklart ovanfor er sendt inn.</Form.Label>
                             </Form.Group>
                         </Row>
                         <Row className="w-100 mt-3">
