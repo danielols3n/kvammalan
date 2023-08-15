@@ -35,6 +35,9 @@ function AdminLanding() {
 
                                 if (documents && documents.length > 0) {
                                     setRegistrations(documents);
+                                } else {
+                                    console.log("No valid documents found.");
+                                }
 
                                     [1,2,3,4,5,6,7,8].forEach((row) => {
                                         const tempRow = []
@@ -85,10 +88,6 @@ function AdminLanding() {
                                     })
                                     setRows(temp)
                                     setLoading(false)
-
-                                  } else {
-                                    console.log("No valid documents found.");
-                                  }
                         }).catch(error => console.error(error))
                     } else {
                         navigate('/kvammalan/admin/login')
@@ -104,18 +103,17 @@ function AdminLanding() {
         <AdminNavbar />
         <Container fluid className="d-flex flex-column m-0 p-0">
             <Row className="w-100 d-flex m-0 p-0">
-                <Col lg={7} className="d-flex flex-column m-3 p-0">
+                <Col lg={8} className="d-flex flex-column m-0 p-0">
                     <Container fluid className="m-auto">
-                        {rows.length !== 0 && <SeatPicker
+                        <SeatPicker
                             addSeatCallback={() => console.log('addSeat')}
                             removeSeatCallback={() => console.log('removeSeat')}
                             rows={rows}
-                            maxReservableSeats={1}
                             alpha
                             visible
                             selectedByDefault
                             loading={loading}
-                        />}
+                        />
                     </Container>
                 </Col>
                 <Col className="m-0 p-0" style={{ borderTop: '1px solid lightgray', borderLeft: '1px solid lightgray', borderBottom: '1px solid lightgray' }} lg={4}>

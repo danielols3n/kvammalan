@@ -63,7 +63,7 @@ function Home() {
                   </Card.Header>
                   <Card.Body className="align-items-center justify-content-center">
                     <div>
-                      <b>KvammaLAN:</b>&nbsp;10.10.2022 kl. 16:00 til 13.10.2022 kl. 12:00
+                      <b>KvammaLAN:</b>&nbsp;10.10.2023 kl. 16:00 til 13.10.2023 kl. 12:00
                     </div>
                   </Card.Body>
                 </Card>
