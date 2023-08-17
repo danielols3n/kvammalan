@@ -18,6 +18,10 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminLanding from './pages/admin/AdminLanding';
 import AdminParticipants from './pages/admin/AdminParticipants';
 import AdminCheckIn from './pages/admin/AdminCheckIn';
+import AdminTimeschedule from './pages/admin/AdminTimeschedule';
+import AdminCompetitions from './pages/admin/AdminCompetitions';
+import AdminNews from './pages/admin/AdminNews';
+import AdminNewNewsArticle from './pages/admin/AdminNewNewsArticle';
 
 
 function App() {
@@ -42,6 +46,10 @@ function App() {
           <Route path="/kvammalan/admin/" element={<AdminLanding />} />
           <Route path="/kvammalan/admin/participants" element={<AdminParticipants /> } />
           <Route path="/kvammalan/admin/check-in" element={<AdminCheckIn />} />
+          <Route path="/kvammalan/admin/timeschedule" element={<AdminTimeschedule />} />
+          <Route path="/kvammalan/admin/competitions" element={<AdminCompetitions />} />
+          <Route path="/kvammalan/admin/news" element={<AdminNews />} /> 
+          <Route path="/kvammalan/admin/news/new-article" element={<AdminNewNewsArticle />} /> 
         </Routes>
       </Router>
     </>
