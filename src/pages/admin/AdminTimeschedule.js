@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Button, Container } from 'react-bootstrap'
 import AdminNavbar from '../../components/admin-navbar/AdminNavbar'
 import { IoMdAdd, IoMdRemove } from 'react-icons/io'
-import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
+import { useEffect } from 'react';
 
 function TableRows({ rows, tableRowRemove, onValUpdate }) {
     return rows.map((rowsData, index) => {
@@ -53,19 +54,21 @@ function TableRows({ rows, tableRowRemove, onValUpdate }) {
   function AdminTimeschedule() {
     const [rows, initRow] = useState([]);
 
-    const docRef = doc(db, 'events', 'kvammalan2023')
+    useEffect(() => {
+      const docRef = doc(db, 'events', 'kvammalan2023')
 
-    getDoc(docRef).then(document => {
-        const temp = []
-        document.data().timeschedule.forEach((item) => {
-            temp.push({
-                title: item.title,
-                description: item.description,
-                start: item.start,
-            })
-        })
-        initRow(temp)
-    })
+      const unsub = onSnapshot(docRef, (document) => {
+          const temp = []
+          document.data().timeschedule.forEach((item) => {
+              temp.push({
+                  title: item.title,
+                  description: item.description,
+                  start: item.start,
+              })
+          })
+          initRow(temp.sort((a, b) => new Date(...a.start.split('/').reverse()) - new Date(...b.start.split('/').reverse())))
+      })
+    }, [])
 
     const addRowTable = () => {
       const data = {

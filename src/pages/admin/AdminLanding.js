@@ -20,8 +20,8 @@ function AdminLanding() {
             if (user) {
                 const docRef = doc(db, 'users', user.uid)
 
-                getDoc(docRef).then((document) => {
-                    if (document.data().admin === true) {
+                getDoc(docRef).then((document2) => {
+                    if (document2.data().admin === true) {
                         console.log('Admin access granted')
 
                             setLoading(true)
@@ -51,15 +51,16 @@ function AdminLanding() {
                                                     const currentSeat = rowCount + `0` + seat
     
                                                     if (documents.some(document => document.data().seatId === currentSeat)) {
+                                                        const document1 = documents.filter(document => document.data().seatId === currentSeat)[0]
                                                         tempRow.push({
-                                                            id: document.data().reservationId,
+                                                            id: document1.data().reservationId,
                                                             number: rowCount + `0` + seat,
                                                             isReserved: true,
-                                                            tooltip: `Setet er reservert av ${document.data().name}`
+                                                            tooltip: `Setet er reservert av ${document1.data().name}`
                                                         })
                                                     } else {
                                                         tempRow.push({
-                                                            id: document.data().reservationId,
+                                                            id: Math.random(1,100000),
                                                             number: rowCount + `0` + seat,
                                                             isReserved: false
                                                         })
@@ -67,19 +68,20 @@ function AdminLanding() {
                                                 } else {
                                                     const currentSeat = `${rowCount}` + `${seat}`
                                                     if (documents.some(document => document.data().seatId === currentSeat)) {
+                                                        const document1 = documents.filter(document => document.data().seatId === currentSeat)[0]
                                                         tempRow.push({
-                                                            id: document.data().reservationId,
+                                                            id: document1.data().reservationId,
                                                             number: `${rowCount}` + `${seat}`,
                                                             isReserved: true,
-                                                            tooltip: `Setet er reservert av ${document.data().name}`
+                                                            tooltip: `Setet er reservert av ${document1.data().name}`
                                                         })
-                                                    } else {
+                                                    } else 
                                                         tempRow.push({
-                                                            id: document.data().reservationId,
+                                                            id: Math.random(1,100000),
                                                             number: `${rowCount}` + `${seat}`,
                                                             isReserved: false
                                                         })
-                                                    }
+                                                    
                                                 }
                                             })
                                             rowCount += 1

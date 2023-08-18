@@ -1,12 +1,11 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, onSnapshot, updateDoc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Col, Container, FormCheck, Row, Table } from 'react-bootstrap'
+import { Container, FormCheck, Row, Table } from 'react-bootstrap'
 import { auth, db } from '../../Firebase'
 import { useNavigate } from 'react-router-dom'
 import AdminNavbar from '../../components/admin-navbar/AdminNavbar'
-import SeatPicker from 'react-seat-picker'
 import moment from 'moment'
 
 function AdminCheckIn() {
@@ -24,7 +23,7 @@ function AdminCheckIn() {
                         console.log('Admin access granted')
                             const colRef = collection(db, 'events', 'kvammalan2023', 'registrations')
 
-                            getDocs(colRef).then((snapshot) => {
+                            const unsub = onSnapshot(colRef, (snapshot) => {
                                 if (snapshot.docs && snapshot.docs.length > 0) {
                                     setRegistrations(snapshot.docs)
                                   } else {
@@ -60,7 +59,6 @@ function AdminCheckIn() {
                 </thead>
                 <tbody>
                   {registrations.length !== 0 && registrations.map((participant) => {
-                    console.log(participant.data().seatId)
                     return(
                       <tr>
                         <td>{participant.data().seatId !== undefined ? participant.data().seatId : <b>Publikum</b>}</td>
@@ -70,7 +68,7 @@ function AdminCheckIn() {
                         <td>
                           <FormCheck
                             type='checkbox'
-                            checked={participant.data().checkedIn === undefined || participant.data().checkedIn === false ? false : true}
+                            checked={(participant.data().checkedIn === false || undefined) ? false : true}
                             onChange={(e) => {
                               const docRef = doc(db, 'events', 'kvammalan2023', 'registrations', participant.id)
 
