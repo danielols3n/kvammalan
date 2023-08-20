@@ -68,7 +68,7 @@ function AdminCheckIn() {
                         <td>
                           <FormCheck
                             type='checkbox'
-                            checked={(participant.data().checkedIn === false || undefined) ? false : true}
+                            checked={(participant.data().checkedIn === false || participant.data().checkedIn === undefined) ? false : true}
                             onChange={(e) => {
                               const docRef = doc(db, 'events', 'kvammalan2023', 'registrations', participant.id)
 

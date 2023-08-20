@@ -2,7 +2,7 @@ import React from 'react'
 import { Nav, NavDropdown, Navbar } from 'react-bootstrap'
 import logo from '../logo.png'
 
-function AdminNavbar(props) {
+function AdminNavbar() {
   return (
     <>
         <Navbar expand='md' collapseOnSelect bg='dark' variant='dark'>
