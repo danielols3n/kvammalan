@@ -58,19 +58,6 @@ function Event() {
                           </Button>
                         </Col>
                       </Row>
-                      <Row className="w-100 p-2 m-0">
-                        <Col xs={2} className="d-flex">
-                          <HiOutlineTicket color='#000' size='2rem' className="m-auto" />
-                        </Col>
-                        <Col xs={6} className="fw-bolder d-flex">
-                          <b className="my-auto text-dark">Billett - Publikum</b>
-                        </Col>
-                        <Col xs={4} className="d-flex">
-                          <Button variant="primary" className="my-auto" onClick={() => navigate('/kvammalan/checkout/audience?ticketId=Publikum')}>
-                            30 ,-
-                          </Button>
-                        </Col>
-                      </Row>
                     </Container>
                   </Container>
                 </>
@@ -102,8 +89,8 @@ function Event() {
                 Me satsar større på underhaldning under årets KvammaLAN. Programmet er ikkje heilt ferdig, men følg med på enten her på nettsida eller på Facebook/Instagram for å sjå programmet.  
               </p>
               <p className="text-light">
-                Nytt for i år er at me opnar for at publikum kan koma og sjå på konkurransane. Inngangsbilletten koster 30 kroner og ein kjøper billett enten
-                på nett eller i døra. Dette er ikkje billett for å DELTA i konkurransane, berre for å sjå. 
+                Nytt for i år er at me opnar for at publikum kan koma og sjå på konkurransane. Dette er heilt gratis og ein møter rett og slett opp i døra. Her kan alle koma, store og små, unge og eldre. Me
+                 set ingen begrensingar.
               </p>
               <p className="text-light">
                 Dersom du har nokre spørsmål angåande årets KvammaLAN, ta kontakt med oss på <a href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a> eller telefon 

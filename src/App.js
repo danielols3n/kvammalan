@@ -23,6 +23,9 @@ import AdminCompetitions from './pages/admin/AdminCompetitions';
 import AdminNews from './pages/admin/AdminNews';
 import AdminNewNewsArticle from './pages/admin/AdminNewNewsArticle';
 import AdminViewParticipant from './pages/admin/AdminViewParticipant';
+import Information from './pages/Information'
+import Competitions from './pages/Competitions'
+import TimeSchedule from './pages/TimeSchedule'
 
 
 function App() {
@@ -52,6 +55,9 @@ function App() {
           <Route path="/kvammalan/admin/news" element={<AdminNews />} /> 
           <Route path="/kvammalan/admin/news/new-article" element={<AdminNewNewsArticle />} /> 
           <Route path="/kvammalan/admin/participants/view-participant" element={<AdminViewParticipant />} />
+          <Route path="/program" element={<TimeSchedule />} />
+          <Route path="/konkurransar" element={<Competitions />} />
+          <Route path="/praktisk-info" element={<Information />} />
         </Routes>
       </Router>
     </>
