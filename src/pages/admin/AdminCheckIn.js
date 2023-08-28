@@ -54,7 +54,7 @@ function AdminCheckIn() {
                     <th>NAMN</th>
                     <th>TELEFONNUMMER</th>
                     <th>E-POSTADRESSE</th>
-                    <th>ACTIONS</th>
+                    <th>SJEKKA INN?</th>
                   </tr>
                 </thead>
                 <tbody>

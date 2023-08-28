@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap'
 import AdminNavbar from '../../components/admin-navbar/AdminNavbar'
 import { useNavigate } from 'react-router-dom'
 import moment from 'moment/moment'
-import { addDoc, collection } from 'firebase/firestore'
-import { db } from '../../Firebase'
+import { addDoc, collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import { auth, db } from '../../Firebase'
+import { onAuthStateChanged } from 'firebase/auth'
+import Avatar from 'react-avatar'
 
 function AdminCompetitions() {
   const [modal, setModal] = useState()
@@ -14,6 +16,8 @@ function AdminCompetitions() {
   const [start, setStart] = useState('')
   const [end, setEnd] = useState('')
   const [creator, setCreator] = useState('')
+
+  const [competitions, setCompetitions] = useState([])
 
   const navigate = useNavigate()
 
@@ -31,6 +35,32 @@ function AdminCompetitions() {
       navigate(`/kvammalan/admin/competitions/view-competition?eventId=${docRef.id}`)
     }).catch(error => alert(`Error message: ${error.message}`))
   }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+       if (user) {
+        const docRef = doc(db, 'users', user.uid)
+
+        getDoc(docRef).then((document) => {
+          if (document.data().admin === true) {
+            console.log('Admin access granted')
+
+            const colRef = collection(db, 'events', 'kvammalan2023', 'competitions')
+
+            getDocs(colRef).then((snapshot) => {
+              setCompetitions(snapshot.docs)
+              console.log(competitions)
+            }).catch(error => console.error(error))
+          } else {
+            navigate('/kvammalan/admin/login')
+          }
+        })
+       } else {
+        navigate('/kvammalan/admin/login')
+       }
+    })
+  }, [])
+
   return (
     <Container fluid className="d-flex flex-column m-0 p-0">
       <AdminNavbar />
@@ -44,6 +74,22 @@ function AdminCompetitions() {
               <span className="m-auto" style={{ fontSize: '2rem' }}>+</span>
             </Button>
           </Col>
+        </Row>
+        <Row className="w-100 d-flex flex-column m-0 p-0">
+          <Container fluid className="d-flex flex-column m-0 mt-3 p-0">
+            {competitions.map((item) => {
+              return(
+                <Row style={{ cursor: 'pointer' }} onClick={() => navigate(`/kvammalan/admin/competitions/view-competition?eventId=${item.id}`)} className="w-75 p-0 m-2 border rounded mx-5">
+                  <Container fluid className="d-flex m-0 p-3">
+                    <Col lg={3} className="d-flex">
+                      {item.data().img !== undefined || item.data().img !== null ? <img src={item.data().img} alt='' /> : <Avatar name={item.data().name} round maxInitials={2} color='#2596be' />}
+                    </Col>
+                    <Col lg={9} className='d-flex m-0 p-0'><h2 className='fw-bolder text-start my-auto'>{item.data().name}</h2></Col>
+                  </Container>
+                </Row>
+              )
+            })}
+          </Container>
         </Row>
       </Container>
       <Modal show={modal} onHide={() => setModal(false)} size='xl' centered>
