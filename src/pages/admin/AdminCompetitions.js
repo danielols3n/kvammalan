@@ -49,7 +49,6 @@ function AdminCompetitions() {
 
             getDocs(colRef).then((snapshot) => {
               setCompetitions(snapshot.docs)
-              console.log(competitions)
             }).catch(error => console.error(error))
           } else {
             navigate('/kvammalan/admin/login')
@@ -82,7 +81,7 @@ function AdminCompetitions() {
                 <Row style={{ cursor: 'pointer' }} onClick={() => navigate(`/kvammalan/admin/competitions/view-competition?eventId=${item.id}`)} className="w-75 p-0 m-2 border rounded mx-5">
                   <Container fluid className="d-flex m-0 p-3">
                     <Col lg={3} className="d-flex">
-                      {item.data().img !== undefined || item.data().img !== null ? <img src={item.data().img} alt='' /> : <Avatar name={item.data().name} round maxInitials={2} color='#2596be' />}
+                      {item.data().img !== undefined ? <img src={item.data().img} alt='' /> : <Avatar name={item.data().name} round maxInitials={2} color='#2596be' />}
                     </Col>
                     <Col lg={9} className='d-flex m-0 p-0'><h2 className='fw-bolder text-start my-auto'>{item.data().name}</h2></Col>
                   </Container>

@@ -42,11 +42,11 @@ function AdminLanding() {
                                     [1,2,3,4,5,6,7,8].forEach((row) => {
                                         const tempRow = []
                                         if (row === 3 || row === 6) {
-                                            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach(() => {
+                                            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].forEach(() => {
                                                 tempRow.push(null)
                                             })
                                         } else {
-                                            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].forEach((seat) => {
+                                            [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].forEach((seat) => {
                                                 if (seat < 10) {
                                                     const currentSeat = rowCount + `0` + seat
     
