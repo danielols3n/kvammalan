@@ -1,5 +1,5 @@
 import React from 'react'
-import { Nav, NavDropdown, Navbar } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 import logo from '../logo.png'
 
 function AdminNavbar() {
@@ -23,11 +23,6 @@ function AdminNavbar() {
                     <Nav.Link className="mx-4" href='/kvammalan/admin'>HEIM</Nav.Link>
                     <Nav.Link className="mx-4" href='/kvammalan/admin/participants'>DELTAKARAR</Nav.Link>
                     <Nav.Link className="mx-4" href='/kvammalan/admin/check-in'>INNSJEKK</Nav.Link>
-                    <NavDropdown className="mx-4" title='INFORMASJON' menuVariant='dark'>
-                        <NavDropdown.Item href='/kvammalan/admin/timeschedule'>PROGRAM</NavDropdown.Item>
-                        <NavDropdown.Item href='/kvammalan/admin/competitions'>KONKURRANSAR</NavDropdown.Item>
-                        <NavDropdown.Item href='/kvammalan/admin/news'>NYHENDE</NavDropdown.Item>
-                    </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
             <Navbar.Brand className='my-auto' style={{ display: 'flex', justifyContent: 'flex-end', width: '25%', marginRight: '10%', alignItems: 'center' }}>

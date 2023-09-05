@@ -27,7 +27,6 @@ function NavbarComponent(props) {
                     <NavDropdown className="mx-4" title='INFORMASJON' menuVariant='dark'>
                         <NavDropdown.Item href='/program'>PROGRAM</NavDropdown.Item>
                         <NavDropdown.Item href='/praktisk-info'>PRAKTISK INFORMASJON</NavDropdown.Item>
-                        <NavDropdown.Item href='/konkurransar'>KONKURRANSAR</NavDropdown.Item>
                     </NavDropdown>
                     <NavDropdown className="mx-4" title='HJELP' menuVariant='dark'>
                         <NavDropdown.Item href='/faq'>OFTE STILTE SPØRSMÅL</NavDropdown.Item>

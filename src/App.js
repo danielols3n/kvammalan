@@ -18,15 +18,9 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminLanding from './pages/admin/AdminLanding';
 import AdminParticipants from './pages/admin/AdminParticipants';
 import AdminCheckIn from './pages/admin/AdminCheckIn';
-import AdminTimeschedule from './pages/admin/AdminTimeschedule';
-import AdminCompetitions from './pages/admin/AdminCompetitions';
-import AdminNews from './pages/admin/AdminNews';
-import AdminNewNewsArticle from './pages/admin/AdminNewNewsArticle';
 import AdminViewParticipant from './pages/admin/AdminViewParticipant';
 import Information from './pages/Information'
-import Competitions from './pages/Competitions'
 import TimeSchedule from './pages/TimeSchedule'
-import AdminViewCompetition from './pages/admin/AdminViewCompetition';
 
 
 function App() {
@@ -51,14 +45,8 @@ function App() {
           <Route path="/kvammalan/admin/" element={<AdminLanding />} />
           <Route path="/kvammalan/admin/participants" element={<AdminParticipants /> } />
           <Route path="/kvammalan/admin/check-in" element={<AdminCheckIn />} />
-          <Route path="/kvammalan/admin/timeschedule" element={<AdminTimeschedule />} />
-          <Route path="/kvammalan/admin/competitions" element={<AdminCompetitions />} />
-          <Route path="/kvammalan/admin/news" element={<AdminNews />} /> 
-          <Route path="/kvammalan/admin/news/new-article" element={<AdminNewNewsArticle />} /> 
           <Route path="/kvammalan/admin/participants/view-participant" element={<AdminViewParticipant />} />
-          <Route path="/kvammalan/admin/competitions/view-competition" element={<AdminViewCompetition />} />
           <Route path="/program" element={<TimeSchedule />} />
-          <Route path="/konkurransar" element={<Competitions />} />
           <Route path="/praktisk-info" element={<Information />} />
         </Routes>
       </Router>
