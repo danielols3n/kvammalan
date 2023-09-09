@@ -10,6 +10,9 @@ function TimeSchedule() {
         <NavbarComponent data={{ background: 'transparent' }} />
         <Container fluid className="d-flex flex-column m-0 p-0 h-100 mb-5">
           <h1 className="fw-bolder text-center w-100 mt-3 text-light">PROGRAM</h1>
+          <p className="text-center fw-bolder mx-auto mt-3 w-75">
+            <i>Med forbehold om endringar i programmet</i>
+          </p>
           <Card className="w-75 mx-auto mt-3">
             <Card.Header>TYSDAG 10. OKTOBER 2023</Card.Header>
             <Card.Body>
