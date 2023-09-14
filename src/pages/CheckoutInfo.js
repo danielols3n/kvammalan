@@ -48,7 +48,7 @@ function CheckoutInfo() {
   const submit = (event) => {
     event.preventDefault()
 
-    if (name === '' && name !== parent1_name || phone === '' && phone !== parent1_phone || email === '' && email !== parent1_email  || address === '' || zipcode === '' || city === '' || country === '' || birthdate === '' || (parent1_email === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || (parent1_name === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || (parent1_phone === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || birthdate === ' ' || gender === '') {
+    if (name === '' && name !== parent1_name || phone === '' && phone !== parent1_phone || email === ''  || address === '' || zipcode === '' || city === '' || country === '' || birthdate === '' || (parent1_email === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || (parent1_name === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || (parent1_phone === '' && moment().diff(new Date(birthdate), 'years', true) < 18) || birthdate === ' ' || gender === '') {
       setValidate(true)
       window.scrollTo(0, 0)
       console.log(validate)
