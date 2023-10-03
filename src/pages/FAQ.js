@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Accordion, Container } from 'react-bootstrap'
 import NavbarComponent from '../components/navbar/Navbar'
 import Footer from '../components/footer/Footer'
 import '../css/FAQ.css'
@@ -29,7 +29,8 @@ function FAQ() {
       : null}
       <NavbarComponent data={{ background: 'transparent' }} />
         <Container fluid className="h-100 d-flex flex-column align-items-center justify-content-center">
-          <h1 className="text-light fw-bold">MEIR INFORMASJON KJEM SNART..</h1>
+          <Accordion defaultActiveKey="0">
+          </Accordion>
         </Container>
       <Footer />
     </Container>

@@ -24,13 +24,10 @@ function NavbarComponent(props) {
                     <Nav.Link className="mx-4" href='/'>HEIM</Nav.Link>
                     <Nav.Link className="mx-4" href='/om-oss'>OM OSS</Nav.Link>
                     <Nav.Link className="mx-4" href='/kvammalan'>KVAMMALAN 2023</Nav.Link>
+                    <Nav.Link href='/kontakt-oss'>KONTAKT OSS</Nav.Link>
                     <NavDropdown className="mx-4" title='INFORMASJON' menuVariant='dark'>
                         <NavDropdown.Item href='/program'>PROGRAM</NavDropdown.Item>
                         <NavDropdown.Item href='/praktisk-info'>PRAKTISK INFORMASJON</NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown className="mx-4" title='HJELP' menuVariant='dark'>
-                        <NavDropdown.Item href='/faq'>OFTE STILTE SPØRSMÅL</NavDropdown.Item>
-                        <NavDropdown.Item href='/kontakt-oss'>KONTAKT OSS</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
