@@ -87,6 +87,54 @@ function AdminViewParticipant() {
               </Card.Body>
             </Card>
           </Container>
+          <Container fluid className="d-flex flex-column m-0 p-0">
+            <Card className="w-75 rounded boxshadow mx-auto my-5">
+              <Card.Header>KONKURRANSAR</Card.Header>
+              <Card.Body>
+                <Form className="w-100">
+                  <Row className="w-100 m-0 my-3 p-0">
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>FORTNITE</b></Form.Label>
+                      <Form.Control defaultValue={participant.fortnite} plaintext readOnly />
+                    </Form.Group>
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>CS:GO</b></Form.Label>
+                      <Form.Control defaultValue={participant.csgo} plaintext readOnly />
+                    </Form.Group>
+                  </Row>
+                  <Row className="w-100 m-0 my-3 p-0">
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>FORZA HORIZON 5</b></Form.Label>
+                      <Form.Control defaultValue={participant.fh5} plaintext readOnly />
+                    </Form.Group>
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>LEAGUE OF LEGENDS</b></Form.Label>
+                      <Form.Control defaultValue={participant.lol} plaintext readOnly />
+                    </Form.Group>
+                  </Row>
+                  <Row className="w-100 m-0 my-3 p-0">
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>MINECRAFT</b></Form.Label>
+                      <Form.Control defaultValue={participant.mc} plaintext readOnly />
+                    </Form.Group>
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>ROCKET LEAGUE</b></Form.Label>
+                      <Form.Control defaultValue={participant.rl} plaintext readOnly />
+                    </Form.Group>
+                  </Row>
+                  <Row className="w-100 m-0 my-3 p-0">
+                    <Form.Group className="my-2" as={Col} lg={6}>
+                      <Form.Label><b>VALORANT</b></Form.Label>
+                      <Form.Control defaultValue={participant.valorant} plaintext readOnly />
+                    </Form.Group>
+                    <Form.Group className="my-2" as={Col} lg={6}>
+
+                    </Form.Group>
+                  </Row>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Container>
         </>
         : null
       }
