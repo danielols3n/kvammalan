@@ -33,8 +33,8 @@ function ContactUs() {
           <p className="mt-3 mx-4 w-75 text-light fw-bold">
             Har du nokre spørsmål eller ynskjer du å kontakta oss? Då er du kome til rett plass!
           </p>
-          <h4 className="text-light fw-bold mt-3">E-post:</h4><a className="text-primary" href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>
-          <h4 className="text-light fw-bold mt-3">Telefon:</h4><a className="text-primary" href="tel:98663863">98663863 (Daniel Olsen)</a>
+          <h4 className="text-light fw-bold mt-3">E-post:</h4><a className="text-light fw-bolder" href="mailto:kvammalan@kvam-esport.no">kvammalan@kvam-esport.no</a>
+          <h4 className="text-light fw-bold mt-3">Telefon:</h4><a className="text-light fw-bolder" href="tel:98663863">98663863 (Daniel Olsen)</a>
           <h4 className="text-light fw-bold mt-3">Besøksadresse:</h4><p className="text-light">Nedre Vik 4, 5610 Øystese</p>
           <p className="mt-3 text-light">
             Du finn oss òg på Facebook og Instagram. Lenkje til dette finst nedst på sida.

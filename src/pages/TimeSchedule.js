@@ -34,7 +34,7 @@ function TimeSchedule() {
                 <li><b>KL. 15:30</b> Minecraftrebus</li>
                 <li><b>KL. 17:00</b><i> Dørene opnar for publikum</i></li>
                 <li><b>KL. 17:30</b> Minecraftturnering</li>
-                <li><b>KL. 19:00</b> FIFA-turnering</li>
+                <li><b>KL. 19:00</b> Foredrag v/ Preben Fjell</li>
                 <li><b>KL. 21:00</b><i> Dørene stengjer for publikum</i></li>
                 <li><b>KL. 00:00</b> Ro i salen</li>
               </ul>
