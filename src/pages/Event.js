@@ -40,7 +40,7 @@ function Event() {
                           <b className="my-auto text-dark">Billett - Medlem</b>
                         </Col>
                         <Col xs={4} className="d-flex">
-                          <Button variant="primary" className="my-auto" onClick={() => navigate('/kvammalan/checkout/seat-map?ticketId=Medlem')}>
+                          <Button variant="primary" className="my-auto" onClick={() => console.log('')}>
                             400 ,-
                           </Button>
                         </Col>
@@ -53,7 +53,7 @@ function Event() {
                           <b className="my-auto text-dark">Billett - Ikkje medlem</b>
                         </Col>
                         <Col xs={4} className="d-flex">
-                          <Button variant="primary" className="my-auto" onClick={() => navigate('/kvammalan/checkout/seat-map?ticketId=Ikkje-medlem')}>
+                          <Button variant="primary" className="my-auto" onClick={() => console.log('')}>
                             600 ,-
                           </Button>
                         </Col>
